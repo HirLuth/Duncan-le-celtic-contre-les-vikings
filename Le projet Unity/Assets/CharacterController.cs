@@ -13,6 +13,8 @@ public class CharacterController : MonoBehaviour
  private Rigidbody2D rb;
  private float movementX;
  private float movementY;
+ public int health;
+ private bool isTouched;
  
     private void Awake()
     {
@@ -27,7 +29,6 @@ public class CharacterController : MonoBehaviour
 
     public void Update()
     {
-        Debug.Log(movementX);
         movementX = Input.GetAxisRaw("Horizontal");
         movementY = Input.GetAxisRaw("Vertical");
         
@@ -37,14 +38,25 @@ public class CharacterController : MonoBehaviour
         if (movementX > 0) // Le personnage s'oriente vers la direction où il marche. 
         {
             lookingAt = 2;
-            //transform.localRotation = new Quaternion(0, 0,0,1);
             transform.localScale = new Vector3(1, 2, 0);
         }
         else if (movementX < 0)
         {
             lookingAt = 1;
-            //transform.localRotation = new Quaternion(0, 0,0,1);
             transform.localScale = new Vector3(-1, 2, 0);
         }
+
+        
+
+        if (health == 0) // mort du personnage
+        {
+            Destroy(gameObject);
+        }
     }
+
+    public void TakeDamage(int damageTaken)
+    {
+        health -= damageTaken;
+    }
+    
 }
