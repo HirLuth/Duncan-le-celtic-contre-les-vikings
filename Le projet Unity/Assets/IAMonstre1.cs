@@ -6,9 +6,15 @@ using UnityEngine;
 public class IAMonstre1 : MonoBehaviour
 {
     public GameObject player;
-    private Rigidbody2D rb;
     public float speed;
+    public float colldownDmg;
+    public int Damages;
     public bool isMoving;
+    
+    public float timerDmg;
+    
+    private bool isTouching;
+    private Rigidbody2D rb;
 
     private void Start()
     {
@@ -22,7 +28,35 @@ public class IAMonstre1 : MonoBehaviour
 
         if (isMoving)
         {
-         transform.Translate(target*speed,Space.Self);
+         transform.Translate(target.normalized*speed*Time.deltaTime,Space.Self);
+        }
+
+        if (isTouching)
+        {
+            timerDmg += Time.deltaTime;
+
+            if (timerDmg > colldownDmg)
+            {
+                CharacterController.instance.TakeDamage(Damages);
+                timerDmg = 0;
+            }
         }
     }
-}
+    
+    public void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.CompareTag("Player"))
+        {
+            isTouching = true;
+        }
+    }
+    public void OnCollisionExit2D(Collision2D col)
+    {
+        if (col.gameObject.CompareTag("Player"))
+        {
+            isTouching = false;
+            timerDmg = 0;
+        }
+    }
+} 
+
