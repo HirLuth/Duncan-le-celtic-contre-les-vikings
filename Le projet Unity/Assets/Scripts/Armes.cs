@@ -20,13 +20,13 @@ public class Armes : MonoBehaviour
 
     private void Start()
     {
-        Level = baseStat.Level;
+        /*Level = baseStat.Level;
         isTransformed = baseStat.isTransformed;
         damage = baseStat.damage;
         numberOfProjectile = baseStat.numberOfProjectile;
         coolDown = baseStat.coolDown;
         projectileSize = baseStat.projectileSize;
         projectileSpeed = baseStat.projectileSpeed;
-        timeOfTheEffect = baseStat.timeOfTheEffect;
+        timeOfTheEffect = baseStat.timeOfTheEffect;*/
     }
 }
