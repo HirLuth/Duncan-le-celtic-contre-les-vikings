@@ -6,20 +6,9 @@ using UnityEngine;
 public class Armes : MonoBehaviour
 
 {
-    
-    public enum WeaponsType
-    {
-        Javelot,
-        Epee,
-        Serpe,
-        Bouclier,
-        Livre,
-        Baton,
-        Carnyx
-    }
 
-    public WeaponsType weaponType;
-    public Armes baseStat;
+    public ItemManager.WeaponsType weaponType;
+    public ArmesBaseStat baseStat;
     public int Level;
     public bool isTransformed;
     public int damage;
