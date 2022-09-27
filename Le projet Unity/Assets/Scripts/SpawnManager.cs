@@ -7,17 +7,21 @@ using Random = UnityEngine.Random;
 
 public class SpawnManager : MonoBehaviour
 {
-    private int _testTimerRemoveMonster;
-    
     [SerializeField] private Camera mainCamera;
     [SerializeField] private GameObject monster;
     [SerializeField] private float spawnOffsetFromCamera;
     [SerializeField] private int numberOfMonstersInWave;
     [SerializeField] private float delayBetweenWavesInMinutes;
+    [SerializeField] private int numberOfMonstersInSpawn;
     [SerializeField] private float delayBetweenSpawnsInSeconds;
 
     public List<GameObject> monsterList;
 
+    [Header("Variable de Test")] [SerializeField]
+    private bool monsterClearOn;
+    [SerializeField] private float delayBetweenMonsterClearInSeconds;
+    [SerializeField] private int numberOfMonsterClear;
+    
     private float _timer;
     private int _nextWave;
     private int _nextSpawn;
@@ -38,34 +42,37 @@ public class SpawnManager : MonoBehaviour
     {
         if (_timer > _nextWave * delayBetweenWavesInMinutes * 60)
         {
-            for (int i = 0; i < numberOfMonstersInWave; i++)
+            for (var i = 0; i < numberOfMonstersInWave; i++)
             {
                 var rand = Random.Range(0, Mathf.PI * 2);
                 _newPos.Set(Mathf.Cos(rand) * _spawnRange, Mathf.Sin(rand) * _spawnRange);
                 monsterList.Add(Instantiate(monster, _newPos, quaternion.identity));
             }
-            
             _nextWave++;
         }
         else
         {
             if (_timer > _nextSpawn * delayBetweenSpawnsInSeconds)
             {
-                var rand = Random.Range(0, Mathf.PI * 2);
-                _newPos.Set(Mathf.Cos(rand) * _spawnRange, Mathf.Sin(rand) * _spawnRange);
-                monsterList.Add(Instantiate(monster, _newPos, quaternion.identity));
+                for (var i = 0; i < numberOfMonstersInSpawn; i++)
+                {
+                    var rand = Random.Range(0, Mathf.PI * 2);
+                    _newPos.Set(Mathf.Cos(rand) * _spawnRange, Mathf.Sin(rand) * _spawnRange);
+                    monsterList.Add(Instantiate(monster, _newPos, quaternion.identity));
+                }
                 _nextSpawn++;
             }
         }
 
-        if (_timer > _testTimerRemoveMonster*1)
+        if (_timer > delayBetweenMonsterClearInSeconds*numberOfMonsterClear)
         {
+            if (!monsterClearOn) return;
             foreach (var monster in monsterList)
             {
                 Destroy(monster);
             }
             monsterList.Clear();
-            _testTimerRemoveMonster++;
+            numberOfMonsterClear++;
         }
         
         _timer += Time.deltaTime;
