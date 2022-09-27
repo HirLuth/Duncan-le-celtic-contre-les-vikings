@@ -1,15 +1,14 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Weapons;
 
-public class SpearSpawn : Armes
+namespace Weapons.SpecificWeapon
 {
-    [SerializeField] private GameObject spear;
-
-    private void Update()
+    public class SpearSpawn : MonoBehaviour
     {
+        [SerializeField] private GameObject spearProjectile;
+
+        private void Update()
+        {
         
+        }
     }
 }
