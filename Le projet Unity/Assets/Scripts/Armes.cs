@@ -9,7 +9,8 @@ public class Armes : MonoBehaviour
 
     public ItemManager.WeaponsType weaponType;
     public ArmesBaseStat baseStat;
-    public int Level;
+    public ArmeStat armeStat;
+    public int level;
     public bool isTransformed;
     public int damage;
     public int numberOfProjectile;
@@ -20,13 +21,14 @@ public class Armes : MonoBehaviour
 
     private void Start()
     {
-        Level = baseStat.Level;
-        isTransformed = baseStat.isTransformed;
-        damage = baseStat.damage;
-        numberOfProjectile = baseStat.numberOfProjectile;
-        coolDown = baseStat.coolDown;
-        projectileSize = baseStat.projectileSize;
-        projectileSpeed = baseStat.projectileSpeed;
-        timeOfTheEffect = baseStat.timeOfTheEffect;
+        armeStat = baseStat.listBaseStats[(int)weaponType];
+        level = armeStat.level;
+        isTransformed = armeStat.isTransformed;
+        damage = armeStat.damage;
+        numberOfProjectile = armeStat.numberOfProjectile;
+        coolDown = armeStat.coolDown;
+        projectileSize = armeStat.projectileSize;
+        projectileSpeed = armeStat.projectileSpeed;
+        timeOfTheEffect = armeStat.timeOfTheEffect;
     }
 }
