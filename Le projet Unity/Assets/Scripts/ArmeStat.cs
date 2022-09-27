@@ -5,7 +5,7 @@ using UnityEngine;
 public class ArmeStat
 {
     public ItemManager.WeaponsType weaponType;
-    public int Level;
+    public int level;
     public bool isTransformed;
     public int damage;
     public int numberOfProjectile;
