@@ -2,19 +2,23 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class IAMonstre1 : MonoBehaviour
 {
+    [Header("Attaque")]
     public GameObject player;
     public float speed;
     public float colldownDmg;
     public int Damages;
     public bool isMoving;
-    
-    public float timerDmg;
-    
+    private float timerDmg;
     private bool isTouching;
     private Rigidbody2D rb;
+
+    [Header("Defence")] 
+    public int health;
+    
 
     private void Start()
     {
@@ -34,12 +38,24 @@ public class IAMonstre1 : MonoBehaviour
         if (isTouching)
         {
             timerDmg += Time.deltaTime;
-
+            CharacterController.isTakingDamage = true;
+            
             if (timerDmg > colldownDmg)
             {
                 CharacterController.instance.TakeDamage(Damages);
                 timerDmg = 0;
             }
+        }
+        
+        if (isTouching == false)
+        {
+            CharacterController.isTakingDamage = false;
+        }
+
+        if (health == 0)
+        {
+            ExpManager.instance.CreateExp(transform.position,Random.Range(1,3));
+            Destroy(gameObject);
         }
     }
     
