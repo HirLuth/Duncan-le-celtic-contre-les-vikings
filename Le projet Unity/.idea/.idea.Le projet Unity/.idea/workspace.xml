@@ -42,7 +42,7 @@
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="UnitTests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.3.9f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="D:\Unity\Versions Unity\2021.3.9f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath &quot;D:\Programmation\GitHub\Fork\Duncan-le-celtic-contre-les-vikings\Le projet Unity&quot; -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="D:\Programmation\GitHub\Fork\Duncan-le-celtic-contre-les-vikings\Le projet Unity" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -79,7 +79,7 @@
       <option name="presentableId" value="Default" />
       <updated>1664209490389</updated>
       <workItem from="1664209498833" duration="6008000" />
-      <workItem from="1664266206362" duration="1729000" />
+      <workItem from="1664265228551" duration="827000" />
     </task>
     <servers />
   </component>
