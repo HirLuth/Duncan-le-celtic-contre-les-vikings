@@ -12,4 +12,67 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6351bed3485bcb4c8eed068da02035f, type: 3}
   m_Name: Globals Stats
   m_EditorClassIdentifier: 
-  listBaseStats: []
+  listBaseStats:
+  - weaponType: 0
+    level: 0
+    isTransformed: 0
+    damage: 0
+    numberOfProjectile: 0
+    coolDown: 0
+    projectileSize: 0
+    projectileSpeed: 0
+    timeOfTheEffect: 0
+  - weaponType: 0
+    level: 0
+    isTransformed: 0
+    damage: 0
+    numberOfProjectile: 0
+    coolDown: 0
+    projectileSize: 0
+    projectileSpeed: 0
+    timeOfTheEffect: 0
+  - weaponType: 0
+    level: 0
+    isTransformed: 0
+    damage: 0
+    numberOfProjectile: 0
+    coolDown: 0
+    projectileSize: 0
+    projectileSpeed: 0
+    timeOfTheEffect: 0
+  - weaponType: 0
+    level: 0
+    isTransformed: 0
+    damage: 0
+    numberOfProjectile: 0
+    coolDown: 0
+    projectileSize: 0
+    projectileSpeed: 0
+    timeOfTheEffect: 0
+  - weaponType: 0
+    level: 0
+    isTransformed: 0
+    damage: 0
+    numberOfProjectile: 0
+    coolDown: 0
+    projectileSize: 0
+    projectileSpeed: 0
+    timeOfTheEffect: 0
+  - weaponType: 0
+    level: 0
+    isTransformed: 0
+    damage: 0
+    numberOfProjectile: 0
+    coolDown: 0
+    projectileSize: 0
+    projectileSpeed: 0
+    timeOfTheEffect: 0
+  - weaponType: 0
+    level: 0
+    isTransformed: 0
+    damage: 0
+    numberOfProjectile: 0
+    coolDown: 0
+    projectileSize: 0
+    projectileSpeed: 0
+    timeOfTheEffect: 0

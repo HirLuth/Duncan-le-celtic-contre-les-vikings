@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 6
-  baseStat: {fileID: 0}
+  baseStat: {fileID: 11400000, guid: 1c58f5b18ebb4fa448efe612237ab2db, type: 2}
   armeStat:
     weaponType: 0
     level: 0

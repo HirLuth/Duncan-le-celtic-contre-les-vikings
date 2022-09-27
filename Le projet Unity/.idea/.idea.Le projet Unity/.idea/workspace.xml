@@ -12,7 +12,6 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/CameraController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/GlobalStats.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/IAMonstre1.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Item Manager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player Stat.cs" root0="FORCE_HIGHLIGHTING" />
@@ -80,7 +79,7 @@
       <updated>1664209490389</updated>
       <workItem from="1664209498833" duration="6008000" />
       <workItem from="1664265228551" duration="4342000" />
-      <workItem from="1664269886756" duration="986000" />
+      <workItem from="1664269886756" duration="1296000" />
     </task>
     <servers />
   </component>
