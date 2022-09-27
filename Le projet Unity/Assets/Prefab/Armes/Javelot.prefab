@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4882251949203469855}
   - component: {fileID: 1886710979025351155}
   - component: {fileID: 7519763321983719484}
+  - component: {fileID: 2229323136375778632}
   m_Layer: 5
   m_Name: Javelot
   m_TagString: Untagged
@@ -115,6 +116,20 @@ MonoBehaviour:
   projectileSize: 0
   projectileSpeed: 0
   timeOfTheEffect: 0
+--- !u!114 &2229323136375778632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141090738728546777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf6490c4442548d4eb29db709949672e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  armes: {fileID: 7519763321983719484}
+  projectile: {fileID: 1974345534323238391, guid: d930b2dc6a3013949bc30fcdad8a04b7, type: 3}
 --- !u!1 &5746813075017851754
 GameObject:
   m_ObjectHideFlags: 0
