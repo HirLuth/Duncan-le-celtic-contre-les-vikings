@@ -14,86 +14,86 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   listBaseStats:
   - weaponType: 0
-    level: 0
+    level: 1
     isTransformed: 0
-    damage: 10
-    numberOfProjectile: 0
-    coolDown: 0.5
-    projectileSize: 0
-    projectileSpeed: 0
-    timeOfTheEffect: 0
+    damage: 1
+    numberOfProjectile: 1
+    coolDown: 1
+    projectileSize: 1
+    projectileSpeed: 1
+    timeOfTheEffect: 1
     sprite: {fileID: 21300000, guid: bbf9c35405c35c24c9855f4033e9c0bf, type: 3}
     nameInMenus: Spear
     description: 
-  - weaponType: 6
-    level: 0
+  - weaponType: 1
+    level: 1
     isTransformed: 0
-    damage: 10
-    numberOfProjectile: 0
-    coolDown: 5
-    projectileSize: 0
-    projectileSpeed: 0
-    timeOfTheEffect: 3
+    damage: 1
+    numberOfProjectile: 1
+    coolDown: 1
+    projectileSize: 1
+    projectileSpeed: 1
+    timeOfTheEffect: 1
     sprite: {fileID: 21300000, guid: a279e868dc74cf14abaec51b89483b08, type: 3}
     nameInMenus: Sword
     description: 
   - weaponType: 2
-    level: 0
+    level: 1
     isTransformed: 0
-    damage: 0
-    numberOfProjectile: 0
-    coolDown: 0
-    projectileSize: 0
-    projectileSpeed: 0
-    timeOfTheEffect: 0
+    damage: 1
+    numberOfProjectile: 1
+    coolDown: 1
+    projectileSize: 1
+    projectileSpeed: 1
+    timeOfTheEffect: 1
     sprite: {fileID: 21300000, guid: 5d8a2738e0fc9d94a86a99cf2a0bf883, type: 3}
     nameInMenus: BillHook
     description: 
   - weaponType: 3
-    level: 0
+    level: 1
     isTransformed: 0
-    damage: 0
-    numberOfProjectile: 0
-    coolDown: 0
-    projectileSize: 0
-    projectileSpeed: 0
-    timeOfTheEffect: 0
+    damage: 1
+    numberOfProjectile: 1
+    coolDown: 1
+    projectileSize: 1
+    projectileSpeed: 1
+    timeOfTheEffect: 1
     sprite: {fileID: 21300000, guid: 6b9c20ff159473343ac81aa60c15e6ca, type: 3}
     nameInMenus: Shield
     description: 
   - weaponType: 4
-    level: 0
+    level: 1
     isTransformed: 0
-    damage: 0
-    numberOfProjectile: 0
-    coolDown: 0
-    projectileSize: 0
-    projectileSpeed: 0
-    timeOfTheEffect: 0
+    damage: 1
+    numberOfProjectile: 1
+    coolDown: 1
+    projectileSize: 1
+    projectileSpeed: 1
+    timeOfTheEffect: 1
     sprite: {fileID: 21300000, guid: f1836adb511e7bd4d90d5365ac2e0aab, type: 3}
     nameInMenus: Book of Kells
     description: 
   - weaponType: 5
-    level: 0
+    level: 1
     isTransformed: 0
-    damage: 0
-    numberOfProjectile: 0
-    coolDown: 0
-    projectileSize: 0
-    projectileSpeed: 0
-    timeOfTheEffect: 0
+    damage: 1
+    numberOfProjectile: 1
+    coolDown: 1
+    projectileSize: 1
+    projectileSpeed: 1
+    timeOfTheEffect: 1
     sprite: {fileID: 21300000, guid: b9b05ea1d595c7244ba1f1f5cfd07e16, type: 3}
     nameInMenus: Nature Staff
     description: 
   - weaponType: 6
-    level: 0
+    level: 1
     isTransformed: 0
-    damage: 0
-    numberOfProjectile: 0
-    coolDown: 0
-    projectileSize: 0
-    projectileSpeed: 0
-    timeOfTheEffect: 0
+    damage: 1
+    numberOfProjectile: 1
+    coolDown: 1
+    projectileSize: 1
+    projectileSpeed: 1
+    timeOfTheEffect: 1
     sprite: {fileID: 21300000, guid: 4e6597708d7d65c44aa3fb3b94088e7f, type: 3}
     nameInMenus: Carnyx
     description: 

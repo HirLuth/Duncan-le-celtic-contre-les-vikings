@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace Weapons
 {
@@ -13,6 +14,8 @@ namespace Weapons
         public Image image;
         public ArmesBaseStat baseStat;
         public ArmeStat armeStat;
+        [SerializeField] private TMP_Text levelIndicator;
+
         public int level;
         public bool isTransformed;
         public int damage;
@@ -42,6 +45,11 @@ namespace Weapons
             projectileSize = armeStat.projectileSize;
             projectileSpeed = armeStat.projectileSpeed;
             timeOfTheEffect = armeStat.timeOfTheEffect;
+        }
+
+        public void UpdateLevelIndicator()
+        {
+            levelIndicator.text = "" + level;
         }
     }
 }
