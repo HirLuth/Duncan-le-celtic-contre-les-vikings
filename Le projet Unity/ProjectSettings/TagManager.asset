@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Monstre
+  - Exp
+  - GetExp
   layers:
   - Default
   - TransparentFX
