@@ -18,12 +18,13 @@ public class CarnyxStart : MonoBehaviour
         {
             timerCooldown += Time.deltaTime;
 
-            if (timerCooldown >= Armes.instance.coolDown)
+            if (timerCooldown >= GetComponent<Armes>().coolDown)
             {
                 timerCooldown = 0;
-                GameObject nuage = Instantiate(nuageCornyx, CharacterController.instance.transform.position + new Vector3(0,5,0) ,Quaternion.identity);
-                nuage.GetComponent<CornyxProjDepla>().damage = Armes.instance.damage;
-                nuage.GetComponent<CornyxProjDepla>().timeToDestroy = Armes.instance.timeOfTheEffect;
+              GameObject nuage = Instantiate(nuageCornyx, CharacterController.instance.transform.position ,Quaternion.Euler(0,0,0));
+              //GameObject nuage = Instantiate(nuageCornyx,new Vector2(0,0) ,Quaternion.Euler(0,0,0));
+                nuage.GetComponent<CornyxProjDepla>().damage = GetComponent<Armes>().damage;
+                nuage.GetComponent<CornyxProjDepla>().timeToDestroy = GetComponent<Armes>().timeOfTheEffect;
             }
         }
     }

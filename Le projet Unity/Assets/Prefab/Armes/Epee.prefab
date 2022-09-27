@@ -147,6 +147,7 @@ GameObject:
   - component: {fileID: 1359705565203763867}
   - component: {fileID: 2898270125384109371}
   - component: {fileID: 2428792888103404452}
+  - component: {fileID: -5412005894977518012}
   m_Layer: 5
   m_Name: Epee
   m_TagString: Untagged
@@ -250,3 +251,15 @@ MonoBehaviour:
   projectileSize: 0
   projectileSpeed: 0
   timeOfTheEffect: 0
+--- !u!114 &-5412005894977518012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2935407118337446850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dff0f6414261ea4187aec57321da2d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

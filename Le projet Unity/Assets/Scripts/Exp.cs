@@ -13,7 +13,7 @@ public class Exp : MonoBehaviour
     [SerializeField] private float timer = 1;
     [SerializeField] private float deceleration = 0.3f;
     [SerializeField] private int xpValue;
-    public bool haspoofed = false;
+    private float timeStamp;
     public Rigidbody2D rb;
     private bool isAtracted;
 
@@ -44,9 +44,11 @@ public class Exp : MonoBehaviour
 
         if (isAtracted)
         {
-            PoofAway(dirNormalised);
-            haspoofed = true;
+            //rb.AddForce(dir * (force),ForceMode2D.Impulse);
+            rb.velocity = new Vector2(dirNormalised.x, dirNormalised.y) * force * (Time.time / timeStamp);
         }
+        
+       
     }
     
     private void OnTriggerEnter2D(Collider2D col)
@@ -58,26 +60,14 @@ public class Exp : MonoBehaviour
         {
             if (timer <= 0)
             {
-                if (!haspoofed)
-                {
-                    isAtracted = true;
-                }
+                timeStamp = Time.time;
+                isAtracted = true;
             }
         }
         
         if (col.gameObject.CompareTag("GetExp"))
         {
             ExpManager.instance.CollectExp(gameObject, xpValue);  
-        }
-    }
-    
-
-    public void PoofAway(Vector2 dir)
-    {
-        if (!haspoofed)
-        {
-            //rb.AddForce(-dir*force,ForceMode2D.Impulse);
-            rb.AddForce(dir * (force),ForceMode2D.Impulse);
         }
     }
 }

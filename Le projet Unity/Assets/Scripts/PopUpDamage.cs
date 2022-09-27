@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class PopUpDamage : MonoBehaviour
 {
-    private TextMeshPro textMesh;
+    private GameObject textDamage;
     public static PopUpDamage instance;
-    public int text;
-    
+    public GameObject player;
+
     private void Awake()
     {
         if (instance == null)
@@ -16,14 +16,20 @@ public class PopUpDamage : MonoBehaviour
             instance = this;
         }
 
-        textMesh = transform.GetComponent<TextMeshPro>();
+        //textMesh = transform.GetComponent<TextMeshPro>();
     }
 
     // Update is called once per frame
-    public void ShowDamage(int damageAmount)
+    public void DamageTextPlayer(int damageAmount)
     {
-        textMesh.SetText(damageAmount.ToString());
-        text = damageAmount;
+        Instantiate(textDamage, new Vector3(player.transform.position.x,player.transform.position.y + 1,-5), Quaternion.identity);
+        textDamage.GetComponentInChildren<TextMeshPro>().SetText(damageAmount.ToString());
+    }
+    
+    public void DamageText(int damageAmount)
+    {
+        Instantiate(textDamage, new Vector3(player.transform.position.x,player.transform.position.y + 1,-5), Quaternion.identity);
+        textDamage.GetComponentInChildren<TextMeshPro>().SetText(damageAmount.ToString());
     }
     
     private void Update()

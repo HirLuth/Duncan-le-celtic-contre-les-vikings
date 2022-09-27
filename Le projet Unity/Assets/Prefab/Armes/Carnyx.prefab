@@ -106,14 +106,15 @@ MonoBehaviour:
     sprite: {fileID: 0}
     nameInMenus: 
     description: 
+  levelIndicator: {fileID: 0}
   level: 0
   isTransformed: 0
-  damage: 10
+  damage: 2
   numberOfProjectile: 0
-  coolDown: 5
+  coolDown: 8
   projectileSize: 0
   projectileSpeed: 0
-  timeOfTheEffect: 3
+  timeOfTheEffect: 4.5
 --- !u!114 &2646364783180767293
 MonoBehaviour:
   m_ObjectHideFlags: 0

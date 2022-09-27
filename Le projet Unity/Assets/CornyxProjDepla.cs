@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Weapons;
@@ -12,18 +13,21 @@ public class CornyxProjDepla : MonoBehaviour
     public float force;
     private Rigidbody2D rb;
     public float deceleration;
+    public GameObject armeAssociee;
     
     [Header("Nuage Poison")]
-    private float tempsReloadHitTimer;
-    private float tempsReloadHit;
+    public float tempsReloadHitTimer;
+    public float tempsReloadHit;
     private bool stopAttack;
     private bool startAttack;
     public int nbDOT;
-    [HideInInspector] public float damage;
-    [HideInInspector] public float timeToDestroy;
+     public float damage;
+    public float timeToDestroy;
     
     void Start()
     {
+        
+
         rb = gameObject.GetComponent<Rigidbody2D>();
         
         Vector2 explode = new Vector2(Random.Range(-force, force), Random.Range(-force, force));
@@ -33,12 +37,8 @@ public class CornyxProjDepla : MonoBehaviour
 
     void Update()
     {
-        if (rb.velocity.x > 0 && rb.velocity.y > 0)
-        {
-            rb.velocity -= rb.velocity * 0.4f;
-        }
-        
-        Destroy(gameObject,timeToDestroy);
+        rb.velocity -= rb.velocity * deceleration;
+            Destroy(gameObject,timeToDestroy);
     }
 
    
@@ -47,7 +47,6 @@ public class CornyxProjDepla : MonoBehaviour
     {
         if (col.gameObject.tag == "Monstre")
         {
-            Debug.Log("samère");
             stopAttack = false;
             for (int i = 0; i < nbDOT; i++)
             {
@@ -58,7 +57,6 @@ public class CornyxProjDepla : MonoBehaviour
 
                 if (tempsReloadHitTimer > tempsReloadHit && col.gameObject.tag == "Monstre")
                 {
-                    Debug.Log("touché");
                     col.GetComponent<IAMonstre1>().TakeDamage(Armes.instance.damage);
                     col.GetComponent<IAMonstre1>().DamageText(Armes.instance.damage);
                     tempsReloadHitTimer = 0;
@@ -66,6 +64,7 @@ public class CornyxProjDepla : MonoBehaviour
             }
         }
     }
+    
 
     private void OnTriggerEnter2D(Collider2D col)
     {

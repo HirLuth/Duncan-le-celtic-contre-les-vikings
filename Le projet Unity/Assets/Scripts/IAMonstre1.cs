@@ -73,11 +73,19 @@ public class IAMonstre1 : MonoBehaviour
         }
     }
     
-    public void DamageText(int damageAmount)
+    public void DamageTextPlayer(int damageAmount)
     {
         Instantiate(textDamage, new Vector3(player.transform.position.x,player.transform.position.y + 1,-5), Quaternion.identity);
-        textDamage.GetComponent<TextMeshProUGUI>().SetText(damageAmount.ToString());
+        textDamage.GetComponentInChildren<TextMeshPro>().SetText(damageAmount.ToString());
     }
+    
+    public void DamageText(int damageAmount)
+    {
+        Instantiate(textDamage, new Vector3(transform.position.x,transform.position.y + 1,-5), Quaternion.identity);
+        textDamage.GetComponentInChildren<TextMeshPro>().SetText(damageAmount.ToString());
+    }
+    
+    
 
     public void TakeDamage(int damageAmount)
     {
