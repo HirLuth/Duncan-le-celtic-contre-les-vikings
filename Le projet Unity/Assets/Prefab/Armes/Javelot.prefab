@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -90,9 +90,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 0
+  image: {fileID: 1886710979025351155}
   baseStat: {fileID: 11400000, guid: 1c58f5b18ebb4fa448efe612237ab2db, type: 2}
   armeStat:
     weaponType: 0
+    sprite: {fileID: 0}
     level: 0
     isTransformed: 0
     damage: 0

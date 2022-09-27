@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Weapons
 {
@@ -7,6 +8,7 @@ namespace Weapons
     {
 
         public ItemManager.WeaponsType weaponType;
+        public Image image;
         public ArmesBaseStat baseStat;
         public ArmeStat armeStat;
         public int level;
@@ -21,6 +23,7 @@ namespace Weapons
         private void Start()
         {
             armeStat = baseStat.listBaseStats[(int)weaponType];
+            image.sprite = armeStat.sprite;
             level = armeStat.level;
             isTransformed = armeStat.isTransformed;
             damage = armeStat.damage;
