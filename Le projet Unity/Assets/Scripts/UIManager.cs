@@ -37,7 +37,7 @@ public class UIManager : MonoBehaviour
     public void LevelUpEvent()
     {
         levelUpMenu.SetActive(true);
-        //Time.timeScale = 0;
+        Time.timeScale = 0;
         List<int> listForTirage = listPossibleWeapontoGet;
         for (int i = 0; i < propositions.Count; i++)
         {
