@@ -8,8 +8,11 @@ public class UIManager : MonoBehaviour
     public List<GameObject> listOfWeapons;
     public List<GameObject> possessedWeapons;
 
-    /*public void AddWeapon(ItemManager.WeaponsType weaponsType)
+    public void AddWeapon(ItemManager.WeaponsType weaponsType)
     {
-        int placeInThelist 
-    }*/
+        int placeInThelist = possessedWeapons.Count + 1;
+        GameObject newWeapon = Instantiate(listOfWeapons[(int)weaponsType]);
+        possessedWeapons.Add(newWeapon);
+        newWeapon.transform.position = listOfPositions[placeInThelist].transform.position;
+    }
 }
