@@ -9,7 +9,7 @@ public class CharacterController : MonoBehaviour
 
  public static CharacterController instance;
  public float speed;
- private float lookingAt;
+ public float lookingAt;
  private Rigidbody2D rb;
  private float movementX;
  private float movementY;
@@ -43,8 +43,17 @@ public class CharacterController : MonoBehaviour
         }
         else if (movementX < 0)
         {
-            lookingAt = 1;
+            lookingAt = 0;
             transform.localScale = new Vector3(-1, 2, 0);
+        }
+        
+        if (movementY > 0) // utile pour lancer des armes dans la bonne direction
+        {
+            lookingAt = 1;
+        }
+        else if (movementY < 0)
+        {
+            lookingAt = 3;
         }
 
         if (isTakingDamage)

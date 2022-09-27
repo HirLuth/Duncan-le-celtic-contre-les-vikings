@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Weapons;
 using Random = UnityEngine.Random;
@@ -31,14 +32,15 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-       //LevelUpEvent();
+       LevelUpEvent();
     }
 
     public void LevelUpEvent()
     {
         levelUpMenu.SetActive(true);
         Time.timeScale = 0;
-        List<int> listForTirage = listPossibleWeapontoGet;
+        List<int> listForTirage;
+        listForTirage = listPossibleWeapontoGet.ToList();
         for (int i = 0; i < propositions.Count; i++)
         {
             int weaponSorted = listForTirage[Random.Range(0, listForTirage.Count)];
@@ -50,6 +52,18 @@ public class UIManager : MonoBehaviour
 
     public void EndLevelUpEvent(int weaponDataNumber)
     {
+        for (int i = 0; i < possessedWeapons.Count; i++)
+        {
+            Armes arme = possessedWeapons[i].GetComponent<Armes>();
+            if (weaponDataNumber == (int)arme.weaponType)
+            {
+                arme.level += 1;
+                arme.UpdateLevelIndicator();
+                Time.timeScale = 1;
+                levelUpMenu.SetActive(false);
+                return;
+            }
+        }
         AddWeapon(weaponDataNumber);
         Time.timeScale = 1;
         levelUpMenu.SetActive(false);

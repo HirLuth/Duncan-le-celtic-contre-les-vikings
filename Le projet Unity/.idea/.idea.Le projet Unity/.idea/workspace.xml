@@ -14,8 +14,8 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ExpBar.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Item Manager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UIManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/SpecificWeapon/Sickle.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/SpecificWeapon/SickleProjectile.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/SpecificWeapon/Spear.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/SpecificWeapon/SpearSpawn.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/WeaponEffect/DoDamage.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -80,7 +80,7 @@
       <updated>1664209490389</updated>
       <workItem from="1664209498833" duration="6008000" />
       <workItem from="1664265228551" duration="4342000" />
-      <workItem from="1664269886756" duration="12688000" />
+      <workItem from="1664269886756" duration="18573000" />
     </task>
     <servers />
   </component>
