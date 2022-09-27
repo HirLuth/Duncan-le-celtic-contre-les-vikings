@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6351bed3485bcb4c8eed068da02035f, type: 3}
+  m_Name: Globals Stats
+  m_EditorClassIdentifier: 
+  listBaseStats:
+  - weaponType: 0
+    level: 0
+    isTransformed: 0
+    damage: 0
+    numberOfProjectile: 0
+    coolDown: 0
+    projectileSize: 0
+    projectileSpeed: 0
+    timeOfTheEffect: 0
+  - weaponType: 1
+    level: 0
+    isTransformed: 0
+    damage: 0
+    numberOfProjectile: 0
+    coolDown: 0
+    projectileSize: 0
+    projectileSpeed: 0
+    timeOfTheEffect: 0
+  - weaponType: 2
+    level: 0
+    isTransformed: 0
+    damage: 0
+    numberOfProjectile: 0
+    coolDown: 0
+    projectileSize: 0
+    projectileSpeed: 0
+    timeOfTheEffect: 0
+  - weaponType: 3
+    level: 0
+    isTransformed: 0
+    damage: 0
+    numberOfProjectile: 0
+    coolDown: 0
+    projectileSize: 0
+    projectileSpeed: 0
+    timeOfTheEffect: 0
+  - weaponType: 4
+    level: 0
+    isTransformed: 0
+    damage: 0
+    numberOfProjectile: 0
+    coolDown: 0
+    projectileSize: 0
+    projectileSpeed: 0
+    timeOfTheEffect: 0
+  - weaponType: 5
+    level: 0
+    isTransformed: 0
+    damage: 0
+    numberOfProjectile: 0
+    coolDown: 0
+    projectileSize: 0
+    projectileSpeed: 0
+    timeOfTheEffect: 0
+  - weaponType: 6
+    level: 0
+    isTransformed: 0
+    damage: 0
+    numberOfProjectile: 0
+    coolDown: 0
+    projectileSize: 0
+    projectileSpeed: 0
+    timeOfTheEffect: 0
