@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -15,6 +16,7 @@ public class IAMonstre1 : MonoBehaviour
     private float timerDmg;
     private bool isTouching;
     private Rigidbody2D rb;
+    public GameObject textDamage;
 
     [Header("Defence")] 
     public int health;
@@ -43,9 +45,12 @@ public class IAMonstre1 : MonoBehaviour
             if (timerDmg > colldownDmg)
             {
                 CharacterController.instance.TakeDamage(Damages);
+                Instantiate(textDamage, new Vector3(player.transform.position.x,player.transform.position.y + 1,-5), Quaternion.identity);
+                textDamage.GetComponentInChildren<TextMeshPro>().SetText(Damages.ToString());
                 timerDmg = 0;
             }
         }
+        
         
         if (isTouching == false)
         {
@@ -57,6 +62,12 @@ public class IAMonstre1 : MonoBehaviour
             ExpManager.instance.CreateExp(transform.position,Random.Range(1,3));
             Destroy(gameObject);
         }
+    }
+    
+    public void DamageText(int damageAmount)
+    {
+        Instantiate(textDamage, new Vector3(player.transform.position.x,player.transform.position.y + 1,-5), Quaternion.identity);
+        textDamage.GetComponent<TextMeshProUGUI>().SetText(damageAmount.ToString());
     }
     
     public void OnCollisionEnter2D(Collision2D col)
