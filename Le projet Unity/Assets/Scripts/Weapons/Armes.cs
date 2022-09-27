@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,7 +7,8 @@ namespace Weapons
     public class Armes : MonoBehaviour
 
     {
-
+        public static Armes instance;
+        
         public ItemManager.WeaponsType weaponType;
         public Image image;
         public ArmesBaseStat baseStat;
@@ -19,6 +21,14 @@ namespace Weapons
         public float projectileSize;
         public float projectileSpeed;
         public float timeOfTheEffect;
+
+        public void Awake()
+        {
+            if (instance == null)
+            {
+                instance = this;
+            }
+        }
 
         private void Start()
         {

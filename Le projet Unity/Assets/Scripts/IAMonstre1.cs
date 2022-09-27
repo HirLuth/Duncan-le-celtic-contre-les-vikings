@@ -18,9 +18,18 @@ public class IAMonstre1 : MonoBehaviour
     private Rigidbody2D rb;
     public GameObject textDamage;
 
+    public static IAMonstre1 instance; 
+        
     [Header("Defence")] 
     public int health;
-    
+
+    public void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+    }
 
     private void Start()
     {
@@ -69,7 +78,11 @@ public class IAMonstre1 : MonoBehaviour
         Instantiate(textDamage, new Vector3(player.transform.position.x,player.transform.position.y + 1,-5), Quaternion.identity);
         textDamage.GetComponent<TextMeshProUGUI>().SetText(damageAmount.ToString());
     }
-    
+
+    public void TakeDamage(int damageAmount)
+    {
+        health -= damageAmount;
+    }
     public void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.CompareTag("Player"))

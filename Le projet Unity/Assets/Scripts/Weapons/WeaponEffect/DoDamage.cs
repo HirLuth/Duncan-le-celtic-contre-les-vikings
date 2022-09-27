@@ -10,9 +10,9 @@ namespace Weapons.WeaponEffect
 
         [SerializeField] private Armes armes;
 
-        private void OnTriggerStay2D(Collider2D other)
+        private void OnCollisionEnter2D(Collision2D collision)
         {
-            //other.GetComponent<Damage>().GetDamage(armes.damage);
+          IAMonstre1.instance.TakeDamage(Armes.instance.damage);
             if (destroyedOnDamage)
             {
                 Destroy(gameObject);

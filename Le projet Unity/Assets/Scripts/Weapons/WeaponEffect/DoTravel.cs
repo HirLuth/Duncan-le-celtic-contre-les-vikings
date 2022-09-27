@@ -5,9 +5,11 @@ namespace Weapons.WeaponEffect
 {
     public class DoTravel : MonoBehaviour
     {
+        public static DoTravel instance;
+        
         private Vector3 _startPos;
         private Vector3 _direction;
-        private float _timer;
+        public float _timer;
         private float _cameraHalfHeight;
         private float _cameraHalfWidth;
         private float _lengthFromCameraCornerToCameraCenter;
@@ -19,9 +21,17 @@ namespace Weapons.WeaponEffect
             EvolvedHorn
         }
         [SerializeField] private Path path;
-        [SerializeField] private Camera ifUntimedPlayerCamera;
+        public Camera ifUntimedPlayerCamera;
         [SerializeField] private Armes armes;
         [SerializeField] private bool timed;
+
+        public void Awake()
+        {
+            if(instance == null)
+            {
+                instance = this;
+            }
+        }
 
         private void Start()
         {
