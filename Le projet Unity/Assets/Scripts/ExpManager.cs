@@ -25,6 +25,7 @@ public class ExpManager : MonoBehaviour
             PlayerStat.instance.level++;
             PlayerStat.instance.currentExp = 0;
             PlayerStat.instance.requiredExp += maxExpAddPerLevel;
+            UIManager.instance.LevelUpEvent();
         }
     }
 

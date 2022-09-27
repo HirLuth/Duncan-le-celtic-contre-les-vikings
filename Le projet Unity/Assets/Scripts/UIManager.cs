@@ -31,7 +31,7 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-       LevelUpEvent();
+       //LevelUpEvent();
     }
 
     public void LevelUpEvent()
