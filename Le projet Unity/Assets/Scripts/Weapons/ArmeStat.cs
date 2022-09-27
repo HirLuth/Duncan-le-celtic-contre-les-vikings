@@ -13,5 +13,5 @@ public class ArmeStat
     public float projectileSize;
     public float projectileSpeed;
     public float timeOfTheEffect;
-    
+
 }
