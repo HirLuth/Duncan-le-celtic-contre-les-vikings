@@ -21,7 +21,6 @@ public class Proposition : MonoBehaviour
 
     public void OnButtonPress()
     {
-        Debug.Log(3);
         UIManager.instance.EndLevelUpEvent(weaponNumberAssociated);
     }
 }
