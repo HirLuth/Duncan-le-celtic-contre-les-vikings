@@ -15,6 +15,7 @@ public class Exp : MonoBehaviour
     [SerializeField] private int xpValue;
     public bool haspoofed = false;
     public Rigidbody2D rb;
+    private bool isAtracted;
 
     void Awake()
     {
@@ -37,8 +38,14 @@ public class Exp : MonoBehaviour
 
         if (timer >= 0)
         {
-            rb.velocity -= rb.velocity * 0.1f;
+            rb.velocity -= rb.velocity * 0.4f;
             timer -= Time.deltaTime;
+        }
+
+        if (isAtracted)
+        {
+            PoofAway(dirNormalised);
+            haspoofed = true;
         }
     }
     
@@ -53,8 +60,7 @@ public class Exp : MonoBehaviour
             {
                 if (!haspoofed)
                 {
-                    PoofAway(dirNormalised);
-                    haspoofed = true;
+                    isAtracted = true;
                 }
             }
         }

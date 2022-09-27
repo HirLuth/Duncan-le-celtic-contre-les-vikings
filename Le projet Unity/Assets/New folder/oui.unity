@@ -123,7 +123,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &836667141
+--- !u!1001 &495460028
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -131,12 +131,40 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4405515977446293380, guid: 8a050ede1e6e28f4f88f31ef520fdf4d, type: 3}
+      propertyPath: health
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4405515977446293380, guid: 8a050ede1e6e28f4f88f31ef520fdf4d, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1923954456}
+    - target: {fileID: 4405515977446293380, guid: 8a050ede1e6e28f4f88f31ef520fdf4d, type: 3}
+      propertyPath: Damages
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4405515977446293380, guid: 8a050ede1e6e28f4f88f31ef520fdf4d, type: 3}
+      propertyPath: isMoving
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4405515977446293380, guid: 8a050ede1e6e28f4f88f31ef520fdf4d, type: 3}
+      propertyPath: textDamage
+      value: 
+      objectReference: {fileID: 230525933050374625, guid: 609d98cba1634e0499f9567b4693d788, type: 3}
+    - target: {fileID: 4405515977446293380, guid: 8a050ede1e6e28f4f88f31ef520fdf4d, type: 3}
+      propertyPath: colldownDmg
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 4405515977446293381, guid: 8a050ede1e6e28f4f88f31ef520fdf4d, type: 3}
       propertyPath: m_Name
       value: Monstre1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4405515977446293383, guid: 8a050ede1e6e28f4f88f31ef520fdf4d, type: 3}
+      propertyPath: m_Size.x
+      value: 0.80822957
+      objectReference: {fileID: 0}
+    - target: {fileID: 4405515977446293383, guid: 8a050ede1e6e28f4f88f31ef520fdf4d, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.008717239
       objectReference: {fileID: 0}
     - target: {fileID: 4405515977446293401, guid: 8a050ede1e6e28f4f88f31ef520fdf4d, type: 3}
       propertyPath: m_RootOrder
@@ -144,11 +172,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4405515977446293401, guid: 8a050ede1e6e28f4f88f31ef520fdf4d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.62
+      value: 6.68
       objectReference: {fileID: 0}
     - target: {fileID: 4405515977446293401, guid: 8a050ede1e6e28f4f88f31ef520fdf4d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.94
+      value: -2.82
       objectReference: {fileID: 0}
     - target: {fileID: 4405515977446293401, guid: 8a050ede1e6e28f4f88f31ef520fdf4d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -334,7 +362,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1892259860
 GameObject:
@@ -587,18 +615,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1923954456}
-    - target: {fileID: 4405515977446293380, guid: 8a050ede1e6e28f4f88f31ef520fdf4d, type: 3}
-      propertyPath: Damages
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4405515977446293380, guid: 8a050ede1e6e28f4f88f31ef520fdf4d, type: 3}
-      propertyPath: isMoving
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4405515977446293380, guid: 8a050ede1e6e28f4f88f31ef520fdf4d, type: 3}
-      propertyPath: colldownDmg
-      value: 0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 4405515977446293381, guid: 8a050ede1e6e28f4f88f31ef520fdf4d, type: 3}
       propertyPath: m_Name
       value: Monstre1
@@ -678,7 +694,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6554847142869478397, guid: 2a9fb2943c6fadc4cb8930745f396373, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6554847142869478397, guid: 2a9fb2943c6fadc4cb8930745f396373, type: 3}
       propertyPath: m_AnchorMax.x
@@ -767,7 +783,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8570036161589271078, guid: 49d1185878eabcc4cb8ef73f8bab9d43, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8570036161589271078, guid: 49d1185878eabcc4cb8ef73f8bab9d43, type: 3}
       propertyPath: m_LocalPosition.x
