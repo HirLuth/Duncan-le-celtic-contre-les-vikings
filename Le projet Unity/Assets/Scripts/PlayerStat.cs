@@ -12,7 +12,7 @@ public class PlayerStat : MonoBehaviour
     public int MaxHealth;
     public int currentHealth;
     public int defense;
-    public int expBarSize;
+    public int requiredExp;
     public int currentExp;
     public float expModifier;
     public float moveSpeed;
@@ -37,16 +37,16 @@ public class PlayerStat : MonoBehaviour
         }
     }
 
-    private void Start()
+   /* private void Start()
     {
         level = baseStats.level;
         MaxHealth = baseStats.MaxHealth;
         currentHealth = MaxHealth;
         defense = baseStats.defense;
-        expBarSize = baseStats.expBarSize;
+        requiredExp = baseStats.requiredExp;
         currentExp = 0;
         expModifier = baseStats.expModifier;
         moveSpeed = baseStats.moveSpeed;
 
-    }
+    }*/
 }

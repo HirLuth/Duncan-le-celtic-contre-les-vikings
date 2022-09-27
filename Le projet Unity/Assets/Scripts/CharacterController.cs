@@ -15,6 +15,7 @@ public class CharacterController : MonoBehaviour
  private float movementY;
  public int health;
  private bool isTouched;
+ public static bool isTakingDamage;
  
     private void Awake()
     {
@@ -46,7 +47,10 @@ public class CharacterController : MonoBehaviour
             transform.localScale = new Vector3(-1, 2, 0);
         }
 
-        
+        if (isTakingDamage)
+        {
+            StartCoroutine(ChangeColor());
+        }
 
         if (health == 0) // mort du personnage
         {
@@ -58,5 +62,21 @@ public class CharacterController : MonoBehaviour
     {
         health -= damageTaken;
     }
+
+    IEnumerator ChangeColor()
+    {
+        GetComponent<SpriteRenderer>().color = Color.red;
+        yield return new WaitForSeconds(0.3f);
+        GetComponent<SpriteRenderer>().color = Color.white;
+    }
+
+   /* private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.CompareTag("Exp") && Exp.instance.haspoofed)
+        {
+            Debug.Log("samère");
+            Exp.instance.CollectExp(col.gameObject, 1);
+        }
+    }*/
     
 }
