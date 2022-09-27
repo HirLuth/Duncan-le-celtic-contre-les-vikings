@@ -35,7 +35,6 @@ public class SpawnManager : MonoBehaviour
         _halfHeightCamera = mainCamera.orthographicSize;
         _halfWidthCamera = mainCamera.aspect * _halfHeightCamera;
         _spawnRange = new Vector2(_halfWidthCamera+spawnOffsetFromCamera, _halfHeightCamera+spawnOffsetFromCamera).magnitude;
-        Debug.Log(_spawnRange);
     }
 
     private void Update()
@@ -44,9 +43,7 @@ public class SpawnManager : MonoBehaviour
         {
             for (var i = 0; i < numberOfMonstersInWave; i++)
             {
-                var rand = Random.Range(0, Mathf.PI * 2);
-                _newPos.Set(Mathf.Cos(rand) * _spawnRange, Mathf.Sin(rand) * _spawnRange);
-                monsterList.Add(Instantiate(monster, _newPos, quaternion.identity));
+                SummonMonsterOnRandomSpot();
             }
             _nextWave++;
         }
@@ -56,9 +53,7 @@ public class SpawnManager : MonoBehaviour
             {
                 for (var i = 0; i < numberOfMonstersInSpawn; i++)
                 {
-                    var rand = Random.Range(0, Mathf.PI * 2);
-                    _newPos.Set(Mathf.Cos(rand) * _spawnRange, Mathf.Sin(rand) * _spawnRange);
-                    monsterList.Add(Instantiate(monster, _newPos, quaternion.identity));
+                    SummonMonsterOnRandomSpot();
                 }
                 _nextSpawn++;
             }
@@ -76,5 +71,13 @@ public class SpawnManager : MonoBehaviour
         }
         
         _timer += Time.deltaTime;
+    }
+
+    private void SummonMonsterOnRandomSpot()
+    {
+        var rand = Random.Range(0, Mathf.PI * 2);
+        var cameraPos = mainCamera.transform.position;
+        _newPos.Set(Mathf.Cos(rand) * _spawnRange + cameraPos.x, Mathf.Sin(rand) * _spawnRange + cameraPos.y);
+        monsterList.Add(Instantiate(monster, _newPos, quaternion.identity));
     }
 }
