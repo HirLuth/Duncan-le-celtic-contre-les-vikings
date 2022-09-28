@@ -5,14 +5,24 @@ using UnityEngine;
 
 public class Paper : MonoBehaviour
 {
-    public Vector2 direction;
+    public Vector3 direction;
     public float speed;
     public int damage;
     [SerializeField] private Rigidbody2D rb;
 
     private void Start()
     {
-        transform.position = transform.position + new Vector3(direction.x*3,direction.y*3,0);
+        transform.position += direction*3;
         rb.velocity = direction * speed;
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.CompareTag("Monstre"))
+        {
+            col.GetComponent<IAMonstre1>().TakeDamage(damage);
+            col.GetComponent<IAMonstre1>().DamageText(damage);
+            Destroy(gameObject);
+        }
     }
 }
