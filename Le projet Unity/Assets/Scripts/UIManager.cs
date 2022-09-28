@@ -16,6 +16,7 @@ public class UIManager : MonoBehaviour
     public List<Proposition> propositions;
     public List<int> listPossibleWeapontoGet;
     [SerializeField] private GameObject levelUpMenu;
+    private bool proposeGigot;
 
 
     private void Awake()
@@ -44,8 +45,12 @@ public class UIManager : MonoBehaviour
         for (int i = 0; i < propositions.Count; i++)
         {
             int weaponSorted = listForTirage[Random.Range(0, listForTirage.Count)];
-            listForTirage.Remove(weaponSorted);
-            propositions[i].SetUpApparition(globalStats.listBaseStats[weaponSorted].nameInMenus,globalStats.listBaseStats[weaponSorted].description,globalStats.listBaseStats[weaponSorted].sprite);
+            listForTirage.RemoveAt(weaponSorted);
+            propositions[i].SetUpApparition((int)globalStats.listBaseStats[weaponSorted].weaponType,
+                globalStats.listBaseStats[weaponSorted].nameInMenus,
+                globalStats.listBaseStats[weaponSorted].description,
+                globalStats.listBaseStats[weaponSorted].descritpionLevelUp,
+                globalStats.listBaseStats[weaponSorted].sprite);
             propositions[i].weaponNumberAssociated = weaponSorted;
         }
     }
@@ -55,9 +60,9 @@ public class UIManager : MonoBehaviour
         for (int i = 0; i < possessedWeapons.Count; i++)
         {
             Armes arme = possessedWeapons[i].GetComponent<Armes>();
-            if (weaponDataNumber == (int)arme.weaponType)
+            if (weaponDataNumber == (int)arme.weaponType) 
             {
-                arme.level += 1;
+                LevelUpWeapon(arme);
                 arme.UpdateLevelIndicator();
                 Time.timeScale = 1;
                 levelUpMenu.SetActive(false);
@@ -77,5 +82,33 @@ public class UIManager : MonoBehaviour
         possessedWeapons.Add(newWeapon);
         newWeapon.transform.position = listOfPositions[placeInThelist].transform.position;
         newWeapon.transform.parent = listOfPositions[placeInThelist].transform;
+    }
+
+    public void LevelUpWeapon(Armes weaponToLevelUp)
+    {
+        weaponToLevelUp.level += 1;
+        if (weaponToLevelUp.level == 5)
+        {
+            for (int i = 0; i < listPossibleWeapontoGet.Count; i++)
+            {
+                if (listPossibleWeapontoGet[i] == (int)weaponToLevelUp.weaponType)
+                {
+                    listPossibleWeapontoGet.RemoveAt(i);
+                    if (listPossibleWeapontoGet.Count<3)
+                    {
+                        propositions.RemoveAt(2);
+                        if (listPossibleWeapontoGet.Count<2)
+                        {
+                            propositions.RemoveAt(1);
+                        }
+                        else
+                        {
+                            proposeGigot = true;
+                        }
+
+                    }
+                }
+            }
+        }
     }
 }

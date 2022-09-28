@@ -107,6 +107,7 @@ MonoBehaviour:
     sprite: {fileID: 0}
     nameInMenus: 
     description: 
+    descritpionLevelUp: 
   levelIndicator: {fileID: 7797083177119249749}
   level: 0
   isTransformed: 0
@@ -130,6 +131,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   armes: {fileID: 7519763321983719484}
   projectile: {fileID: 1974345534323238391, guid: d930b2dc6a3013949bc30fcdad8a04b7, type: 3}
+  nbOfProjectilesPerLevel: 000000000100000002000000030000000400000006000000
+  damagePerLevel:
+  - 0
+  - 1
+  - 1.2
+  - 1.4
+  - 1.6
+  - 2
+  coolDownModifierPerLevel:
+  - 1
+  - 1
+  - 0.9
+  - 0.8
+  - 0.7
+  - 0.5
 --- !u!1 &5746813075017851754
 GameObject:
   m_ObjectHideFlags: 0
