@@ -1,4 +1,5 @@
 using System;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace Weapons.SpecificWeapon
@@ -9,18 +10,22 @@ namespace Weapons.SpecificWeapon
         [SerializeField] private GameObject sickleProjectile;
         private float _timer;
         private float _currentThrow;
+        private Vector3 _newPos;
 
         private void Start()
         {
-            //Instantiate(sickleProjectile, CharacterController.instance.transform);
-        }
-
-        private void FixedUpdate()
-        {
-            _timer += Time.deltaTime;
-            if (_timer < _currentThrow * sickle.coolDown) return;
-            Instantiate(sickleProjectile, CharacterController.instance.transform);
+            var playerTransform = CharacterController.instance.transform;
+            Instantiate(sickleProjectile, playerTransform.position, quaternion.identity,playerTransform);
             _currentThrow++;
         }
+
+        // private void Update()
+        // {
+        //     _timer += Time.deltaTime;
+        //     if (_timer < _currentThrow * sickle.coolDown) return;
+        //     var playerTransform = CharacterController.instance.transform;
+        //     Instantiate(sickleProjectile, playerTransform.position, quaternion.identity,playerTransform);
+        //     _currentThrow++;
+        // }
     }
 }
