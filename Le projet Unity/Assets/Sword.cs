@@ -14,19 +14,18 @@ public class Sword : MonoBehaviour
     public float damage;
     public Transform closestEnnemy;
     public GameObject sword;
-    public GameObject player;
-    private float range;
+    public float timeToDestroy;
 
-    [Header("Combo")] 
-    public float comboDelay;
-    private int comboStep ;
 
 
     private void Start()
     {
+        tempsReloadHit = GetComponent<Armes>().coolDown;
         canAttack = true;
         damage = GetComponent<Armes>().damage;
-        tempsReloadHit = GetComponent<Armes>().timeOfTheEffect;
+        tempsReloadHit = GetComponent<Armes>().coolDown;
+        timeToDestroy = GetComponent<Armes>().timeOfTheEffect;
+        
     }
     
     
@@ -49,8 +48,8 @@ public class Sword : MonoBehaviour
         }
         
         
-        Vector2 spawnSword = new Vector2(CharacterController.instance.transform.position.x - closestEnnemy.transform.position.x,
-            CharacterController.instance.transform.position.y - closestEnnemy.transform.position.y);
+        Vector2 spawnSword = new Vector2(closestEnnemy.transform.position.x - CharacterController.instance.transform.position.x,
+            closestEnnemy.transform.position.y -CharacterController.instance.transform.position.y).normalized;
         
         
         if (canAttack == true)
@@ -60,30 +59,18 @@ public class Sword : MonoBehaviour
             if (tempsReloadHitTimer >= tempsReloadHit)
             {
                 tempsReloadHitTimer = 0;
-                comboStep++;
-                
-                if (comboStep == 1)
-                {
-                    GameObject swordObj = Instantiate(sword,spawnSword, Quaternion.Euler(0f,0f,0f));
-                    //swordObj.transform.RotateAround(player.transform.position, swordObj.transform.position, 2);
-                }
-            
-                if (comboStep == 2)
-                {
-                    //Attaque 2
-                }
+                GameObject swordObj = Instantiate(sword);
+                swordObj.transform.position = CharacterController.instance.transform.position;
+                swordObj.GetComponent<SwordBehaviour>().damage = GetComponent<Armes>().damage;
+                swordObj.GetComponent<SwordBehaviour>().timeToDestroy = GetComponent<Armes>().timeOfTheEffect;
 
-                if (comboStep == 3)
-                {
-                    comboStep = 0;
-                }
+
+                Vector2 dir = new Vector2(closestEnnemy.transform.position.x - swordObj.transform.position.x,
+                    closestEnnemy.transform.position.y - swordObj.transform.position.y);
+                float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                swordObj.transform.localRotation = Quaternion.AngleAxis(angle,Vector3.forward);
+                Destroy(swordObj,timeToDestroy);
             }
         }
-    }
-
-
-    void Combo1()
-    {
-        
     }
 }
