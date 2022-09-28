@@ -39,7 +39,6 @@ public class Sword : MonoBehaviour
         foreach (GameObject monstre in ListeMonstres.instance.ennemyList)
         {
             float distance = (Vector2.Distance(monstre.transform.position,currentPos));
-            Debug.Log(currentPos);
             if (distance < minDist)
             {
                 minDist = distance;
@@ -59,7 +58,7 @@ public class Sword : MonoBehaviour
             if (tempsReloadHitTimer >= tempsReloadHit)
             {
                 tempsReloadHitTimer = 0;
-                GameObject swordObj = Instantiate(sword);
+                GameObject swordObj = Instantiate(sword, new Vector3(999,99,0),Quaternion.identity);
                 swordObj.transform.position = CharacterController.instance.transform.position;
                 swordObj.GetComponent<SwordBehaviour>().damage = GetComponent<Armes>().damage;
                 swordObj.GetComponent<SwordBehaviour>().timeToDestroy = GetComponent<Armes>().timeOfTheEffect;

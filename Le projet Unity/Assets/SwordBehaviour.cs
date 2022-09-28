@@ -18,10 +18,10 @@ public class SwordBehaviour : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D col)
     {
         Debug.Log(col.tag);
-        if (col.CompareTag("Monstre"))
+        if (col.gameObject.CompareTag("Monstre"))
         {
-            col.GetComponent<IAMonstre1>().TakeDamage(damage);
-            col.GetComponent<IAMonstre1>().DamageText(damage);
+            col.gameObject.GetComponent<IAMonstre1>().TakeDamage(damage);
+            col.gameObject.GetComponent<IAMonstre1>().DamageText(damage);
         }
     }
 }

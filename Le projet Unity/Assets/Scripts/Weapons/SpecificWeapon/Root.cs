@@ -35,9 +35,4 @@ public class Root : MonoBehaviour
             col.gameObject.GetComponent<IAMonstre1>().DamageText(damage);
         }
     }
-
-    private void OnTriggerStay2D(Collider2D col)
-    {
-       
-    }
 }
