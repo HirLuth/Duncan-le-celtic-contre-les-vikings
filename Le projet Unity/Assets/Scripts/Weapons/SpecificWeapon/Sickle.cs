@@ -16,7 +16,6 @@ namespace Weapons.SpecificWeapon
         {
             var playerTransform = CharacterController.instance.transform;
             Instantiate(sickleProjectile, playerTransform.position, quaternion.identity,playerTransform);
-            _currentThrow++;
         }
 
         // private void Update()

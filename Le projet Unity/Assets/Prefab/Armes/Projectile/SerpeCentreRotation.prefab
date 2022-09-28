@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sickleStat: {fileID: 8074792491717122162, guid: 0583eab64ea68ef4c93e88af8a2cf5f3, type: 3}
+  sickleCenter: {fileID: 6606692940164909540}
   numberOfLoop: 1
   sickleMaxRange: 3
 --- !u!61 &1756408361963241174
