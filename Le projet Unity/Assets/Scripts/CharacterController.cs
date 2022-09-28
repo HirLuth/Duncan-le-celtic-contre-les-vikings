@@ -96,7 +96,7 @@ public class CharacterController : MonoBehaviour
             StartCoroutine(ChangeColor());
         }
 
-        if (health == 0) // mort du personnage
+        if (health <= 0) // mort du personnage
         {
             Destroy(gameObject);
         }
