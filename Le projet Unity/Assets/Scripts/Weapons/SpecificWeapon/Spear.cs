@@ -11,7 +11,6 @@ public class Spear : MonoBehaviour
     void Update()
     {
         _timer += Time.deltaTime;
-        Debug.Log(_timer);
         if (_timer >= armes.coolDown)
         {
             Debug.Log(42);
