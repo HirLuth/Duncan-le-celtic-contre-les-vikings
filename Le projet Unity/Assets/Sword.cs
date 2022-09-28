@@ -12,7 +12,10 @@ public class Sword : MonoBehaviour
     public float tempsReloadHitTimer;
     public float tempsReloadHit;
     public float damage;
-    public Transform closestEnnemi;
+    public Transform closestEnnemy;
+    public GameObject sword;
+    public GameObject player;
+    private float range;
 
     [Header("Combo")] 
     public float comboDelay;
@@ -21,57 +24,65 @@ public class Sword : MonoBehaviour
 
     private void Start()
     {
+        canAttack = true;
         damage = GetComponent<Armes>().damage;
         tempsReloadHit = GetComponent<Armes>().timeOfTheEffect;
-    }
-
-    Transform GetClosestEnemy (Transform[] enemies)
-    {
-        Transform bestTarget = null;
-        float closestDistanceSqr = Mathf.Infinity;
-        Vector3 currentPosition = transform.position;
-        foreach(Transform potentialTarget in enemies)
-        {
-            Vector3 directionToTarget = potentialTarget.position - currentPosition;
-            float dSqrToTarget = directionToTarget.sqrMagnitude;
-            if(dSqrToTarget < closestDistanceSqr)
-            {
-                closestDistanceSqr = dSqrToTarget;
-                bestTarget = potentialTarget;
-                bestTarget = closestEnnemi;
-            }
-        }
-        return bestTarget;
     }
     
     
     
     private void Update()
     {
+
+        /*Vector2 currentPos = player.transform.position;
+        float minDist = Mathf.Infinity;
+        closestEnnemy = null;
+
+        foreach (IAMonstre1 monstre in IAMonstre1.GetEnemyList())
+        {
+            float distance = (Vector2.Distance(player.transform.position, monstre.transform.position));
+            if (distance < minDist)
+            {
+                minDist = distance;
+                closestEnnemy = monstre.transform;
+            }
+        }*/
+        
+        Vector2 spawnSword = new Vector2(player.transform.position.x - closestEnnemy.transform.position.x,
+            player.transform.position.y - closestEnnemy.transform.position.y);
+        
+        
         if (canAttack == true)
         {
-            tempsReloadHit += Time.deltaTime;
+            tempsReloadHitTimer += Time.deltaTime;
 
             if (tempsReloadHitTimer >= tempsReloadHit)
             {
-                tempsReloadHit = 0;
+                tempsReloadHitTimer = 0;
                 comboStep++;
-            }
+                
+                if (comboStep == 1)
+                {
+                    GameObject swordObj = Instantiate(sword,spawnSword, Quaternion.Euler(0f,0f,0f));
+                    //swordObj.transform.RotateAround(player.transform.position, swordObj.transform.position, 2);
+                }
+            
+                if (comboStep == 2)
+                {
+                    //Attaque 2
+                }
 
-            if (comboStep == 1)
-            {
-                //Attaque 1
-            }
-            
-            if (comboStep == 2)
-            {
-                //Attaque 2
-            }
-            
-            if (comboStep == 3)
-            {
-                //Attaque 3
+                if (comboStep == 3)
+                {
+                    comboStep = 0;
+                }
             }
         }
+    }
+
+
+    void Combo1()
+    {
+        
     }
 }
