@@ -6,25 +6,28 @@ namespace Weapons.SpecificWeapon
 {
     public class Sickle : MonoBehaviour
     {
-        [SerializeField] private Armes sickle;
+        [SerializeField] private Armes sickleStat;
         [SerializeField] private GameObject sickleProjectile;
+        [SerializeField] private float sickleMaxRange;
+        [SerializeField] private float timeToGetToMaxRange;
         private float _timer;
         private float _currentThrow;
         private Vector3 _newPos;
-
-        private void Start()
+        
+        private void Update()
         {
+            _timer += Time.deltaTime;
+            if (_timer < _currentThrow * sickleStat.coolDown) return;
             var playerTransform = CharacterController.instance.transform;
-            Instantiate(sickleProjectile, playerTransform.position, quaternion.identity,playerTransform);
+            var sickle = Instantiate(sickleProjectile, playerTransform.position, quaternion.identity);
+            var centerScriptReference = sickle.GetComponent<SickleRotationCenter>();
+            centerScriptReference.projectileSpeed = sickleStat.projectileSpeed;
+            var projectileScriptReference = centerScriptReference.GetComponentInChildren<SickleProjectile>();
+            projectileScriptReference.damage = sickleStat.damage;
+            projectileScriptReference.timeOfTheEffect = sickleStat.timeOfTheEffect;
+            projectileScriptReference.sickleMaxRange = sickleMaxRange;
+            projectileScriptReference.timeToGetToMaxRange = timeToGetToMaxRange;
+            _currentThrow++;
         }
-
-        // private void Update()
-        // {
-        //     _timer += Time.deltaTime;
-        //     if (_timer < _currentThrow * sickle.coolDown) return;
-        //     var playerTransform = CharacterController.instance.transform;
-        //     Instantiate(sickleProjectile, playerTransform.position, quaternion.identity,playerTransform);
-        //     _currentThrow++;
-        // }
     }
 }
