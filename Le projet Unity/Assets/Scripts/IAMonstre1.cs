@@ -22,9 +22,12 @@ public class IAMonstre1 : MonoBehaviour
         
     [Header("Defence")] 
     public int health;
-
+   
+    
     public void Awake()
     {
+       ListeMonstres.instance.ennemyList.Add(gameObject);
+        
         if(instance == null)
         {
             instance = this;
@@ -68,6 +71,7 @@ public class IAMonstre1 : MonoBehaviour
 
         if (health == 0)
         {
+            ListeMonstres.instance.ennemyList.Remove(gameObject);
             ExpManager.instance.CreateExp(transform.position,Random.Range(1,3));
             Destroy(gameObject);
         }
