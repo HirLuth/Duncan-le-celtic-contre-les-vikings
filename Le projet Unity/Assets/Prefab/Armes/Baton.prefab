@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 40711566981736884}
   - component: {fileID: 359528411278079702}
   - component: {fileID: 7917748416666899901}
+  - component: {fileID: 5003806497040394145}
   m_Layer: 5
   m_Name: Baton
   m_TagString: Untagged
@@ -115,6 +116,20 @@ MonoBehaviour:
   projectileSize: 0
   projectileSpeed: 0
   timeOfTheEffect: 0
+--- !u!114 &5003806497040394145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677518703246666019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7a9d885ff5be1b489b1ccfcc3d32f90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  armes: {fileID: 7917748416666899901}
+  projectile: {fileID: 6377222410581470432, guid: c4034dd9ded05e14c9b617cd32b20baa, type: 3}
 --- !u!1 &1929022628063098359
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,7 +13,6 @@ public class Spear : MonoBehaviour
         _timer += Time.deltaTime;
         if (_timer >= armes.coolDown)
         {
-            Debug.Log(42);
             LaunchSpearProjectiles();
             _timer = 0;
         }
