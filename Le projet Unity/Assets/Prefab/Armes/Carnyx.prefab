@@ -107,7 +107,7 @@ MonoBehaviour:
     sprite: {fileID: 0}
     nameInMenus: 
     description: 
-  levelIndicator: {fileID: 0}
+  levelIndicator: {fileID: 4943862151409618113}
   level: 0
   isTransformed: 0
   damage: 2

@@ -9,14 +9,15 @@ public class CharacterController : MonoBehaviour
 
  public static CharacterController instance;
  public float speed;
- public float lookingAt;
+ public int lookingAt;
  private Rigidbody2D rb;
  private float movementX;
  private float movementY;
  public int health;
  private bool isTouched;
  public static bool isTakingDamage;
- 
+ public List<float> listPositionDegree;
+
     private void Awake()
     {
          if (instance == null)
@@ -49,11 +50,45 @@ public class CharacterController : MonoBehaviour
         
         if (movementY > 0) // utile pour lancer des armes dans la bonne direction
         {
-            lookingAt = 1;
+            if (movementX > 0)
+            {
+                lookingAt = 2;
+            }
+            else if (movementX < 0)
+            {
+                lookingAt = 8;
+            }
+            else
+            {
+                lookingAt = 1;
+            }
+            
         }
         else if (movementY < 0)
         {
-            lookingAt = 3;
+            if (movementX > 0)
+            {
+                lookingAt = 4;
+            }
+            else if (movementX < 0)
+            {
+                lookingAt = 6;
+            }
+            else
+            {
+                lookingAt = 5;
+            }
+        }
+        else
+        {
+            if (movementX > 0)
+            {
+                lookingAt = 3;
+            }
+            else if (movementX<0)
+            {
+                lookingAt = 7;
+            }
         }
 
         if (isTakingDamage)

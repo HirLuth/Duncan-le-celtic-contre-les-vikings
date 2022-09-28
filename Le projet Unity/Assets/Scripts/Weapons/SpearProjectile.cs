@@ -7,10 +7,22 @@ namespace Weapons
     {
         [SerializeField] private Rigidbody2D rb;
         public int damage;
-        public int speed;
+        public float speed;
+        public Vector2 direction;
 
         private void Start()
         {
+            rb.velocity = direction*speed;
+        }
+
+        private void OnTriggerEnter2D(Collider2D col)
+        {
+            Debug.Log(col.tag);
+            if (col.CompareTag("Monstre"))
+            {
+                col.GetComponent<IAMonstre1>().TakeDamage(damage);
+                Destroy(gameObject);
+            }
             
         }
     }
