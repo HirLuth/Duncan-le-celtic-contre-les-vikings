@@ -314,61 +314,67 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!1 &2128899583
-GameObject:
+--- !u!1001 &6113990294849981856
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2128899585}
-  - component: {fileID: 2128899584}
-  m_Layer: 0
-  m_Name: SpawnManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2128899584
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2128899583}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab19e80bd1e096c44a81c9a763cdf05f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainCamera: {fileID: 859229389}
-  monster: {fileID: 4405515977446293381, guid: 8a050ede1e6e28f4f88f31ef520fdf4d, type: 3}
-  spawnOffsetFromCamera: 3
-  numberOfMonstersInWave: 50
-  delayBetweenWavesInMinutes: 0.1
-  numberOfMonstersInSpawn: 4
-  delayBetweenSpawnsInSeconds: 0.5
-  monsterList: []
-  monsterClearOn: 1
-  delayBetweenMonsterClearInSeconds: 4
-  numberOfMonsterClear: 0
---- !u!4 &2128899585
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2128899583}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6113990295749943391, guid: 4ed9a4007c7a307408314d2afd3f1a33, type: 3}
+      propertyPath: m_Name
+      value: SpawnManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113990295749944224, guid: 4ed9a4007c7a307408314d2afd3f1a33, type: 3}
+      propertyPath: _mainCamera
+      value: 
+      objectReference: {fileID: 859229389}
+    - target: {fileID: 6113990295749944225, guid: 4ed9a4007c7a307408314d2afd3f1a33, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113990295749944225, guid: 4ed9a4007c7a307408314d2afd3f1a33, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113990295749944225, guid: 4ed9a4007c7a307408314d2afd3f1a33, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113990295749944225, guid: 4ed9a4007c7a307408314d2afd3f1a33, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113990295749944225, guid: 4ed9a4007c7a307408314d2afd3f1a33, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113990295749944225, guid: 4ed9a4007c7a307408314d2afd3f1a33, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113990295749944225, guid: 4ed9a4007c7a307408314d2afd3f1a33, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113990295749944225, guid: 4ed9a4007c7a307408314d2afd3f1a33, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113990295749944225, guid: 4ed9a4007c7a307408314d2afd3f1a33, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113990295749944225, guid: 4ed9a4007c7a307408314d2afd3f1a33, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113990295749944225, guid: 4ed9a4007c7a307408314d2afd3f1a33, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4ed9a4007c7a307408314d2afd3f1a33, type: 3}
 --- !u!1001 &6916547934828496515
 PrefabInstance:
   m_ObjectHideFlags: 0

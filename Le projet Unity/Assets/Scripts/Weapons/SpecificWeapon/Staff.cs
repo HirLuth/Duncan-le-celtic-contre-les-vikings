@@ -32,7 +32,6 @@ namespace Weapons.SpecificWeapon
         private Vector3 GetPosition()
         {
             int selectedEnemyNumber = Random.Range(0, ListeMonstres.instance.ennemyList.Count);
-            bool goodEnemy = false;
 
             for (int i = 0; i < 5; i++)
             {

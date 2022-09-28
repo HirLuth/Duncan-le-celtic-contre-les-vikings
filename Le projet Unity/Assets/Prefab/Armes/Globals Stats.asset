@@ -64,12 +64,12 @@ MonoBehaviour:
   - weaponType: 4
     level: 1
     isTransformed: 0
-    damage: 1
+    damage: 5
     numberOfProjectile: 1
-    coolDown: 1
+    coolDown: 7
     projectileSize: 1
-    projectileSpeed: 1
-    timeOfTheEffect: 1
+    projectileSpeed: 5
+    timeOfTheEffect: 4
     sprite: {fileID: 21300000, guid: f1836adb511e7bd4d90d5365ac2e0aab, type: 3}
     nameInMenus: Book of Kells
     description: 
@@ -78,7 +78,7 @@ MonoBehaviour:
     isTransformed: 0
     damage: 1
     numberOfProjectile: 1
-    coolDown: 1
+    coolDown: 2
     projectileSize: 1
     projectileSpeed: 1
     timeOfTheEffect: 1

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1230109286}
   - component: {fileID: 1230109287}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ColliderExp
   m_TagString: GetExp
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8570036161223788092}
   - component: {fileID: 8570036161223788095}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Nez
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 1923954462}
   - component: {fileID: 1923954463}
   - component: {fileID: 1923954464}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Personnage
   m_TagString: Player
   m_Icon: {fileID: 0}
