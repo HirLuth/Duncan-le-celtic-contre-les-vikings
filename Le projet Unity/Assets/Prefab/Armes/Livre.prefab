@@ -130,6 +130,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   armes: {fileID: 4149882377350726182}
   projectile: {fileID: 6102677294606658849, guid: d923c0d3daba8234dab6cca20a58aee6, type: 3}
+  sprayAngle: 30
+  numberOfQuarter: 5
 --- !u!1 &9073295343838500367
 GameObject:
   m_ObjectHideFlags: 0

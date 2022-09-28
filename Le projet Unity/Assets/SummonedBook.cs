@@ -14,15 +14,10 @@ public class SummonedBook : MonoBehaviour
     public float paperSpeed;
     private float timer;
     private float timerPaper;
-    [SerializeField] private List<float> listOfArray;
-    [SerializeField] private List<float> listToUse;
     [SerializeField] private float timeBetweenPaper;
-
-    private void Start()
-    {
-        listToUse = listOfArray.ToList();
-    }
-
+    public float sprayAngle;
+    public int numberOfQuarter;
+    
     private void Update()
     {
         transform.position = CharacterController.instance.transform.position;
@@ -41,16 +36,11 @@ public class SummonedBook : MonoBehaviour
 
     private void SummonPaper()
     {
-        if (listToUse.Count == 0)
-        {
-            listToUse = listOfArray.ToList();
-        }
-        int sortedInt = Random.Range(0, listToUse.Count - 1);
         GameObject currentPaper = Instantiate(projectile);
         currentPaper.transform.position = transform.position;
-        float angleOfThePaper = angleOfThebookInDegree + Random.Range(listToUse[sortedInt]-15,listToUse[sortedInt]+15);
+        float angleOfThePaper = angleOfThebookInDegree+90 + Random.Range(-numberOfQuarter/2,1+numberOfQuarter/2)*(sprayAngle/numberOfQuarter);
         Paper currentPaperScript = currentPaper.GetComponent<Paper>();
-        currentPaperScript.direction = new Vector2(Mathf.Cos((angleOfThePaper) * 2 * Mathf.PI / 360),Mathf.Sin((angleOfThePaper) * 2 * Mathf.PI / 360));//Quaternion.AngleAxis(angleOfThePaper, Vector3.forward ) * Vector3.up);
+        currentPaperScript.direction = new Vector2(Mathf.Cos((angleOfThePaper) * 2 * Mathf.PI / 360),Mathf.Sin((angleOfThePaper) * 2 * Mathf.PI / 360));
         currentPaperScript.damage = damage;
         currentPaperScript.speed = paperSpeed;
     }

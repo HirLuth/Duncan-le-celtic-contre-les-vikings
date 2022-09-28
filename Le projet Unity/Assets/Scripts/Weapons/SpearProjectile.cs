@@ -17,7 +17,6 @@ namespace Weapons
 
         private void OnTriggerEnter2D(Collider2D col)
         {
-            Debug.Log(col.tag);
             if (col.CompareTag("Monstre"))
             {
                 col.GetComponent<IAMonstre1>().TakeDamage(damage);

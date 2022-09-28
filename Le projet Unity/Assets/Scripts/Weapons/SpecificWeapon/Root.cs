@@ -28,7 +28,6 @@ public class Root : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log(11);
         if (col.gameObject.CompareTag("Monstre"))
         {
             col.gameObject.GetComponent<IAMonstre1>().TakeDamage(damage);

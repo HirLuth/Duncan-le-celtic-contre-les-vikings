@@ -20,7 +20,7 @@ public class IAMonstre1 : MonoBehaviour
     public bool specialMonster;
     public GameObject coffre;
 
-    public static IAMonstre1 instance; 
+    //public static IAMonstre1 instance; 
         
     [Header("Defence")] 
     public int health;
@@ -28,12 +28,12 @@ public class IAMonstre1 : MonoBehaviour
     
     public void Awake()
     {
-        player = GameObject.FindWithTag("Player");
+        player = CharacterController.instance.gameObject;
         
-        if(instance == null)
-        {
-            instance = this;
-        }
+        // if(instance == null)
+        // {
+        //     instance = this;
+        // }
     }
 
     private void Start()
@@ -73,11 +73,12 @@ public class IAMonstre1 : MonoBehaviour
             CharacterController.isTakingDamage = false;
         }
 
-        if (health == 0)
+        if (health <= 0)
         {
-            if (specialMonster == true)
+            if (specialMonster)
             {
                 DropCoffre();
+                ExpManager.instance.CreateExp(transform.position,Random.Range(10,15));
             }
             ExpManager.instance.CreateExp(transform.position,Random.Range(1,3));
             Destroy(gameObject);

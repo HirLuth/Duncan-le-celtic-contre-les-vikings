@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class FloorLooper : MonoBehaviour
 {
-    [SerializeField] private Transform character;
     [SerializeField] private Transform floor;
     private float _floorHeight;
     private float _floorWidth;
@@ -15,12 +14,12 @@ public class FloorLooper : MonoBehaviour
     {
         _floorHeight = floor.lossyScale.y;
         _floorWidth = floor.lossyScale.x;
-        _lastPos = character.position;
+        _lastPos = CharacterController.instance.transform.position;
     }
     
     private void Update()
     {
-        _currentPos = character.position;
+        _currentPos = CharacterController.instance.transform.position;
         CheckUp();
         CheckRight();
         CheckDown();
