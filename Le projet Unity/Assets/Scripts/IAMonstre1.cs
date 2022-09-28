@@ -26,7 +26,7 @@ public class IAMonstre1 : MonoBehaviour
     
     public void Awake()
     {
-       ListeMonstres.instance.ennemyList.Add(gameObject);
+       
         
         if(instance == null)
         {
@@ -36,6 +36,7 @@ public class IAMonstre1 : MonoBehaviour
 
     private void Start()
     {
+        ListeMonstres.instance.ennemyList.Add(gameObject);
         rb = gameObject.GetComponent<Rigidbody2D>();
     }
 
@@ -71,9 +72,9 @@ public class IAMonstre1 : MonoBehaviour
 
         if (health == 0)
         {
-            ListeMonstres.instance.ennemyList.Remove(gameObject);
             ExpManager.instance.CreateExp(transform.position,Random.Range(1,3));
             Destroy(gameObject);
+            ListeMonstres.instance.ennemyList.Remove(gameObject);
         }
     }
     

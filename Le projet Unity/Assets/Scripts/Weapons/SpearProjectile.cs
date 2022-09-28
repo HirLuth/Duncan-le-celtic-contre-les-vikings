@@ -21,6 +21,7 @@ namespace Weapons
             if (col.CompareTag("Monstre"))
             {
                 col.GetComponent<IAMonstre1>().TakeDamage(damage);
+                col.GetComponent<IAMonstre1>().DamageText(damage);
                 Destroy(gameObject);
             }
             

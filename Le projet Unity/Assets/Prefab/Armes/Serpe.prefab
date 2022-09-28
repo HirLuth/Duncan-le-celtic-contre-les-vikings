@@ -128,8 +128,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dab60f1bce1c6b4e8902f1eae1148ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sickle: {fileID: 8074792491717122162}
+  sickleStat: {fileID: 8074792491717122162}
   sickleProjectile: {fileID: 6606692940164909540, guid: cc19ae155c26a7e418968f4db722a27f, type: 3}
+  sickleMaxRange: 3
+  timeToGetToMaxRange: 1
 --- !u!1 &8451592170569186778
 GameObject:
   m_ObjectHideFlags: 0
