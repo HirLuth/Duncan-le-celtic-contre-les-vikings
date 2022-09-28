@@ -1913,6 +1913,7 @@ MonoBehaviour:
   - {fileID: 8590614953476874497}
   listPossibleWeapontoGet: 00000000010000000200000003000000040000000500000006000000
   levelUpMenu: {fileID: 4263124364047469318}
+  chestMenu: {fileID: 452279814}
 --- !u!114 &9082052269511877744
 MonoBehaviour:
   m_ObjectHideFlags: 0
