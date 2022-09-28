@@ -69,6 +69,7 @@ public class UIManager : MonoBehaviour
         levelUpMenu.SetActive(false);
     }
 
+
     public void AddWeapon(int weaponsType)
     {
         int placeInThelist = possessedWeapons.Count;

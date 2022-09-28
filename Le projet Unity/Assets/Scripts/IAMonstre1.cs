@@ -17,6 +17,8 @@ public class IAMonstre1 : MonoBehaviour
     private bool isTouching;
     private Rigidbody2D rb;
     public GameObject textDamage;
+    public bool specialMonster;
+    public GameObject coffre;
 
     public static IAMonstre1 instance; 
         
@@ -26,7 +28,7 @@ public class IAMonstre1 : MonoBehaviour
     
     public void Awake()
     {
-       
+        player = GameObject.FindWithTag("Player");
         
         if(instance == null)
         {
@@ -73,6 +75,10 @@ public class IAMonstre1 : MonoBehaviour
 
         if (health == 0)
         {
+            if (specialMonster == true)
+            {
+                DropCoffre();
+            }
             ExpManager.instance.CreateExp(transform.position,Random.Range(1,3));
             Destroy(gameObject);
             ListeMonstres.instance.ennemyList.Remove(gameObject);
@@ -105,6 +111,11 @@ public class IAMonstre1 : MonoBehaviour
             isTouching = false;
             timerDmg = 0;
         }
+    }
+    
+    void DropCoffre()
+    {
+        GameObject coffreObj = Instantiate(coffre,transform.position,Quaternion.identity);
     }
 } 
 
