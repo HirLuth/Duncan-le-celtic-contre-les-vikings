@@ -246,7 +246,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  lookingAt: 0
   health: 100
+  listPositionDegree:
+  - 0
+  - 0
+  - 45
+  - 90
+  - 135
+  - 180
+  - 225
+  - 270
+  - 315
 --- !u!50 &8570036161589271072
 Rigidbody2D:
   serializedVersion: 4
