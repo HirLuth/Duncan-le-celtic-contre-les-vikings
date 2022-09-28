@@ -95,6 +95,12 @@ public class IAMonstre1 : MonoBehaviour
     public void TakeDamage(int damageAmount)
     {
         health -= damageAmount;
+        if (health == 0)
+        {
+            ExpManager.instance.CreateExp(transform.position,Random.Range(1,3));
+            ListeMonstres.instance.ennemyList.Remove(gameObject);
+            Destroy(gameObject);
+        }
     }
     public void OnCollisionEnter2D(Collision2D col)
     {

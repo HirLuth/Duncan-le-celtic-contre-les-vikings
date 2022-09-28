@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2413181297607298699}
   - component: {fileID: 3204573628009877591}
   - component: {fileID: 4149882377350726182}
+  - component: {fileID: 6426539710823306240}
   m_Layer: 5
   m_Name: Livre
   m_TagString: Untagged
@@ -115,6 +116,20 @@ MonoBehaviour:
   projectileSize: 0
   projectileSpeed: 0
   timeOfTheEffect: 0
+--- !u!114 &6426539710823306240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3099718925158668502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e0fa18a36accec438540104fb765131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  armes: {fileID: 4149882377350726182}
+  projectile: {fileID: 6102677294606658849, guid: d923c0d3daba8234dab6cca20a58aee6, type: 3}
 --- !u!1 &9073295343838500367
 GameObject:
   m_ObjectHideFlags: 0
