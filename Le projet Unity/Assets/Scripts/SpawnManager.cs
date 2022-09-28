@@ -45,8 +45,10 @@ public class SpawnManager : MonoBehaviour
         _spawnRange = new Vector2(_halfWidthCamera+spawnOffsetFromCamera, _halfHeightCamera+spawnOffsetFromCamera).magnitude;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
+        _timer += Time.deltaTime;
+        Debug.Log(_timer);
         if (_timer > (_nextWave+1) * delayBetweenWavesInMinutes * 60)
         {
             for (var i = 0; i < numberOfMonstersInWave; i++)
@@ -62,6 +64,7 @@ public class SpawnManager : MonoBehaviour
             {
                 for (var i = 0; i < numberOfMonstersInSpawn; i++)
                 {
+                    Debug.Log("Hello Monster !");
                     SummonMonsterOnRandomSpot();
                 }
                 _nextSpawn++;
@@ -78,8 +81,6 @@ public class SpawnManager : MonoBehaviour
             monsterList.Clear();
             numberOfMonsterClear++;
         }
-        
-        _timer += Time.deltaTime;
     }
 
     private void SummonMonsterOnRandomSpot()

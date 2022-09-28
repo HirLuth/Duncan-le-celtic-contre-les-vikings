@@ -131,5 +131,5 @@ MonoBehaviour:
   isMoving: 0
   textDamage: {fileID: 230525933050374625, guid: 609d98cba1634e0499f9567b4693d788, type: 3}
   specialMonster: 1
-  coffre: {fileID: 0}
+  coffre: {fileID: 8142561786113201086, guid: 515d03cf8e3fb61499fd223936a4a9eb, type: 3}
   health: 100
