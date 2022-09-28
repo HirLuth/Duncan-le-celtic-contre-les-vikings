@@ -5,12 +5,12 @@ using Weapons;
 
 public class SickleRotationCenter : MonoBehaviour
 {
-    [SerializeField] private Armes sickleStat;
+    public float projectileSpeed;
     private float _currentPointForAngle;
     
     private void FixedUpdate()
     {
-        _currentPointForAngle+=sickleStat.projectileSpeed+10;
+        _currentPointForAngle+=projectileSpeed;
         transform.localRotation = Quaternion.Euler(0,0,_currentPointForAngle);
     }
 }

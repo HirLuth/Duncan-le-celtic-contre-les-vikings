@@ -99,10 +99,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9430fd9942185f54bb46e66551a3d270, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sickleStat: {fileID: 8074792491717122162, guid: 0583eab64ea68ef4c93e88af8a2cf5f3, type: 3}
   sickleCenter: {fileID: 6606692940164909540}
   numberOfLoop: 1
-  sickleMaxRange: 3
+  sickleMaxRange: 5
+  timeOfTheEffect: 0
+  damage: 0
 --- !u!61 &1756408361963241174
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -195,4 +196,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfa81f4060b54434f98926b22fc61dc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sickleStat: {fileID: 8074792491717122162, guid: 0583eab64ea68ef4c93e88af8a2cf5f3, type: 3}
+  projectileSpeed: 0
