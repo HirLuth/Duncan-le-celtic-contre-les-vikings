@@ -78,9 +78,9 @@ public class IAMonstre1 : MonoBehaviour
             if (specialMonster)
             {
                 DropCoffre();
-                ExpManager.instance.CreateExp(transform.position,Random.Range(1,3));
+                ExpManager.instance.CreateExp(transform.position,Random.Range(10,15));
             }
-            ExpManager.instance.CreateExp(transform.position,Random.Range(10,15));
+            ExpManager.instance.CreateExp(transform.position,Random.Range(1,3));
             Destroy(gameObject);
             ListeMonstres.instance.ennemyList.Remove(gameObject);
         }

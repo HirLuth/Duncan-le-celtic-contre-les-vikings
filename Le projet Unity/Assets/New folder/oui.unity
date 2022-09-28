@@ -426,40 +426,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4405515977446293380, guid: 8a050ede1e6e28f4f88f31ef520fdf4d, type: 3}
-      propertyPath: health
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 4405515977446293380, guid: 8a050ede1e6e28f4f88f31ef520fdf4d, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1923954456}
-    - target: {fileID: 4405515977446293380, guid: 8a050ede1e6e28f4f88f31ef520fdf4d, type: 3}
-      propertyPath: Damages
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4405515977446293380, guid: 8a050ede1e6e28f4f88f31ef520fdf4d, type: 3}
-      propertyPath: isMoving
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4405515977446293380, guid: 8a050ede1e6e28f4f88f31ef520fdf4d, type: 3}
-      propertyPath: textDamage
-      value: 
-      objectReference: {fileID: 230525933050374625, guid: 609d98cba1634e0499f9567b4693d788, type: 3}
-    - target: {fileID: 4405515977446293380, guid: 8a050ede1e6e28f4f88f31ef520fdf4d, type: 3}
-      propertyPath: colldownDmg
-      value: 0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 4405515977446293381, guid: 8a050ede1e6e28f4f88f31ef520fdf4d, type: 3}
       propertyPath: m_Name
       value: Monstre1 (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4405515977446293383, guid: 8a050ede1e6e28f4f88f31ef520fdf4d, type: 3}
-      propertyPath: m_Size.x
-      value: 0.80822957
-      objectReference: {fileID: 0}
-    - target: {fileID: 4405515977446293383, guid: 8a050ede1e6e28f4f88f31ef520fdf4d, type: 3}
-      propertyPath: m_Offset.x
-      value: -0.008717239
       objectReference: {fileID: 0}
     - target: {fileID: 4405515977446293401, guid: 8a050ede1e6e28f4f88f31ef520fdf4d, type: 3}
       propertyPath: m_RootOrder
@@ -511,11 +483,6 @@ PrefabInstance:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 731483078, guid: 5fd5f0888ff7a294e867990727aee0f4, type: 3}
   m_PrefabInstance: {fileID: 7408481316797245624}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &820857758 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8142561786113201086, guid: 515d03cf8e3fb61499fd223936a4a9eb, type: 3}
-  m_PrefabInstance: {fileID: 8142561785830955040}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1022322357
 PrefabInstance:
@@ -1243,11 +1210,15 @@ PrefabInstance:
     - target: {fileID: 5648145482447155257, guid: 04cd9ff0c8bf1994abdcc3fd29fceee8, type: 3}
       propertyPath: coffre
       value: 
-      objectReference: {fileID: 820857758}
+      objectReference: {fileID: 8142561786113201086, guid: 515d03cf8e3fb61499fd223936a4a9eb, type: 3}
     - target: {fileID: 5648145482447155257, guid: 04cd9ff0c8bf1994abdcc3fd29fceee8, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1923954456}
+    - target: {fileID: 5648145482447155257, guid: 04cd9ff0c8bf1994abdcc3fd29fceee8, type: 3}
+      propertyPath: specialMonster
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04cd9ff0c8bf1994abdcc3fd29fceee8, type: 3}
 --- !u!1001 &622323414075473858
