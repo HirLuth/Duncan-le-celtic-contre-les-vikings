@@ -35,4 +35,5 @@ public class Root : MonoBehaviour
             col.gameObject.GetComponent<IAMonstre1>().DamageText(damage);
         }
     }
+    
 }
