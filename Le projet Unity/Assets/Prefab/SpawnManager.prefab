@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6113990295749943391
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6113990295749944225}
+  - component: {fileID: 6113990295749944224}
+  m_Layer: 0
+  m_Name: SpawnManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6113990295749944225
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6113990295749943391}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6113990295749944224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6113990295749943391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab19e80bd1e096c44a81c9a763cdf05f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnOffsetFromCamera: 3
+  numberOfMonstersInWave: 20
+  delayBetweenWavesInMinutes: 1
+  numberOfMonstersInSpawn: 4
+  delayBetweenSpawnsInSeconds: 1
+  monster: {fileID: 4405515977446293381, guid: 8a050ede1e6e28f4f88f31ef520fdf4d, type: 3}
+  damageAugmentationBetweenWaves: 1
+  healthAugmentationBetweenWaves: 5
+  speedAugmentationBetweenWaves: 0.1
+  specialMonster: {fileID: 153827186150623486, guid: 04cd9ff0c8bf1994abdcc3fd29fceee8, type: 3}
+  specialMonsterDamageAugment: 3
+  specialMonsterHealthAugment: 10
+  specialMonsterSpeedAugment: 0.2
+  monsterList: []
+  monsterClearOn: 1
+  delayBetweenMonsterClearInSeconds: 4
+  numberOfMonsterClear: 0
+  _mainCamera: {fileID: 0}
