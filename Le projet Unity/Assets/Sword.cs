@@ -7,25 +7,32 @@ using Weapons;
 public class Sword : MonoBehaviour
 {
 
-    [Header("Stats")]
+    [Header("Stats")] 
+    [SerializeField] private Armes armes;
     private bool canAttack;
     public float tempsReloadHitTimer;
     public float tempsReloadHit;
-    public float damage;
+    public int damage;
     public Transform closestEnnemy;
     public GameObject sword;
     public float timeToDestroy;
+    public float projectileSize;
+    [SerializeField] private List<float> damagePerLevel;
+    [SerializeField] private List<float> coolDownPerLevel;
+    [SerializeField] private List<float> sizePerLevel;
+    [SerializeField] private List<float> lastingTimePerLevel;
 
 
 
     private void Start()
     {
-        tempsReloadHit = GetComponent<Armes>().coolDown;
+        projectileSize = armes.projectileSize;
         canAttack = true;
-        damage = GetComponent<Armes>().damage;
-        tempsReloadHit = GetComponent<Armes>().coolDown;
-        timeToDestroy = GetComponent<Armes>().timeOfTheEffect;
+        damage = armes.damage;
+        tempsReloadHit = armes.coolDown;
+        timeToDestroy = armes.timeOfTheEffect;
         
+
     }
     
     
@@ -45,23 +52,26 @@ public class Sword : MonoBehaviour
                 closestEnnemy = monstre.transform;
             }
         }
-        
-        
-        Vector2 spawnSword = new Vector2(closestEnnemy.transform.position.x - CharacterController.instance.transform.position.x,
-            closestEnnemy.transform.position.y -CharacterController.instance.transform.position.y).normalized;
-        
+
+        if (closestEnnemy != null)
+        {
+            Vector2 spawnSword = new Vector2(closestEnnemy.transform.position.x - CharacterController.instance.transform.position.x,
+                closestEnnemy.transform.position.y -CharacterController.instance.transform.position.y).normalized;
+        }
         
         if (canAttack == true)
         {
             tempsReloadHitTimer += Time.deltaTime;
 
-            if (tempsReloadHitTimer >= tempsReloadHit)
+            if (tempsReloadHitTimer >= tempsReloadHit*coolDownPerLevel[armes.level])
             {
                 tempsReloadHitTimer = 0;
                 GameObject swordObj = Instantiate(sword, new Vector3(999,99,0),Quaternion.identity);
                 swordObj.transform.position = CharacterController.instance.transform.position;
-                swordObj.GetComponent<SwordBehaviour>().damage = GetComponent<Armes>().damage;
-                swordObj.GetComponent<SwordBehaviour>().timeToDestroy = GetComponent<Armes>().timeOfTheEffect;
+                swordObj.transform.localScale *= projectileSize*sizePerLevel[armes.level];
+                swordObj.GetComponent<SwordBehaviour>().damage = Mathf.RoundToInt(damage*damagePerLevel[armes.level]);
+                swordObj.GetComponent<SwordBehaviour>().timeToDestroy = timeToDestroy*lastingTimePerLevel[armes.level];
+                
 
 
                 Vector2 dir = new Vector2(closestEnnemy.transform.position.x - swordObj.transform.position.x,
