@@ -28,7 +28,7 @@ public class IAMonstre1 : MonoBehaviour
     
     public void Awake()
     {
-        player = CharacterController.instance.gameObject;
+        
         
         // if(instance == null)
         // {
@@ -38,6 +38,7 @@ public class IAMonstre1 : MonoBehaviour
 
     private void Start()
     {
+        player = CharacterController.instance.gameObject;
         ListeMonstres.instance.ennemyList.Add(gameObject);
         rb = gameObject.GetComponent<Rigidbody2D>();
     }

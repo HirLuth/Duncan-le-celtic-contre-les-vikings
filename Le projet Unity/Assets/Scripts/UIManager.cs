@@ -96,9 +96,11 @@ public class UIManager : MonoBehaviour
                     listPossibleWeapontoGet.Remove(i);
                     if (listPossibleWeapontoGet.Count<3)
                     {
+                        Destroy(propositions[2]);
                         propositions.RemoveAt(2);
                         if (listPossibleWeapontoGet.Count<2)
                         {
+                            Destroy(propositions[1]);
                             propositions.RemoveAt(1);
                         }
                         else
