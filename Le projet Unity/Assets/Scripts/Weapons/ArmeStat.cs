@@ -20,5 +20,6 @@ namespace Weapons
         public Sprite sprite;
         public string nameInMenus;
         public string description;
+        public string descritpionLevelUp;
     }
 }
