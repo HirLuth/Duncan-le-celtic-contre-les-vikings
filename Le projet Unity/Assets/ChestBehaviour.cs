@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UIElements;
 using Weapons;
 using Image = UnityEngine.UI.Image;
@@ -13,7 +14,7 @@ public class ChestBehaviour : MonoBehaviour
     [SerializeField] private ArmesBaseStat globalStats;
     public static ChestBehaviour instance;
     public List<int> listPossibleWeapontoGet;
-    [SerializeField] private GameObject ChestMenu;
+    [SerializeField] private GameObject chestMenu;
     [SerializeField] private GameObject menuIcon;
     public List<Sprite> spriteList;
     public int spriteActuel;
@@ -30,6 +31,11 @@ public class ChestBehaviour : MonoBehaviour
         {
             instance = this;
         }
+    }
+
+    private void Start()
+    {
+        chestMenu = UIManager.instance.chestMenu;
     }
 
     private void OnCollisionEnter2D(Collision2D col)
@@ -52,7 +58,7 @@ public class ChestBehaviour : MonoBehaviour
     public void EventChest()
     {
         isRolling = true;
-        ChestMenu.SetActive(true);
+        chestMenu.SetActive(true);
         Time.timeScale = 0;
 
         StartCoroutine(ChoseItem());
@@ -110,7 +116,7 @@ public class ChestBehaviour : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(timeWaited);
         Time.timeScale = 1;
-        ChestMenu.SetActive(false);
+        chestMenu.SetActive(false);
         Destroy(gameObject);
     }
     
