@@ -48,9 +48,9 @@ public class SpawnManager : MonoBehaviour
     private void FixedUpdate()
     {
         _timer += Time.deltaTime;
-        Debug.Log(_timer);
         if (_timer > (_nextWave+1) * delayBetweenWavesInMinutes * 60)
         {
+            ChangeMonsterColor();
             for (var i = 0; i < numberOfMonstersInWave; i++)
             {
                 SummonMonsterOnRandomSpot();
@@ -64,7 +64,6 @@ public class SpawnManager : MonoBehaviour
             {
                 for (var i = 0; i < numberOfMonstersInSpawn; i++)
                 {
-                    Debug.Log("Hello Monster !");
                     SummonMonsterOnRandomSpot();
                 }
                 _nextSpawn++;
@@ -111,5 +110,13 @@ public class SpawnManager : MonoBehaviour
         
         //tests
         monsterList.Add(currentMonster);
+    }
+
+    private void ChangeMonsterColor()
+    {
+        var r = Random.Range(0f, 1f);
+        var g = Random.Range(0f, 1f);
+        var b = Random.Range(0f, 1f);
+        monster.GetComponent<SpriteRenderer>().color = new Color(r, g, b);
     }
 }
