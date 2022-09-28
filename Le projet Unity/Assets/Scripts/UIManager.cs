@@ -45,7 +45,7 @@ public class UIManager : MonoBehaviour
         for (int i = 0; i < propositions.Count; i++)
         {
             int weaponSorted = listForTirage[Random.Range(0, listForTirage.Count)];
-            listForTirage.RemoveAt(weaponSorted);
+            listForTirage.Remove(weaponSorted);
             propositions[i].SetUpApparition((int)globalStats.listBaseStats[weaponSorted].weaponType,
                 globalStats.listBaseStats[weaponSorted].nameInMenus,
                 globalStats.listBaseStats[weaponSorted].description,
@@ -93,7 +93,7 @@ public class UIManager : MonoBehaviour
             {
                 if (listPossibleWeapontoGet[i] == (int)weaponToLevelUp.weaponType)
                 {
-                    listPossibleWeapontoGet.RemoveAt(i);
+                    listPossibleWeapontoGet.Remove(i);
                     if (listPossibleWeapontoGet.Count<3)
                     {
                         propositions.RemoveAt(2);
