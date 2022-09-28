@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour
     public List<int> listPossibleWeapontoGet;
     [SerializeField] private GameObject levelUpMenu;
     private bool proposeGigot;
+    public GameObject chestMenu;
 
 
     private void Awake()
