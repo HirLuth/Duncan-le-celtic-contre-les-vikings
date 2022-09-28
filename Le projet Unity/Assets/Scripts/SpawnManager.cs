@@ -7,15 +7,21 @@ using Random = UnityEngine.Random;
 
 public class SpawnManager : MonoBehaviour
 {
-    [SerializeField] private GameObject monster;
     [SerializeField] private float spawnOffsetFromCamera;
     [SerializeField] private int numberOfMonstersInWave;
     [SerializeField] private float delayBetweenWavesInMinutes;
     [SerializeField] private int numberOfMonstersInSpawn;
     [SerializeField] private float delayBetweenSpawnsInSeconds;
+    [Header("MonsterStatAugment")]
+    [SerializeField] private GameObject monster;
     [SerializeField] private int damageAugmentationBetweenWaves;
     [SerializeField] private int healthAugmentationBetweenWaves;
     [SerializeField] private float speedAugmentationBetweenWaves;
+    [Header("SpecialMonsterStatAugment")]
+    [SerializeField] private GameObject specialMonster;
+    [SerializeField] private int specialMonsterDamageAugment;
+    [SerializeField] private int specialMonsterHealthAugment;
+    [SerializeField] private float specialMonsterSpeedAugment;
 
     public List<GameObject> monsterList;
 
@@ -47,6 +53,7 @@ public class SpawnManager : MonoBehaviour
             {
                 SummonMonsterOnRandomSpot();
             }
+            SummonSpecialMonster();
             _nextWave++;
         }
         else
@@ -85,6 +92,21 @@ public class SpawnManager : MonoBehaviour
         monsterStat.health += _nextWave * healthAugmentationBetweenWaves;
         monsterStat.Damages += _nextWave * damageAugmentationBetweenWaves;
         monsterStat.speed += _nextWave * speedAugmentationBetweenWaves;
+        
+        //tests
+        monsterList.Add(currentMonster);
+    }
+    
+    private void SummonSpecialMonster()
+    {
+        var rand = Random.Range(0, Mathf.PI * 2);
+        var cameraPos = CameraController.instance.transform.position;
+        _newPos.Set(Mathf.Cos(rand) * _spawnRange + cameraPos.x, Mathf.Sin(rand) * _spawnRange + cameraPos.y);
+        var currentMonster = Instantiate(specialMonster, _newPos, quaternion.identity);
+        var monsterStat = currentMonster.GetComponent<IAMonstre1>();
+        monsterStat.health += _nextWave * specialMonsterHealthAugment;
+        monsterStat.Damages += _nextWave * specialMonsterDamageAugment;
+        monsterStat.speed += _nextWave * specialMonsterSpeedAugment;
         
         //tests
         monsterList.Add(currentMonster);
