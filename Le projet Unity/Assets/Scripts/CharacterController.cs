@@ -100,6 +100,11 @@ public class CharacterController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        if (health > 100)
+        {
+            health = 100;
+        }
     }
 
     public void TakeDamage(int damageTaken)
