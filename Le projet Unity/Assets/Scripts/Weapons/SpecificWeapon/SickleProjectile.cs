@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using DG.Tweening;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Weapons.SpecificWeapon
@@ -29,7 +25,7 @@ namespace Weapons.SpecificWeapon
             Destroy(sickleCenter);
         }
 
-        private void OnTriggerStay2D(Collider2D other)
+        private void OnTriggerEnter2D(Collider2D other)
         {
             if (!other.CompareTag("Monstre")) return;
             other.GetComponent<IAMonstre1>().TakeDamage(damage);
