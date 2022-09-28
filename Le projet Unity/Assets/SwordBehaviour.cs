@@ -17,7 +17,6 @@ public class SwordBehaviour : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log(col.tag);
         if (col.gameObject.CompareTag("Monstre"))
         {
             col.gameObject.GetComponent<IAMonstre1>().TakeDamage(damage);

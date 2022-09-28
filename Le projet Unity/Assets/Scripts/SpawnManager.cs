@@ -7,13 +7,21 @@ using Random = UnityEngine.Random;
 
 public class SpawnManager : MonoBehaviour
 {
-    [SerializeField] private Camera mainCamera;
-    [SerializeField] private GameObject monster;
     [SerializeField] private float spawnOffsetFromCamera;
     [SerializeField] private int numberOfMonstersInWave;
     [SerializeField] private float delayBetweenWavesInMinutes;
     [SerializeField] private int numberOfMonstersInSpawn;
     [SerializeField] private float delayBetweenSpawnsInSeconds;
+    [Header("MonsterStatAugment")]
+    [SerializeField] private GameObject monster;
+    [SerializeField] private int damageAugmentationBetweenWaves;
+    [SerializeField] private int healthAugmentationBetweenWaves;
+    [SerializeField] private float speedAugmentationBetweenWaves;
+    [Header("SpecialMonsterStatAugment")]
+    [SerializeField] private GameObject specialMonster;
+    [SerializeField] private int specialMonsterDamageAugment;
+    [SerializeField] private int specialMonsterHealthAugment;
+    [SerializeField] private float specialMonsterSpeedAugment;
 
     public List<GameObject> monsterList;
 
@@ -32,24 +40,25 @@ public class SpawnManager : MonoBehaviour
 
     private void Start()
     {
-        _halfHeightCamera = mainCamera.orthographicSize;
-        _halfWidthCamera = mainCamera.aspect * _halfHeightCamera;
+        _halfHeightCamera = CameraController.instance.camera.orthographicSize;
+        _halfWidthCamera = CameraController.instance.camera.aspect * _halfHeightCamera;
         _spawnRange = new Vector2(_halfWidthCamera+spawnOffsetFromCamera, _halfHeightCamera+spawnOffsetFromCamera).magnitude;
     }
 
     private void Update()
     {
-        if (_timer > _nextWave * delayBetweenWavesInMinutes * 60)
+        if (_timer > (_nextWave+1) * delayBetweenWavesInMinutes * 60)
         {
             for (var i = 0; i < numberOfMonstersInWave; i++)
             {
                 SummonMonsterOnRandomSpot();
             }
+            SummonSpecialMonster();
             _nextWave++;
         }
         else
         {
-            if (_timer > _nextSpawn * delayBetweenSpawnsInSeconds)
+            if (_timer > (_nextSpawn+1) * delayBetweenSpawnsInSeconds)
             {
                 for (var i = 0; i < numberOfMonstersInSpawn; i++)
                 {
@@ -76,8 +85,30 @@ public class SpawnManager : MonoBehaviour
     private void SummonMonsterOnRandomSpot()
     {
         var rand = Random.Range(0, Mathf.PI * 2);
-        var cameraPos = mainCamera.transform.position;
+        var cameraPos = CameraController.instance.transform.position;
         _newPos.Set(Mathf.Cos(rand) * _spawnRange + cameraPos.x, Mathf.Sin(rand) * _spawnRange + cameraPos.y);
-        monsterList.Add(Instantiate(monster, _newPos, quaternion.identity));
+        var currentMonster = Instantiate(monster, _newPos, quaternion.identity);
+        var monsterStat = currentMonster.GetComponent<IAMonstre1>();
+        monsterStat.health += _nextWave * healthAugmentationBetweenWaves;
+        monsterStat.Damages += _nextWave * damageAugmentationBetweenWaves;
+        monsterStat.speed += _nextWave * speedAugmentationBetweenWaves;
+        
+        //tests
+        monsterList.Add(currentMonster);
+    }
+    
+    private void SummonSpecialMonster()
+    {
+        var rand = Random.Range(0, Mathf.PI * 2);
+        var cameraPos = CameraController.instance.transform.position;
+        _newPos.Set(Mathf.Cos(rand) * _spawnRange + cameraPos.x, Mathf.Sin(rand) * _spawnRange + cameraPos.y);
+        var currentMonster = Instantiate(specialMonster, _newPos, quaternion.identity);
+        var monsterStat = currentMonster.GetComponent<IAMonstre1>();
+        monsterStat.health += _nextWave * specialMonsterHealthAugment;
+        monsterStat.Damages += _nextWave * specialMonsterDamageAugment;
+        monsterStat.speed += _nextWave * specialMonsterSpeedAugment;
+        
+        //tests
+        monsterList.Add(currentMonster);
     }
 }

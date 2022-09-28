@@ -1,13 +1,11 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
-public class IAMonstre1 : MonoBehaviour
-{
-    [Header("Attaque")]
+public class SpecialMonster : MonoBehaviour
+{ 
+     [Header("Attaque")]
     public GameObject player;
     public float speed;
     public float colldownDmg;
@@ -17,18 +15,16 @@ public class IAMonstre1 : MonoBehaviour
     private bool isTouching;
     private Rigidbody2D rb;
     public GameObject textDamage;
-    public bool specialMonster;
+    public static SpecialMonster instance;
     public GameObject coffre;
-
-    public static IAMonstre1 instance; 
+    
         
     [Header("Defence")] 
     public int health;
-   
     
     public void Awake()
     {
-        player = GameObject.FindWithTag("Player");
+       player = GameObject.FindWithTag("Player");
         
         if(instance == null)
         {
@@ -60,8 +56,7 @@ public class IAMonstre1 : MonoBehaviour
             if (timerDmg > colldownDmg)
             {
                 CharacterController.instance.TakeDamage(Damages);
-                GameObject text = Instantiate(textDamage, new Vector3(player.transform.position.x,player.transform.position.y + 1,-5), Quaternion.identity);
-                //text.GetComponent<TextMeshPro>().color = Color.red;
+                Instantiate(textDamage, new Vector3(player.transform.position.x,player.transform.position.y + 1,-5), Quaternion.identity);
                 textDamage.GetComponentInChildren<TextMeshPro>().SetText(Damages.ToString());
                 timerDmg = 0;
             }
@@ -75,14 +70,17 @@ public class IAMonstre1 : MonoBehaviour
 
         if (health == 0)
         {
-            if (specialMonster == true)
-            {
-                DropCoffre();
-            }
+            DropCoffre();
             ExpManager.instance.CreateExp(transform.position,Random.Range(1,3));
             Destroy(gameObject);
             ListeMonstres.instance.ennemyList.Remove(gameObject);
         }
+    }
+    
+    public void DamageTextPlayer(int damageAmount)
+    {
+        Instantiate(textDamage, new Vector3(player.transform.position.x,player.transform.position.y + 1,-5), Quaternion.identity);
+        textDamage.GetComponentInChildren<TextMeshPro>().SetText(damageAmount.ToString());
     }
     
     public void DamageText(int damageAmount)
@@ -90,18 +88,15 @@ public class IAMonstre1 : MonoBehaviour
         Instantiate(textDamage, new Vector3(transform.position.x,transform.position.y + 1,-5), Quaternion.identity);
         textDamage.GetComponentInChildren<TextMeshPro>().SetText(damageAmount.ToString());
     }
-    
-    
+
+    void DropCoffre()
+    {
+        GameObject coffreObj = Instantiate(coffre,transform.position,Quaternion.identity);
+    }
 
     public void TakeDamage(int damageAmount)
     {
         health -= damageAmount;
-        if (health == 0)
-        {
-            ExpManager.instance.CreateExp(transform.position,Random.Range(1,3));
-            ListeMonstres.instance.ennemyList.Remove(gameObject);
-            Destroy(gameObject);
-        }
     }
     public void OnCollisionEnter2D(Collision2D col)
     {
@@ -118,10 +113,4 @@ public class IAMonstre1 : MonoBehaviour
             timerDmg = 0;
         }
     }
-    
-    void DropCoffre()
-    {
-        GameObject coffreObj = Instantiate(coffre,transform.position,Quaternion.identity);
-    }
-} 
-
+}

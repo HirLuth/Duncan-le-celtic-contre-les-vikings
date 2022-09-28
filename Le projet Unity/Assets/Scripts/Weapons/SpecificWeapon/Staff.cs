@@ -52,13 +52,6 @@ namespace Weapons.SpecificWeapon
             }
 
             return ListeMonstres.instance.ennemyList[selectedEnemyNumber].transform.position;
-                
-                
-            
         }
-        
-        
     }
-    
-    
 }
