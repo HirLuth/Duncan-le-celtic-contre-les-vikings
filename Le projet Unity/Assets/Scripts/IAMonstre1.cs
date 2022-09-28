@@ -73,13 +73,14 @@ public class IAMonstre1 : MonoBehaviour
             CharacterController.isTakingDamage = false;
         }
 
-        if (health == 0)
+        if (health <= 0)
         {
-            if (specialMonster == true)
+            if (specialMonster)
             {
                 DropCoffre();
+                ExpManager.instance.CreateExp(transform.position,Random.Range(1,3));
             }
-            ExpManager.instance.CreateExp(transform.position,Random.Range(1,3));
+            ExpManager.instance.CreateExp(transform.position,Random.Range(10,15));
             Destroy(gameObject);
             ListeMonstres.instance.ennemyList.Remove(gameObject);
         }

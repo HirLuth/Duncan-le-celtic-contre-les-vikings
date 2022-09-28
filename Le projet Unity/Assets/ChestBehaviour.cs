@@ -3,22 +3,29 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UIElements;
 using Weapons;
+using Image = UnityEngine.UI.Image;
 using Random = UnityEngine.Random;
 
 public class ChestBehaviour : MonoBehaviour
 {
+    [SerializeField] private ArmesBaseStat globalStats;
     public static ChestBehaviour instance;
-    public List<GameObject> listOfPositions;
-    public List<GameObject> listOfWeapons;
-    public List<GameObject> possessedWeapons;
-    public List<Proposition> propositions;
     public List<int> listPossibleWeapontoGet;
     [SerializeField] private GameObject ChestMenu;
     [SerializeField] private GameObject menuIcon;
+    public List<Sprite> spriteList;
+    public int spriteActuel;
+    public float timeWaited;
+    public int healthHealed;
+
+    public bool isRolling;
 
     private void Awake()
     {
+        spriteActuel = 0;
+        
         if (instance == null)
         {
             instance = this;
@@ -30,31 +37,81 @@ public class ChestBehaviour : MonoBehaviour
         if (col.gameObject.CompareTag("Player"))
         {
             EventChest();
-            Destroy(gameObject);
         }
     }
-    
+
+    private void Update()
+    {
+        if (isRolling == true)
+        {
+            StartCoroutine(rollSprite());
+            Debug.Log(spriteActuel);
+        }
+    }
+
     public void EventChest()
     {
+        isRolling = true;
         ChestMenu.SetActive(true);
         Time.timeScale = 0;
+
+        StartCoroutine(ChoseItem());
+    }
+
+    IEnumerator ChoseItem()
+    {
         List<int> listForTirage;
-        listForTirage = listPossibleWeapontoGet.ToList();
-        for (int i = 0; i < propositions.Count; i++)
+        int weaponSorted = UnityEngine.Random.Range(1,8 /*listForTirage.Count*/);
+        yield return new WaitForSecondsRealtime(timeWaited);
+        menuIcon.GetComponent<Image>().sprite = spriteList[weaponSorted - 1];
+        isRolling = false;
+        EndChestEvent(weaponSorted);
+    }
+    
+    public void EndChestEvent(int weaponDataNumber)
+    {
+        if (weaponDataNumber == 8)
         {
-            int weaponSorted = listForTirage[UnityEngine.Random.Range(0, listForTirage.Count)];
-            listForTirage.Remove(weaponSorted);
-            //propositions[i].SetUpApparition(globalStats.listBaseStats[weaponSorted].nameInMenus,globalStats.listBaseStats[weaponSorted].description,globalStats.listBaseStats[weaponSorted].sprite);
-            propositions[i].weaponNumberAssociated = weaponSorted;
+            CharacterController.instance.health += healthHealed;
+        }
+        else
+        {
+            for (int i = 0; i < UIManager.instance.possessedWeapons.Count; i++)
+            {
+                Armes arme = UIManager.instance.possessedWeapons[i].GetComponent<Armes>();
+                if (weaponDataNumber == (int)arme.weaponType)
+                {
+                    arme.level += 1;
+                    arme.UpdateLevelIndicator();
+                    StartCoroutine(WaitBeforeClose());
+                    return;
+                }
+            }
+            UIManager.instance.AddWeapon(weaponDataNumber);
+        }
+        StartCoroutine(WaitBeforeClose());
+    }
+    
+    IEnumerator rollSprite()
+    {
+        if (isRolling)
+        {
+            menuIcon.GetComponent<Image>().sprite = spriteList[spriteActuel];
+            spriteActuel++;
+            if (spriteActuel == 8)
+            {
+                spriteActuel = 0;
+            }
+            yield return new WaitForSecondsRealtime(1f);
         }
     }
     
-    public void AddWeapon(int weaponsType)
+    IEnumerator WaitBeforeClose()
     {
-        int placeInThelist = possessedWeapons.Count;
-        GameObject newWeapon = Instantiate(listOfWeapons[weaponsType]);
-        possessedWeapons.Add(newWeapon);
-        newWeapon.transform.position = listOfPositions[placeInThelist].transform.position;
-        newWeapon.transform.parent = listOfPositions[placeInThelist].transform;
+        yield return new WaitForSecondsRealtime(timeWaited);
+        Time.timeScale = 1;
+        ChestMenu.SetActive(false);
+        Destroy(gameObject);
     }
+    
 }

@@ -38,7 +38,7 @@ public class Exp : MonoBehaviour
 
         if (timer >= 0)
         {
-            rb.velocity -= rb.velocity * 0.4f;
+            rb.velocity -= rb.velocity * 0.01f;
             timer -= Time.deltaTime;
         }
 
