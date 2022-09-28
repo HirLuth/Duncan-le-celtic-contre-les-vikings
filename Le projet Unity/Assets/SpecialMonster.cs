@@ -1,13 +1,11 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
-public class IAMonstre1 : MonoBehaviour
-{
-    [Header("Attaque")]
+public class SpecialMonster : MonoBehaviour
+{ 
+     [Header("Attaque")]
     public GameObject player;
     public float speed;
     public float colldownDmg;
@@ -17,8 +15,8 @@ public class IAMonstre1 : MonoBehaviour
     private bool isTouching;
     private Rigidbody2D rb;
     public GameObject textDamage;
-
-    public static IAMonstre1 instance; 
+    public static SpecialMonster instance;
+    
         
     [Header("Defence")] 
     public int health;
@@ -58,8 +56,7 @@ public class IAMonstre1 : MonoBehaviour
             if (timerDmg > colldownDmg)
             {
                 CharacterController.instance.TakeDamage(Damages);
-                GameObject text = Instantiate(textDamage, new Vector3(player.transform.position.x,player.transform.position.y + 1,-5), Quaternion.identity);
-                //text.GetComponent<TextMeshPro>().color = Color.red;
+                Instantiate(textDamage, new Vector3(player.transform.position.x,player.transform.position.y + 1,-5), Quaternion.identity);
                 textDamage.GetComponentInChildren<TextMeshPro>().SetText(Damages.ToString());
                 timerDmg = 0;
             }
@@ -77,6 +74,12 @@ public class IAMonstre1 : MonoBehaviour
             Destroy(gameObject);
             ListeMonstres.instance.ennemyList.Remove(gameObject);
         }
+    }
+    
+    public void DamageTextPlayer(int damageAmount)
+    {
+        Instantiate(textDamage, new Vector3(player.transform.position.x,player.transform.position.y + 1,-5), Quaternion.identity);
+        textDamage.GetComponentInChildren<TextMeshPro>().SetText(damageAmount.ToString());
     }
     
     public void DamageText(int damageAmount)
@@ -106,5 +109,4 @@ public class IAMonstre1 : MonoBehaviour
             timerDmg = 0;
         }
     }
-} 
-
+}

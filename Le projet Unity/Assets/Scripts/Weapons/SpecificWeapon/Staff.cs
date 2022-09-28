@@ -11,7 +11,6 @@ namespace Weapons.SpecificWeapon
         void Update()
         {
             timer += Time.deltaTime;
-            Debug.Log(timer);
             if (timer >= armes.coolDown)
             {
                 SpawnRoots();
@@ -54,13 +53,6 @@ namespace Weapons.SpecificWeapon
             }
 
             return ListeMonstres.instance.ennemyList[selectedEnemyNumber].transform.position;
-                
-                
-            
         }
-        
-        
     }
-    
-    
 }
