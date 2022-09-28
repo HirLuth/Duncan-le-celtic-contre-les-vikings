@@ -1,19 +1,29 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Weapons;
 
 public class SwordBehaviour : MonoBehaviour
 {
+    private bool stopAttack;
+    public int damage;
     public float timeToDestroy;
-    
-    void Start()
+
+    private void Start()
     {
-        Destroy(gameObject,timeToDestroy);
+        Destroy(gameObject, timeToDestroy);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D col)
     {
-        Destroy(gameObject,timeToDestroy);
+        Debug.Log(col.tag);
+        if (col.gameObject.CompareTag("Monstre"))
+        {
+            col.gameObject.GetComponent<IAMonstre1>().TakeDamage(damage);
+            col.gameObject.GetComponent<IAMonstre1>().DamageText(damage);
+        }
     }
 }
+
+   
