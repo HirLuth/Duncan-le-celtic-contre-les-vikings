@@ -16,15 +16,15 @@ public class SpecialMonster : MonoBehaviour
     private Rigidbody2D rb;
     public GameObject textDamage;
     public static SpecialMonster instance;
+    public GameObject coffre;
     
         
     [Header("Defence")] 
     public int health;
-   
     
     public void Awake()
     {
-       
+       player = GameObject.FindWithTag("Player");
         
         if(instance == null)
         {
@@ -70,6 +70,7 @@ public class SpecialMonster : MonoBehaviour
 
         if (health == 0)
         {
+            DropCoffre();
             ExpManager.instance.CreateExp(transform.position,Random.Range(1,3));
             Destroy(gameObject);
             ListeMonstres.instance.ennemyList.Remove(gameObject);
@@ -87,8 +88,11 @@ public class SpecialMonster : MonoBehaviour
         Instantiate(textDamage, new Vector3(transform.position.x,transform.position.y + 1,-5), Quaternion.identity);
         textDamage.GetComponentInChildren<TextMeshPro>().SetText(damageAmount.ToString());
     }
-    
-    
+
+    void DropCoffre()
+    {
+        GameObject coffreObj = Instantiate(coffre,transform.position,Quaternion.identity);
+    }
 
     public void TakeDamage(int damageAmount)
     {
