@@ -27,9 +27,11 @@ namespace Weapons.SpecificWeapon
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (!other.CompareTag("Monstre")) return;
-            other.GetComponent<IAMonstre1>().TakeDamage(damage);
-            other.GetComponent<IAMonstre1>().DamageText(damage);
+            if (other.CompareTag("Monstre"))
+            {
+                other.GetComponent<IAMonstre1>().TakeDamage(damage);
+                other.GetComponent<IAMonstre1>().DamageText(damage);
+            }
         }
     }
 }

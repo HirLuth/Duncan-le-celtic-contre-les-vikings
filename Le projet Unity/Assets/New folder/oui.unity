@@ -494,6 +494,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e177a7793ca5c34f9de24100e828095, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  listOfPositions: []
+  listOfWeapons: []
+  possessedWeapons: []
+  propositions: []
+  listPossibleWeapontoGet: 
+  ChestMenu: {fileID: 0}
+  menuIcon: {fileID: 0}
 --- !u!212 &820857761
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1246,7 +1253,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 622323414668341081, guid: 238b7d6fa410eb04d87273357b282a59, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.05561047
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 622323414668341081, guid: 238b7d6fa410eb04d87273357b282a59, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1542,15 +1549,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8570036161589271078, guid: 49d1185878eabcc4cb8ef73f8bab9d43, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8570036161589271078, guid: 49d1185878eabcc4cb8ef73f8bab9d43, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8570036161589271078, guid: 49d1185878eabcc4cb8ef73f8bab9d43, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8570036161589271078, guid: 49d1185878eabcc4cb8ef73f8bab9d43, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
