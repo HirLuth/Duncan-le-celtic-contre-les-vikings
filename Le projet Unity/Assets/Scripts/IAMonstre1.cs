@@ -7,6 +7,7 @@ using Random = UnityEngine.Random;
 
 public class IAMonstre1 : MonoBehaviour
 {
+    [SerializeField] private float outOfBoundOffSet;
     [Header("Attaque")]
     public GameObject player;
     public float speed;
@@ -19,22 +20,12 @@ public class IAMonstre1 : MonoBehaviour
     public GameObject textDamage;
     public bool specialMonster;
     public GameObject coffre;
+    
 
     //public static IAMonstre1 instance; 
         
     [Header("Defence")] 
     public int health;
-   
-    
-    public void Awake()
-    {
-        
-        
-        // if(instance == null)
-        // {
-        //     instance = this;
-        // }
-    }
 
     private void Start()
     {
@@ -45,6 +36,8 @@ public class IAMonstre1 : MonoBehaviour
 
     private void Update()
     {
+        CheckIfInBound();
+        
         Vector2 target = new Vector2(player.transform.position.x - transform.position.x,
             player.transform.position.y - transform.position.y);
 
@@ -62,7 +55,6 @@ public class IAMonstre1 : MonoBehaviour
             {
                 CharacterController.instance.TakeDamage(Damages);
                 GameObject text = Instantiate(textDamage, new Vector3(player.transform.position.x,player.transform.position.y + 1,-5), Quaternion.identity);
-                //text.GetComponent<TextMeshPro>().color = Color.red;
                 textDamage.GetComponentInChildren<TextMeshPro>().SetText(Damages.ToString());
                 timerDmg = 0;
             }
@@ -124,6 +116,27 @@ public class IAMonstre1 : MonoBehaviour
     void DropCoffre()
     {
         GameObject coffreObj = Instantiate(coffre,transform.position,Quaternion.identity);
+    }
+
+    private void CheckIfInBound()
+    {
+        var refCamera = CameraController.instance.camera;
+        var cameraHalfHeight = refCamera.orthographicSize;
+        var cameraHalfWidth = refCamera.aspect * refCamera.orthographicSize;
+        var currentPosition = transform.position;
+        var playerPosition = CharacterController.instance.transform.position;
+        if (currentPosition.x>cameraHalfWidth+outOfBoundOffSet||currentPosition.x<-cameraHalfWidth-outOfBoundOffSet)
+        {
+            var distancePlayer = currentPosition - playerPosition;
+            Debug.Log(distancePlayer);
+            transform.position.Set(currentPosition.x-2*distancePlayer.x,currentPosition.y,0);
+        }
+        if (currentPosition.y>cameraHalfHeight+outOfBoundOffSet||currentPosition.y<-cameraHalfHeight-outOfBoundOffSet)
+        {
+            var distancePlayer = currentPosition - playerPosition;
+            Debug.Log(distancePlayer);
+            transform.position.Set(currentPosition.x,currentPosition.y-2*distancePlayer.y,0);
+        }
     }
 } 
 
