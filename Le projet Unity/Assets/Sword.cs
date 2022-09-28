@@ -33,23 +33,24 @@ public class Sword : MonoBehaviour
     
     private void Update()
     {
-
-        /*Vector2 currentPos = player.transform.position;
+        Vector2 currentPos = CharacterController.instance.transform.position;
         float minDist = Mathf.Infinity;
         closestEnnemy = null;
 
-        foreach (IAMonstre1 monstre in IAMonstre1.GetEnemyList())
+        foreach (GameObject monstre in ListeMonstres.instance.ennemyList)
         {
-            float distance = (Vector2.Distance(player.transform.position, monstre.transform.position));
+            float distance = (Vector2.Distance(monstre.transform.position,currentPos));
+            Debug.Log(currentPos);
             if (distance < minDist)
             {
                 minDist = distance;
                 closestEnnemy = monstre.transform;
             }
-        }*/
+        }
         
-        Vector2 spawnSword = new Vector2(player.transform.position.x - closestEnnemy.transform.position.x,
-            player.transform.position.y - closestEnnemy.transform.position.y);
+        
+        Vector2 spawnSword = new Vector2(CharacterController.instance.transform.position.x - closestEnnemy.transform.position.x,
+            CharacterController.instance.transform.position.y - closestEnnemy.transform.position.y);
         
         
         if (canAttack == true)
