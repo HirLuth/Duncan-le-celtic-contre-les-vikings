@@ -44,7 +44,7 @@ public class ChestBehaviour : MonoBehaviour
         {
             int weaponSorted = listForTirage[UnityEngine.Random.Range(0, listForTirage.Count)];
             listForTirage.Remove(weaponSorted);
-            propositions[i].SetUpApparition(globalStats.listBaseStats[weaponSorted].nameInMenus,globalStats.listBaseStats[weaponSorted].description,globalStats.listBaseStats[weaponSorted].sprite);
+            //propositions[i].SetUpApparition(globalStats.listBaseStats[weaponSorted].nameInMenus,globalStats.listBaseStats[weaponSorted].description,globalStats.listBaseStats[weaponSorted].sprite);
             propositions[i].weaponNumberAssociated = weaponSorted;
         }
     }
