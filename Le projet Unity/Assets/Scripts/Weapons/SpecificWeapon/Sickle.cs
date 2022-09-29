@@ -11,6 +11,7 @@ namespace Weapons.SpecificWeapon
         [SerializeField] private GameObject sickleProjectile;
         [SerializeField] private float sickleMaxRange;
         [SerializeField] private float timeToGetToMaxRange;
+        [SerializeField] private int hitBeforeDestruction;
         [SerializeField] private List<float> damagePerLevel;
         [SerializeField] private List<float> coolDownPerLevel;
         [SerializeField] private List<float> sizePerLevel;
@@ -35,6 +36,7 @@ namespace Weapons.SpecificWeapon
             projectileScriptReference.timeOfTheEffect = sickleStat.timeOfTheEffect*timeEffectPerLevel[sickleStat.level];
             projectileScriptReference.sickleMaxRange = sickleMaxRange;
             projectileScriptReference.timeToGetToMaxRange = timeToGetToMaxRange;
+            projectileScriptReference.hitBeforeDestruction = hitBeforeDestruction;
             _currentThrow++;
         }
     }
