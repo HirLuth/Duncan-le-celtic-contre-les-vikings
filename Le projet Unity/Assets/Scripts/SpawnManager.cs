@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
@@ -50,7 +48,7 @@ public class SpawnManager : MonoBehaviour
         if (_timer > (_nextWave+1) * delayBetweenWavesInMinutes * 60)
         {
             ChangeMonsterColor();
-            for (var i = 0; i < numberOfMonstersInWave; i++)
+            for (var i = 0; i < numberOfMonstersInWave*(_nextWave+1); i++)
             {
                 SummonMonsterOnRandomSpot();
             }
