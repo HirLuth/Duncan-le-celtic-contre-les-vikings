@@ -103,7 +103,7 @@ MonoBehaviour:
   force: 8
   timer: 1
   deceleration: 0.3
-  xpValue: 10
+  xpValue: 1
   rb: {fileID: -7931163524227120787}
 --- !u!50 &-7931163524227120787
 Rigidbody2D:
