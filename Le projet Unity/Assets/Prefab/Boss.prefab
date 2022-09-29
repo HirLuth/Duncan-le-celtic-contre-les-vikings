@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &367808457
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 367808458}
+  m_Layer: 0
+  m_Name: LayerBoss
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &367808458
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 367808457}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.31, y: -3.46, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8936841671618602812}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1967692363
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1967692364}
+  m_Layer: 0
+  m_Name: Fireball launcher
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1967692364
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1967692363}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6, y: 2.12, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8936841671618602812}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8936841671618602811
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,6 +73,7 @@ GameObject:
   - component: {fileID: 8936841671618602812}
   - component: {fileID: 8936841671618602813}
   - component: {fileID: 8936841671618602810}
+  - component: {fileID: 601156465}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Boss
@@ -29,7 +92,9 @@ Transform:
   m_LocalPosition: {x: -13.37, y: 0.52, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1967692364}
+  - {fileID: 367808458}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -73,7 +138,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: ed026983bff7af947a94dd4368e508a4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -105,21 +170,24 @@ MonoBehaviour:
   isMoving: 1
   textDamage: {fileID: 230525933050374625, guid: 609d98cba1634e0499f9567b4693d788, type: 3}
   textDamagePlayer: {fileID: 752161814499140571, guid: 512bdec18bb4fd9419dc80d210eb49f3, type: 3}
+  bossFight: 0
+  layerEmpty: {fileID: 367808457}
+  sp: {fileID: 0}
   gotSword: 0
   cooldownSkill1Timer: 0
-  cooldownSkill1: 25
+  cooldownSkill1: 35
   indicateurSkill1: {fileID: 3105204892600485583, guid: d8f8354400e15624a81cb1bce7ad6439, type: 3}
   waitIndicationSkill1: 3
   waitIndicationSkill1Timer: 0
   gotSerpe: 0
   cooldownSkill2Timer: 0
-  cooldownSkill2: 15
+  cooldownSkill2: 25
   mur: {fileID: 2729640041544733728, guid: d76bad0367a5c5948b56597db42a560a, type: 3}
   waitToMoveSkill2: 2
   waitToMoveSkill2Timer: 0
   gotBaton: 0
   cooldownSkill3Timer: 0
-  cooldownSkill3: 10
+  cooldownSkill3: 20
   pic: {fileID: 2786256702999947869, guid: adcff6c497b16cc479398d40484e4371, type: 3}
   waitIndicationSkill3: 2
   waitIndicationSkill3Timer: 0
@@ -131,8 +199,46 @@ MonoBehaviour:
   indicateurSkill4: {fileID: 0}
   waitIndicationSkill4: 0
   waitIndicationSkill4Timer: 0
-  gotLivre: 1
+  gotLivre: 0
   cooldownSkill5Timer: 0
-  cooldownSkill5: 3
+  cooldownSkill5: 5
   fireball: {fileID: 2660005717698243863, guid: 7b70c87764a91d844812e4b05a438a2d, type: 3}
+  launcher: {fileID: 1967692363}
+  waitIndicationSkill5: 2
+  waitIndicationSkill5Timer: 0
+  gotSpear: 0
+  cooldownSkill6Timer: 0
+  cooldownSkill6: 10
+  waitIndicationSkill6: 2
+  waitIndicationSkill6Timer: 0
+  dureeDashTimer: 0
+  dureeDash: 0.5
+  speedDash: 0.01
+  indication6: {fileID: 0}
   health: 9999999
+--- !u!61 &601156465
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8936841671618602811}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.08359909, y: -1.4894555}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.35398123, y: 0.46805835}
+    oldSize: {x: 12.8, y: 12.8}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.9538383, y: 5.1743264}
+  m_EdgeRadius: 0
