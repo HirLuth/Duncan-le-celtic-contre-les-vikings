@@ -63,7 +63,7 @@ public class Sword : MonoBehaviour
         {
             tempsReloadHitTimer += Time.deltaTime;
 
-            if (tempsReloadHitTimer >= tempsReloadHit*coolDownPerLevel[armes.level])
+            if (tempsReloadHitTimer >= tempsReloadHit*coolDownPerLevel[armes.level] && closestEnnemy != null)
             {
                 tempsReloadHitTimer = 0;
                 GameObject swordObj = Instantiate(sword, new Vector3(999,99,0),Quaternion.identity);

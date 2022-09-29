@@ -14,6 +14,7 @@ public class CharacterController : MonoBehaviour
  private float movementX;
  private float movementY;
  public int health;
+ public int maxHealth = 100;
  private bool isTouched;
  public static bool isTakingDamage;
  public List<float> listPositionDegree;
@@ -107,9 +108,9 @@ public class CharacterController : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (health > 100)
+        if (health > maxHealth)
         {
-            health = 100;
+            health = maxHealth;
         }
     }
 

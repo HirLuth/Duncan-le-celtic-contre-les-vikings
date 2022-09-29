@@ -66,17 +66,41 @@ public class ChestBehaviour : MonoBehaviour
 
     IEnumerator ChoseItem()
     {
-        List<int> listForTirage;
-        int weaponSorted = UnityEngine.Random.Range(1, 8);
+        //List<int> listForTirage = UIManager.instance.listPossibleWeapontoGet.ToList();
+        int weaponSorted;
+        if (UIManager.instance.listPossibleWeapontoGet.Count == 0)
+        {
+            weaponSorted = 7;
+        }
+        else if (CharacterController.instance.health == CharacterController.instance.maxHealth)
+        {
+            weaponSorted = Random.Range(0, UIManager.instance.listPossibleWeapontoGet.Count-1);
+        }
+        else
+        {
+            weaponSorted = Random.Range(0, UIManager.instance.listPossibleWeapontoGet.Count*2);
+        }
+        
         yield return new WaitForSecondsRealtime(timeWaited);
-        menuIcon.GetComponent<Image>().sprite = spriteList[weaponSorted-1];
-        isRolling = false;
-        EndChestEvent(weaponSorted-1);
+        
+        if (weaponSorted >= UIManager.instance.listPossibleWeapontoGet.Count)
+        {
+            menuIcon.GetComponent<Image>().sprite = spriteList[7];
+            isRolling = false;
+            EndChestEvent(7);
+        }
+        else
+        {
+            menuIcon.GetComponent<Image>().sprite = spriteList[UIManager.instance.listPossibleWeapontoGet[weaponSorted]];
+            isRolling = false;
+            EndChestEvent(UIManager.instance.listPossibleWeapontoGet[weaponSorted]);
+        }
+        
     }
     
     public void EndChestEvent(int weaponDataNumber)
     {
-        if (weaponDataNumber >= 7)
+        if (weaponDataNumber == 7)
         {
             CharacterController.instance.health += healthHealed;
             HealthBar.instance.SetHealth(CharacterController.instance.health);
@@ -88,7 +112,7 @@ public class ChestBehaviour : MonoBehaviour
                 Armes arme = UIManager.instance.possessedWeapons[i].GetComponent<Armes>();
                 if (weaponDataNumber == (int)arme.weaponType)
                 {
-                    arme.level += 1;
+                    UIManager.instance.LevelUpWeapon(arme);
                     arme.UpdateLevelIndicator();
                     StartCoroutine(WaitBeforeClose());
                     return;
