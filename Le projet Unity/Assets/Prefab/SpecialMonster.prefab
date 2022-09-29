@@ -124,12 +124,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9e3bf8190b058f42843fb6b09e60233, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outOfBoundOffSet: 0
+  outOfBoundOffSet: 10
+  monsterXp: 1
+  specialMonsterXp: 5
   player: {fileID: 0}
   speed: 3
   colldownDmg: 0.1
   Damages: 5
-  isMoving: 0
+  isMoving: 1
   textDamage: {fileID: 230525933050374625, guid: 609d98cba1634e0499f9567b4693d788, type: 3}
   specialMonster: 1
   coffre: {fileID: 8142561786113201086, guid: 515d03cf8e3fb61499fd223936a4a9eb, type: 3}
