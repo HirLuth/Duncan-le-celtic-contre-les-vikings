@@ -9,6 +9,7 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private float spawnOffsetFromCamera;
     [SerializeField] private int numberOfMonstersInWave;
     [SerializeField] private int monsterWaveLimit;
+    [SerializeField] private int wavesUntilSpecialMonster;
     [SerializeField] private float delayBetweenWavesInMinutes;
     [SerializeField] private float delayBetweenSpawnsInSeconds;
     [SerializeField] private float startMinuteOfBossFight;
@@ -37,6 +38,7 @@ public class SpawnManager : MonoBehaviour
     private float _halfWidthCamera;
     private float _spawnRange;
     private Vector2 _newPos;
+    private int _wavesAfterSpecialMonster;
 
     private void Start()
     {
@@ -62,7 +64,13 @@ public class SpawnManager : MonoBehaviour
             {
                 SummonMonsterOnRandomSpot();
             }
-            SummonSpecialMonster();
+            
+            _wavesAfterSpecialMonster++;
+            if (_wavesAfterSpecialMonster == wavesUntilSpecialMonster)
+            {
+                SummonSpecialMonster();
+                _wavesAfterSpecialMonster = 0;
+            }
             _nextWave++;
         }
         else
@@ -107,7 +115,7 @@ public class SpawnManager : MonoBehaviour
         _newPos.Set(Mathf.Cos(rand) * _spawnRange + cameraPos.x,y);
         var currentMonster = Instantiate(monster, _newPos, quaternion.identity);
         var monsterStat = currentMonster.GetComponent<IAMonstre1>();
-        monsterStat.health += _nextWave * _nextWave * healthAugmentationBetweenWaves;
+        monsterStat.health += _nextWave * healthAugmentationBetweenWaves;
         monsterStat.Damages += _nextWave * damageAugmentationBetweenWaves;
         monsterStat.speed += _nextWave * speedAugmentationBetweenWaves;
         
@@ -124,7 +132,7 @@ public class SpawnManager : MonoBehaviour
         _newPos.Set(Mathf.Cos(rand) * _spawnRange + cameraPos.x,y);
         var currentMonster = Instantiate(specialMonster, _newPos, quaternion.identity);
         var monsterStat = currentMonster.GetComponent<IAMonstre1>();
-        monsterStat.health += _nextWave * _nextWave * specialMonsterHealthAugment;
+        monsterStat.health += _nextWave * specialMonsterHealthAugment;
         monsterStat.Damages += _nextWave * specialMonsterDamageAugment;
         monsterStat.speed += _nextWave * specialMonsterSpeedAugment;
         
