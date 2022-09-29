@@ -32,4 +32,6 @@ public class Proposition : MonoBehaviour
     {
         UIManager.instance.EndLevelUpEvent(weaponNumberAssociated);
     }
+
+    
 }

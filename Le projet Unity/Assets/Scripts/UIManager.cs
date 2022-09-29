@@ -40,6 +40,10 @@ public class UIManager : MonoBehaviour
 
     public void LevelUpEvent()
     {
+        if (proposeGigot)
+        {
+           return; 
+        }
         levelUpMenu.SetActive(true);
         Time.timeScale = 0;
         List<int> listForTirage;
@@ -96,20 +100,21 @@ public class UIManager : MonoBehaviour
                 if (listPossibleWeapontoGet[i] == (int)weaponToLevelUp.weaponType)
                 {
                     listPossibleWeapontoGet.RemoveAt(i);
-                    if (listPossibleWeapontoGet.Count<3)
+                    if (listPossibleWeapontoGet.Count == 0)
                     {
-                        Destroy(propositions[2]);
+                        proposeGigot = true;
+                    }
+                    else if (listPossibleWeapontoGet.Count<2)
+                    {
+                        Destroy(propositions[1].gameObject);
+                        propositions.RemoveAt(1);
+                        Debug.Log(1);
+                    }
+                    else if (listPossibleWeapontoGet.Count<3)
+                    {
+                        Debug.Log(2);
+                        Destroy(propositions[2].gameObject);
                         propositions.RemoveAt(2);
-                        if (listPossibleWeapontoGet.Count<2)
-                        {
-                            Destroy(propositions[1]);
-                            propositions.RemoveAt(1);
-                        }
-                        else
-                        {
-                            proposeGigot = true;
-                        }
-
                     }
                 }
             }
