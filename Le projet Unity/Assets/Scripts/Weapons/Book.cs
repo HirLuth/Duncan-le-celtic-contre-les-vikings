@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.Mathematics;
@@ -14,10 +15,15 @@ namespace Weapons
         [SerializeField] private int numberOfQuarter;
         private float timer;
 
+        private void Start()
+        {
+            SpawnBook();
+        }
+
         void Update()
         {
             timer += Time.deltaTime;
-            if (timer >= armes.coolDown)
+            if (timer >= armes.coolDown + armes.timeOfTheEffect)
             {
                 timer = 0;
                 SpawnBook();
