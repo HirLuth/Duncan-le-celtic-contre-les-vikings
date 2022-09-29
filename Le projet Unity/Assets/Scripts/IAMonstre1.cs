@@ -126,14 +126,16 @@ public class IAMonstre1 : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    public void OnCollisionEnter2D(Collision2D col)
+
+    private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.CompareTag("Player"))
         {
             isTouching = true;
         }
     }
-    public void OnCollisionExit2D(Collision2D col)
+    
+    private void OnTriggerExit2D(Collider2D col)
     {
         if (col.gameObject.CompareTag("Player"))
         {
@@ -141,7 +143,7 @@ public class IAMonstre1 : MonoBehaviour
             timerDmg = 0;
         }
     }
-    
+
     void DropCoffre()
     {
         GameObject coffreObj = Instantiate(coffre,transform.position,Quaternion.identity);

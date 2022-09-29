@@ -67,7 +67,7 @@ public class ChestBehaviour : MonoBehaviour
     IEnumerator ChoseItem()
     {
         List<int> listForTirage;
-        int weaponSorted = UnityEngine.Random.Range(1, 13);
+        int weaponSorted = UnityEngine.Random.Range(1, 8);
         yield return new WaitForSecondsRealtime(timeWaited);
         menuIcon.GetComponent<Image>().sprite = spriteList[weaponSorted-1];
         isRolling = false;

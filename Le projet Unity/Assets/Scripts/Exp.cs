@@ -56,7 +56,7 @@ public class Exp : MonoBehaviour
         Vector3 dir = playerPos - transform.position;
         Vector3 dirNormalised = dir.normalized;
         
-        if (col.gameObject.CompareTag("Player"))
+        if (col.gameObject.CompareTag("AttractExp"))
         {
             if (timer <= 0)
             {

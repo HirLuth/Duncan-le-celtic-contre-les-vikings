@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class IABoss : MonoBehaviour
 {
@@ -243,11 +245,11 @@ public class IABoss : MonoBehaviour
             if (cooldownSkill5Timer >= cooldownSkill5)
             {
                 cooldownSkill5Timer = 0;
-                GameObject fireballObj = Instantiate(fireball, transform.position, Quaternion.identity);
+                GameObject fireballObj = Instantiate(fireball, transform.position + new Vector3(3,2.5f), Quaternion.identity);
                 Vector2 dir = new Vector2(CharacterController.instance.transform.position.x - fireballObj.transform.position.x,
                     CharacterController.instance.transform.position.y - fireballObj.transform.position.y);
                 float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-                fireballObj.transform.localRotation = Quaternion.AngleAxis(angle,Vector3.forward);
+                //fireballObj.transform.localRotation = Quaternion.AngleAxis(angle,Vector3.right);
             }
         }
     }
@@ -269,21 +271,24 @@ public class IABoss : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    public void OnCollisionEnter2D(Collision2D col)
+
+    private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.CompareTag("Player"))
         {
             isTouching = true;
         }
     }
-    public void OnCollisionExit2D(Collision2D col)
+
+    private void OnTriggerExit2D(Collider2D other)
     {
-        if (col.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
             isTouching = false;
             timerDmg = 0;
         }
     }
+    
     
     private void CheckIfInBound()
     {

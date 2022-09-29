@@ -9,6 +9,7 @@ TagManager:
   - GetExp
   - Projectile
   - Boss
+  - AttractExp
   layers:
   - Default
   - TransparentFX
