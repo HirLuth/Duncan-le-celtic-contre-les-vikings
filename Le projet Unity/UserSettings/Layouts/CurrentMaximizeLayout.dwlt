@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 66460
+  controlID: 66936
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 66461
+  controlID: 66912
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 66462
+  controlID: 66913
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -186,8 +186,8 @@ MonoBehaviour:
     y: 0
     width: 363
     height: 561
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 6}
   m_Panes:
   - {fileID: 6}
@@ -224,9 +224,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: f6010200
-      m_LastClickedID: 131574
-      m_ExpandedIDs: 8acd6cff1ee9b0ff5a5ebcff9cdbbcfff442e3ff8c0ce4ff3e35e4ffcc79e4ff68b4edffae1aeeffb61aeeffbe1aeeffc61aeeffce1aeeffd61aeeffda1aeeffe81aeeff861beeffb41beeff6220eeff7056eeff0e9bf7ff169bf7ff6a9bf7ff729bf7ff7a9bf7ff7e9bf7ff8c9bf7ffba9bf7ffb694faffbe94faffc694faffca94faffd894faff5295faff8095faff7821fdff8021fdff8421fdff9221fdffc021fdff7224fdff5425fdffcc27fdffb239fdfffeaafdff62abfdff66abfdff74abfdffd6abfdff28fbffffca330100
+      m_SelectedIDs: 421c0200
+      m_LastClickedID: 138306
+      m_ExpandedIDs: 1a076aff42076aff6a076aff76076aff241c0200421c0200
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -516,17 +516,17 @@ MonoBehaviour:
       layout: 4
   m_WindowGUID: cc27987af1a868c49b0894db9c0f5429
   m_Gizmos: 1
-  m_OverrideSceneCullingMask: 6917529027641081856
-  m_SceneIsLit: 1
+  m_OverrideSceneCullingMask: 0
+  m_SceneIsLit: 0
   m_SceneLighting: 1
   m_2DMode: 1
   m_isRotationLocked: 0
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 152.62495, y: -82.19496, z: 0.49798867}
+    m_Target: {x: 827.25604, y: 440.9248, z: -5.8953524}
     speed: 2
-    m_Value: {x: 152.62495, y: -82.19496, z: 0.49798867}
+    m_Value: {x: 587.4979, y: 178.9555, z: -0.01272801}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -538,7 +538,7 @@ MonoBehaviour:
   m_SceneViewState:
     m_AlwaysRefresh: 0
     showFog: 1
-    showSkybox: 1
+    showSkybox: 0
     showFlares: 1
     showImageEffects: 1
     showParticleSystems: 1
@@ -577,9 +577,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 3.697535
+    m_Target: 599.5356
     speed: 2
-    m_Value: 3.697535
+    m_Value: 29.557064
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -672,13 +672,13 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefab/Armes
+    - Assets/Prefab/UI
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Prefab/Armes
+  - Assets/Prefab/UI
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\Programmation\GitHub\Fork\Duncan-le-celtic-contre-les-vikings\Le
     projet Unity
@@ -686,8 +686,8 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 7}
-    m_SelectedIDs: 8c710000
-    m_LastClickedID: 29068
+    m_SelectedIDs: 94710000
+    m_LastClickedID: 29076
     m_ExpandedIDs: 00000000167100002c71000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -741,9 +741,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: f6010200
-    m_LastClickedInstanceID: 131574
-    m_HadKeyboardFocusLastEvent: 0
+    m_SelectedInstanceIDs: 421c0200
+    m_LastClickedInstanceID: 138306
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -861,7 +861,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 0
+  m_LastVerticalScrollValue: 676
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
