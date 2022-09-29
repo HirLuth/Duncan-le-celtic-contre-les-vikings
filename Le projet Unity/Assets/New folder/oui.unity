@@ -195,6 +195,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8936841671618602812, guid: 6c9c08838f9acb344b631e1b988addb2, type: 3}
   m_PrefabInstance: {fileID: 748975103}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &671472556 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2429463951112148014, guid: d3d1cdf296bce6a4796c8e19f1491a2a, type: 3}
+  m_PrefabInstance: {fileID: 1559885311}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &682494623 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 682494623, guid: 5fd5f0888ff7a294e867990727aee0f4, type: 3}
@@ -600,6 +605,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed1b4a3823df10246bfc01ce958ddf9b, type: 3}
+--- !u!1001 &1559885311
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2429463951112148008, guid: d3d1cdf296bce6a4796c8e19f1491a2a, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429463951112148008, guid: d3d1cdf296bce6a4796c8e19f1491a2a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429463951112148008, guid: d3d1cdf296bce6a4796c8e19f1491a2a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429463951112148008, guid: d3d1cdf296bce6a4796c8e19f1491a2a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429463951112148008, guid: d3d1cdf296bce6a4796c8e19f1491a2a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429463951112148008, guid: d3d1cdf296bce6a4796c8e19f1491a2a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429463951112148008, guid: d3d1cdf296bce6a4796c8e19f1491a2a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429463951112148008, guid: d3d1cdf296bce6a4796c8e19f1491a2a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429463951112148008, guid: d3d1cdf296bce6a4796c8e19f1491a2a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429463951112148008, guid: d3d1cdf296bce6a4796c8e19f1491a2a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429463951112148008, guid: d3d1cdf296bce6a4796c8e19f1491a2a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429463951112148014, guid: d3d1cdf296bce6a4796c8e19f1491a2a, type: 3}
+      propertyPath: m_Name
+      value: BossFightManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d3d1cdf296bce6a4796c8e19f1491a2a, type: 3}
 --- !u!1 &1892259860
 GameObject:
   m_ObjectHideFlags: 0
@@ -696,16 +758,12 @@ PrefabInstance:
       value: SpawnManager
       objectReference: {fileID: 0}
     - target: {fileID: 6113990295749944224, guid: 4ed9a4007c7a307408314d2afd3f1a33, type: 3}
+      propertyPath: bossFight
+      value: 
+      objectReference: {fileID: 671472556}
+    - target: {fileID: 6113990295749944224, guid: 4ed9a4007c7a307408314d2afd3f1a33, type: 3}
       propertyPath: monsterClearOn
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6113990295749944224, guid: 4ed9a4007c7a307408314d2afd3f1a33, type: 3}
-      propertyPath: delayBetweenWavesInMinutes
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6113990295749944224, guid: 4ed9a4007c7a307408314d2afd3f1a33, type: 3}
-      propertyPath: healthAugmentationBetweenWaves
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6113990295749944225, guid: 4ed9a4007c7a307408314d2afd3f1a33, type: 3}
       propertyPath: m_RootOrder

@@ -19,6 +19,6 @@ public class BossFight : MonoBehaviour
 
     private void Start()
     {
-        Instantiate(bossFightArena);
+        Instantiate(bossFightArena,CharacterController.instance.transform.position,Quaternion.identity);
     }
 }

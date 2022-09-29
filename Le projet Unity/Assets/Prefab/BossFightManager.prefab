@@ -44,3 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3445d954a17b324499c47ef744a9bc74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossFightArena: {fileID: 5786379253664053084, guid: 8c799a0b8a10cc442b7218c8f6c25d6b, type: 3}

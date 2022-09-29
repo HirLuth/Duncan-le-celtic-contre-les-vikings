@@ -10,7 +10,7 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private int numberOfMonstersInWave;
     [SerializeField] private float delayBetweenWavesInMinutes;
     [SerializeField] private float delayBetweenSpawnsInSeconds;
-    [SerializeField] private int startMinuteOfBossFight;
+    [SerializeField] private float startMinuteOfBossFight;
     [Header("MonsterStatAugment")]
     [SerializeField] private GameObject monster;
     [SerializeField] private int damageAugmentationBetweenWaves;
@@ -46,6 +46,11 @@ public class SpawnManager : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (_timer > startMinuteOfBossFight * 60)
+        {
+            StartBossFight();
+        }
+        
         _timer += Time.deltaTime;
         if (_timer > (_nextWave+1) * delayBetweenWavesInMinutes * 60)
         {
@@ -79,18 +84,16 @@ public class SpawnManager : MonoBehaviour
             monsterList.Clear();
             numberOfMonsterClear++;
         }
-
-        if (_timer > startMinuteOfBossFight * 60)
-        {
-            StartBossFight();
-        }
     }
 
     private void StartBossFight()
     {
         bossFight.SetActive(true);
-        monsterList.Clear();
-        gameObject.SetActive(false);
+        foreach (var t in monsterList)
+        {
+            Destroy(t);
+        }
+        this.enabled = false;
     }
 
     private void SummonMonsterOnRandomSpot()
