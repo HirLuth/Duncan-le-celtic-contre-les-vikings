@@ -17,6 +17,7 @@ public class CharacterController : MonoBehaviour
  private bool isTouched;
  public static bool isTakingDamage;
  public List<float> listPositionDegree;
+ public Vector2 VectorDepla;
 
     private void Awake()
     {
@@ -37,6 +38,7 @@ public class CharacterController : MonoBehaviour
     {
         movementX = Input.GetAxisRaw("Horizontal");
         movementY = Input.GetAxisRaw("Vertical");
+        VectorDepla = new Vector2(movementX, movementY);
         
         rb.velocity = (new Vector2(movementX * speed, movementY * speed));
         

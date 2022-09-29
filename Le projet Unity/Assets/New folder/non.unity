@@ -342,90 +342,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 214377151}
   m_CullTransparentMesh: 0
---- !u!1 &407739480
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 407739482}
-  - component: {fileID: 407739481}
-  m_Layer: 0
-  m_Name: IndicationSkill1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!212 &407739481
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 407739480}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 0.27058825}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!4 &407739482
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 407739480}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -28.98, y: -7.52, z: 0}
-  m_LocalScale: {x: 8.6674, y: 8.6674, z: 8.6674}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 22
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &452279814 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 452279814, guid: 5fd5f0888ff7a294e867990727aee0f4, type: 3}
@@ -1419,12 +1335,36 @@ MonoBehaviour:
   isMoving: 1
   textDamage: {fileID: 230525933050374625, guid: 609d98cba1634e0499f9567b4693d788, type: 3}
   textDamagePlayer: {fileID: 752161814499140571, guid: 512bdec18bb4fd9419dc80d210eb49f3, type: 3}
-  gotSword: 1
+  gotSword: 0
   cooldownSkill1Timer: 0
-  cooldownSkill1: 5
-  indicateurSkill1: {fileID: 407739480}
+  cooldownSkill1: 25
+  indicateurSkill1: {fileID: 3105204892600485583, guid: d8f8354400e15624a81cb1bce7ad6439, type: 3}
   waitIndicationSkill1: 3
   waitIndicationSkill1Timer: 0
+  gotSerpe: 0
+  cooldownSkill2Timer: 0
+  cooldownSkill2: 15
+  mur: {fileID: 2729640041544733728, guid: d76bad0367a5c5948b56597db42a560a, type: 3}
+  waitToMoveSkill2: 2
+  waitToMoveSkill2Timer: 0
+  gotBaton: 0
+  cooldownSkill3Timer: 0
+  cooldownSkill3: 10
+  pic: {fileID: 2786256702999947869, guid: adcff6c497b16cc479398d40484e4371, type: 3}
+  waitIndicationSkill3: 2
+  waitIndicationSkill3Timer: 0
+  indicateurSkill3: {fileID: 2823908610264553492, guid: 5e4c8c95bcb788142bddf846410031f2, type: 3}
+  gotCarnyx: 0
+  cooldownSkill4Timer: 0
+  cooldownSkill4: 0
+  piege: {fileID: 0}
+  indicateurSkill4: {fileID: 0}
+  waitIndicationSkill4: 0
+  waitIndicationSkill4Timer: 0
+  gotLivre: 1
+  cooldownSkill5Timer: 0
+  cooldownSkill5: 3
+  fireball: {fileID: 2660005717698243863, guid: 7b70c87764a91d844812e4b05a438a2d, type: 3}
   health: 9999999
 --- !u!212 &1867308948
 SpriteRenderer:
@@ -2178,11 +2118,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8570036161589271078, guid: 49d1185878eabcc4cb8ef73f8bab9d43, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.95
+      value: -0.03
       objectReference: {fileID: 0}
     - target: {fileID: 8570036161589271078, guid: 49d1185878eabcc4cb8ef73f8bab9d43, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.02
+      value: 0.36
       objectReference: {fileID: 0}
     - target: {fileID: 8570036161589271078, guid: 49d1185878eabcc4cb8ef73f8bab9d43, type: 3}
       propertyPath: m_LocalPosition.z
