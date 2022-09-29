@@ -95,7 +95,7 @@ public class UIManager : MonoBehaviour
             {
                 if (listPossibleWeapontoGet[i] == (int)weaponToLevelUp.weaponType)
                 {
-                    listPossibleWeapontoGet.Remove(i);
+                    listPossibleWeapontoGet.RemoveAt(i);
                     if (listPossibleWeapontoGet.Count<3)
                     {
                         Destroy(propositions[2]);
