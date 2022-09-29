@@ -28,6 +28,10 @@ public class CharacterController : MonoBehaviour
          rb = gameObject.GetComponent<Rigidbody2D>();   
     }
 
+    private void Start()
+    {
+        HealthBar.instance.SetMaxHealth(100);
+    }
 
     public void Update()
     {
@@ -110,6 +114,7 @@ public class CharacterController : MonoBehaviour
     public void TakeDamage(int damageTaken)
     {
         health -= damageTaken;
+        HealthBar.instance.SetHealth(health);
     }
 
     IEnumerator ChangeColor()

@@ -22,6 +22,12 @@ public class SwordBehaviour : MonoBehaviour
             col.gameObject.GetComponent<IAMonstre1>().TakeDamage(damage);
             col.gameObject.GetComponent<IAMonstre1>().DamageText(damage);
         }
+
+        if (col.gameObject.CompareTag("Boss"))
+        {
+            col.gameObject.GetComponent<IABoss>().TakeDamage(damage);
+            col.gameObject.GetComponent<IABoss>().DamageText(damage);
+        }
     }
 }
 

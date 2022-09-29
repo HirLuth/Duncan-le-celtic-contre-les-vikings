@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject levelUpMenu;
     private bool proposeGigot;
     public GameObject chestMenu;
+    public GameObject iconeMenu;
 
 
     private void Awake()

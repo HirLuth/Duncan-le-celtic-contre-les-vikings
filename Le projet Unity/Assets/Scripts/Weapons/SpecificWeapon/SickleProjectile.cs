@@ -32,6 +32,13 @@ namespace Weapons.SpecificWeapon
                 other.GetComponent<IAMonstre1>().TakeDamage(damage);
                 other.GetComponent<IAMonstre1>().DamageText(damage);
             }
+            
+            
+            if (other.gameObject.CompareTag("Boss"))
+            {
+                other.gameObject.GetComponent<IABoss>().TakeDamage(damage);
+                other.gameObject.GetComponent<IABoss>().DamageText(damage);
+            }
         }
     }
 }

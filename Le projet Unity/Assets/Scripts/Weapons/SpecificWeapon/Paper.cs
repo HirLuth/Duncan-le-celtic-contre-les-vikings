@@ -24,5 +24,13 @@ public class Paper : MonoBehaviour
             col.GetComponent<IAMonstre1>().DamageText(damage);
             Destroy(gameObject);
         }
+        
+        
+        if (col.gameObject.CompareTag("Boss"))
+        {
+            col.gameObject.GetComponent<IABoss>().TakeDamage(damage);
+            col.gameObject.GetComponent<IABoss>().DamageText(damage);
+            Destroy(gameObject);
+        }
     }
 }

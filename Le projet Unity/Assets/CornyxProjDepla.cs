@@ -61,6 +61,12 @@ public class CornyxProjDepla : MonoBehaviour
                     col.GetComponent<IAMonstre1>().DamageText(Armes.instance.damage);
                     tempsReloadHitTimer = 0;
                 }
+                
+                if (tempsReloadHitTimer > tempsReloadHit && col.gameObject.CompareTag("Boss"))
+                {
+                    col.gameObject.GetComponent<IABoss>().TakeDamage(Armes.instance.damage);
+                    col.gameObject.GetComponent<IABoss>().DamageText(Armes.instance.damage);
+                }
             }
         }
     }

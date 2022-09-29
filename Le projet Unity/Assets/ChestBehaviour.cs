@@ -36,6 +36,7 @@ public class ChestBehaviour : MonoBehaviour
     private void Start()
     {
         chestMenu = UIManager.instance.chestMenu;
+        menuIcon = UIManager.instance.iconeMenu;
     }
 
     private void OnCollisionEnter2D(Collision2D col)
@@ -79,6 +80,7 @@ public class ChestBehaviour : MonoBehaviour
         if (weaponDataNumber == 7)
         {
             CharacterController.instance.health += healthHealed;
+            HealthBar.instance.SetHealth(CharacterController.instance.health);
         }
         else
         {

@@ -1,14 +1,11 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
-public class IAMonstre1 : MonoBehaviour
+public class IABoss : MonoBehaviour
 {
     [SerializeField] private float outOfBoundOffSet;
-    [Header("Attaque")]
     public GameObject player;
     public float speed;
     public float colldownDmg;
@@ -18,10 +15,19 @@ public class IAMonstre1 : MonoBehaviour
     private bool isTouching;
     private Rigidbody2D rb;
     public GameObject textDamage;
-    public bool specialMonster;
-    public GameObject coffre;
     public GameObject textDamagePlayer;
-    
+
+    [Header("Skill1")] 
+    public bool gotSword;
+    public float cooldownSkill1Timer;
+    public float cooldownSkill1;
+    public GameObject indicateurSkill1;
+    public float waitIndicationSkill1;
+    public float waitIndicationSkill1Timer;
+    private GameObject indic;
+    private bool isAttackingSkill1;
+    private Vector2 truc;
+
 
     //public static IAMonstre1 instance; 
         
@@ -38,30 +44,16 @@ public class IAMonstre1 : MonoBehaviour
     private void Update()
     {
         CheckIfInBound();
-
-        if (specialMonster == false)
+        
+        if (CharacterController.instance.transform.position.x > transform.position.x)
         {
-            if (CharacterController.instance.transform.position.x > transform.position.x)
-            {
-                transform.localScale = new Vector3(0.5f,0.5f,0.5f);
-            }
-            else
-            {
-                transform.localScale = new Vector3(-0.5f,0.5f,0.5f);
-            }
+            transform.localScale = new Vector3(0.5f,0.5f,0.5f);
         }
         else
         {
-            if (CharacterController.instance.transform.position.x > transform.position.x)
-            {
-                transform.localScale = new Vector3(0.8f,0.8f,0.8f);
-            }
-            else
-            {
-                transform.localScale = new Vector3(-0.8f,0.8f,0.8f);
-            }
-        }
-       
+            transform.localScale = new Vector3(-0.5f,0.5f,0.5f);
+        }         
+            
         
         Vector2 target = new Vector2(player.transform.position.x - transform.position.x,
             player.transform.position.y - transform.position.y);
@@ -90,6 +82,44 @@ public class IAMonstre1 : MonoBehaviour
         {
             CharacterController.isTakingDamage = false;
         }
+
+
+        if (gotSword)
+        {
+            Vector2 charPos;
+
+            cooldownSkill1Timer += Time.deltaTime;
+            if (cooldownSkill1Timer >= cooldownSkill1)
+            {
+                gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                gameObject.GetComponent<PolygonCollider2D>().enabled = false;
+                isMoving = false;
+                cooldownSkill1Timer = 0;
+                GameObject indication = Instantiate(indicateurSkill1, CharacterController.instance.transform.position,
+                    Quaternion.identity);
+                indic = indication;
+                charPos = CharacterController.instance.transform.position;
+                truc = charPos;
+                isAttackingSkill1 = true;
+            }
+
+            if (isAttackingSkill1)
+            {
+                waitIndicationSkill1Timer += Time.deltaTime;
+                if (waitIndicationSkill1Timer >= waitIndicationSkill1)
+                {
+                  
+                    Destroy(indic);
+                    gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                    gameObject.GetComponent<PolygonCollider2D>().enabled = true;
+                    isMoving = true;
+                    transform.position = truc;
+                    waitIndicationSkill1Timer = 0;
+                    isAttackingSkill1 = false;
+                }
+            }
+           
+        }
     }
     
     public void DamageText(int damageAmount)
@@ -98,22 +128,13 @@ public class IAMonstre1 : MonoBehaviour
         textDamage.GetComponentInChildren<TextMeshPro>().SetText(damageAmount.ToString());
     }
     
-    
 
     public void TakeDamage(int damageAmount)
     {
         health -= damageAmount;
         if (health <= 0)
         {
-            if (specialMonster)
-            {
-                ExpManager.instance.CreateExp(transform.position,Random.Range(1,3));
-                DropCoffre();
-            }
-            else
-            {
-                ExpManager.instance.CreateExp(transform.position,Random.Range(5,3));
-            }
+            ExpManager.instance.CreateExp(transform.position,Random.Range(1,3));
             ListeMonstres.instance.ennemyList.Remove(gameObject);
             Destroy(gameObject);
         }
@@ -134,11 +155,6 @@ public class IAMonstre1 : MonoBehaviour
         }
     }
     
-    void DropCoffre()
-    {
-        GameObject coffreObj = Instantiate(coffre,transform.position,Quaternion.identity);
-    }
-
     private void CheckIfInBound()
     {
         var refCamera = CameraController.instance.camera;
@@ -149,7 +165,6 @@ public class IAMonstre1 : MonoBehaviour
         if (currentPosition.x>cameraHalfWidth+outOfBoundOffSet||currentPosition.x<-cameraHalfWidth-outOfBoundOffSet)
         {
             var distancePlayer = currentPosition - playerPosition;
-            Debug.Log(distancePlayer);
             transform.position.Set(currentPosition.x-2*distancePlayer.x,currentPosition.y,0);
         }
         if (currentPosition.y>cameraHalfHeight+outOfBoundOffSet||currentPosition.y<-cameraHalfHeight-outOfBoundOffSet)
@@ -159,5 +174,4 @@ public class IAMonstre1 : MonoBehaviour
             transform.position.Set(currentPosition.x,currentPosition.y-2*distancePlayer.y,0);
         }
     }
-} 
-
+}
