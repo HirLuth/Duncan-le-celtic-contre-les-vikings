@@ -58,6 +58,54 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &1296261799
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1296261800}
+  - component: {fileID: 1296261801}
+  m_Layer: 6
+  m_Name: ColliderAttractEXP
+  m_TagString: AttractExp
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1296261800
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296261799}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8570036161589271078}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &1296261801
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296261799}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.03, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.7832154
 --- !u!1 &8570036161223788093
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,7 +202,6 @@ GameObject:
   - component: {fileID: 8570036161589271079}
   - component: {fileID: 8570036161589271076}
   - component: {fileID: 8570036161589271072}
-  - component: {fileID: 1923954462}
   - component: {fileID: 1923954463}
   - component: {fileID: 1923954464}
   m_Layer: 6
@@ -178,6 +225,7 @@ Transform:
   m_Children:
   - {fileID: 8570036161223788092}
   - {fileID: 1230109286}
+  - {fileID: 1296261800}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -248,6 +296,7 @@ MonoBehaviour:
   speed: 5
   lookingAt: 0
   health: 100
+  maxHealth: 100
   listPositionDegree:
   - 0
   - 0
@@ -258,6 +307,7 @@ MonoBehaviour:
   - 225
   - 270
   - 315
+  VectorDepla: {x: 0, y: 0}
 --- !u!50 &8570036161589271072
 Rigidbody2D:
   serializedVersion: 4
@@ -279,22 +329,6 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!58 &1923954462
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8570036161589271077}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 1.5
 --- !u!61 &1923954463
 BoxCollider2D:
   m_ObjectHideFlags: 0
