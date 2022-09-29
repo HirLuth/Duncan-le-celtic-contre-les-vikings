@@ -420,6 +420,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8936841671618602812, guid: 6c9c08838f9acb344b631e1b988addb2, type: 3}
   m_PrefabInstance: {fileID: 748975103}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &601156471 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8936841671618602813, guid: 6c9c08838f9acb344b631e1b988addb2, type: 3}
+  m_PrefabInstance: {fileID: 748975103}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &671472556 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2429463951112148014, guid: d3d1cdf296bce6a4796c8e19f1491a2a, type: 3}
@@ -437,6 +442,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5128174901460202856, guid: 8a8d665e3abb33b4c8524d2926b9c8a7, type: 3}
+      propertyPath: textLevel
+      value: 
+      objectReference: {fileID: 1878759965}
     - target: {fileID: 5128174901460202857, guid: 8a8d665e3abb33b4c8524d2926b9c8a7, type: 3}
       propertyPath: m_Name
       value: ExpManager
@@ -503,9 +512,21 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8936841671618602810, guid: 6c9c08838f9acb344b631e1b988addb2, type: 3}
+      propertyPath: sp
+      value: 
+      objectReference: {fileID: 601156471}
+    - target: {fileID: 8936841671618602810, guid: 6c9c08838f9acb344b631e1b988addb2, type: 3}
+      propertyPath: pic7
+      value: 
+      objectReference: {fileID: 2786256702999947869, guid: f869cff9e755ab94f8a1718d304f68bd, type: 3}
+    - target: {fileID: 8936841671618602810, guid: 6c9c08838f9acb344b631e1b988addb2, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1772033653}
+    - target: {fileID: 8936841671618602810, guid: 6c9c08838f9acb344b631e1b988addb2, type: 3}
+      propertyPath: radius
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8936841671618602810, guid: 6c9c08838f9acb344b631e1b988addb2, type: 3}
       propertyPath: gotBaton
       value: 0
@@ -532,7 +553,7 @@ PrefabInstance:
       objectReference: {fileID: 1967692363}
     - target: {fileID: 8936841671618602810, guid: 6c9c08838f9acb344b631e1b988addb2, type: 3}
       propertyPath: speedDash
-      value: 0.2
+      value: 0.18
       objectReference: {fileID: 0}
     - target: {fileID: 8936841671618602810, guid: 6c9c08838f9acb344b631e1b988addb2, type: 3}
       propertyPath: layerEmpty
@@ -561,6 +582,22 @@ PrefabInstance:
     - target: {fileID: 8936841671618602810, guid: 6c9c08838f9acb344b631e1b988addb2, type: 3}
       propertyPath: cooldownSkill6
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8936841671618602810, guid: 6c9c08838f9acb344b631e1b988addb2, type: 3}
+      propertyPath: cooldownSkill7
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8936841671618602810, guid: 6c9c08838f9acb344b631e1b988addb2, type: 3}
+      propertyPath: waitIndicationSkill7
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8936841671618602810, guid: 6c9c08838f9acb344b631e1b988addb2, type: 3}
+      propertyPath: triggerAttackBoss.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8936841671618602810, guid: 6c9c08838f9acb344b631e1b988addb2, type: 3}
+      propertyPath: triggerAttackBoss.Array.data[0]
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8936841671618602811, guid: 6c9c08838f9acb344b631e1b988addb2, type: 3}
       propertyPath: m_Name
@@ -612,7 +649,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8936841671618602813, guid: 6c9c08838f9acb344b631e1b988addb2, type: 3}
       propertyPath: m_SortingOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8936841671618602815, guid: 6c9c08838f9acb344b631e1b988addb2, type: 3}
       propertyPath: m_Enabled
@@ -1160,6 +1197,11 @@ SpriteRenderer:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8570036161589271077, guid: 49d1185878eabcc4cb8ef73f8bab9d43, type: 3}
   m_PrefabInstance: {fileID: 379324465}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1878759965 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 682494623, guid: 5fd5f0888ff7a294e867990727aee0f4, type: 3}
+  m_PrefabInstance: {fileID: 7408481316797245624}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1967692363
 GameObject:

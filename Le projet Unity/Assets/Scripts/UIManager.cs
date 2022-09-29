@@ -108,6 +108,8 @@ public class UIManager : MonoBehaviour
         possessedWeapons.Add(newWeapon);
         newWeapon.transform.position = listOfPositions[placeInThelist].transform.position;
         newWeapon.transform.parent = listOfPositions[placeInThelist].transform;
+
+        IABoss.instance.triggerAttackBoss[weaponsType] = true;
     }
 
     public void LevelUpWeapon(Armes weaponToLevelUp)
