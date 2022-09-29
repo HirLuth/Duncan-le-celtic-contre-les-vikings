@@ -129,7 +129,7 @@ MonoBehaviour:
   specialMonsterXp: 5
   player: {fileID: 0}
   speed: 3
-  colldownDmg: 0.1
+  colldownDmg: 0.3
   Damages: 2
   isMoving: 1
   textDamage: {fileID: 230525933050374625, guid: 609d98cba1634e0499f9567b4693d788, type: 3}
