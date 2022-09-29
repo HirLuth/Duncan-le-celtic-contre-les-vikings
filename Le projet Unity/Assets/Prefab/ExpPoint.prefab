@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1680791784521038992}
   - component: {fileID: 1597528420821664998}
   - component: {fileID: 8398569531702670720}
+  - component: {fileID: 1884048830043334761}
   - component: {fileID: -7931163524227120787}
   - component: {fileID: 7169840134823695217}
   m_Layer: 0
@@ -105,6 +106,19 @@ MonoBehaviour:
   deceleration: 0.3
   xpValue: 1
   rb: {fileID: -7931163524227120787}
+--- !u!114 &1884048830043334761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6172547269558392678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11fd72f9e1392fb44906e4646fd9cbd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeBeforeDestruction: 1
 --- !u!50 &-7931163524227120787
 Rigidbody2D:
   serializedVersion: 4
