@@ -131,28 +131,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   armes: {fileID: 7519763321983719484}
   projectile: {fileID: 1974345534323238391, guid: d930b2dc6a3013949bc30fcdad8a04b7, type: 3}
-  nbOfProjectilesPerLevel: 000000000100000002000000030000000400000006000000
+  nbOfProjectilesPerLevel: 000000000100000002000000030000000400000004000000050000000500000007000000
   damagePerLevel:
   - 0
   - 1
   - 1.2
   - 1.4
   - 1.6
+  - 1.8
   - 2
+  - 2.2
+  - 2.5
   coolDownModifierPerLevel:
   - 1
   - 1
   - 0.8
   - 0.6
   - 0.4
+  - 0.3
+  - 0.25
   - 0.2
+  - 0.15
   speedPerLevel:
   - 1
   - 1
   - 1.35
   - 1.7
   - 2.05
-  - 2.7
+  - 2.2
+  - 2.4
+  - 2.55
+  - 2.85
 --- !u!1 &5746813075017851754
 GameObject:
   m_ObjectHideFlags: 0

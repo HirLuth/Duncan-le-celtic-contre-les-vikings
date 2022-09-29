@@ -2051,6 +2051,7 @@ MonoBehaviour:
   levelUpMenu: {fileID: 4263124364047469318}
   chestMenu: {fileID: 452279814}
   iconeMenu: {fileID: 731483078}
+  maxLevel: 5
 --- !u!114 &9082052269511877744
 MonoBehaviour:
   m_ObjectHideFlags: 0
