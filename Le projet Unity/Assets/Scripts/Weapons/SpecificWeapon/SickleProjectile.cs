@@ -10,9 +10,11 @@ namespace Weapons.SpecificWeapon
         public float timeOfTheEffect;
         public float timeToGetToMaxRange;
         public int damage;
+        public int hitBeforeDestruction;
         private float _timer;
         private float _timerBack;
         private bool _tweenActive;
+        private int _numberOfHit;
         
         private void FixedUpdate()
         {
@@ -29,6 +31,7 @@ namespace Weapons.SpecificWeapon
         {
             if (other.CompareTag("Monstre"))
             {
+                _numberOfHit++;
                 other.GetComponent<IAMonstre1>().TakeDamage(damage);
                 other.GetComponent<IAMonstre1>().DamageText(damage);
             }
@@ -36,9 +39,12 @@ namespace Weapons.SpecificWeapon
             
             if (other.gameObject.CompareTag("Boss"))
             {
+                _numberOfHit++;
                 other.gameObject.GetComponent<IABoss>().TakeDamage(damage);
                 other.gameObject.GetComponent<IABoss>().DamageText(damage);
             }
+            
+            if(_numberOfHit>=hitBeforeDestruction) Destroy(sickleCenter);
         }
     }
 }
