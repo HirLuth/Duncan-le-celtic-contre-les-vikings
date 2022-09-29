@@ -20,7 +20,7 @@ MonoBehaviour:
     numberOfProjectile: 1
     coolDown: 1.5
     projectileSize: 1
-    projectileSpeed: 10
+    projectileSpeed: 15
     timeOfTheEffect: 1
     sprite: {fileID: 21300000, guid: bbf9c35405c35c24c9855f4033e9c0bf, type: 3}
     nameInMenus: Spear
@@ -42,7 +42,7 @@ MonoBehaviour:
   - weaponType: 2
     level: 1
     isTransformed: 0
-    damage: 20
+    damage: 10
     numberOfProjectile: 1
     coolDown: 5
     projectileSize: 1

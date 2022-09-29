@@ -142,10 +142,17 @@ MonoBehaviour:
   coolDownModifierPerLevel:
   - 1
   - 1
-  - 0.9
   - 0.8
-  - 0.7
-  - 0.5
+  - 0.6
+  - 0.4
+  - 0.2
+  speedPerLevel:
+  - 1
+  - 1
+  - 1.35
+  - 1.7
+  - 2.05
+  - 2.7
 --- !u!1 &5746813075017851754
 GameObject:
   m_ObjectHideFlags: 0

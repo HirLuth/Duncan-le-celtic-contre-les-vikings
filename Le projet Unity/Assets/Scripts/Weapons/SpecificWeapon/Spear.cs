@@ -11,6 +11,8 @@ public class Spear : MonoBehaviour
     public List<int> nbOfProjectilesPerLevel;
     public List<float> damagePerLevel;
     public List<float> coolDownModifierPerLevel;
+    public List<float> speedPerLevel;
+    
     void Update()
     {
         _timer += Time.deltaTime;
@@ -29,7 +31,7 @@ public class Spear : MonoBehaviour
                 , Quaternion.Euler(0, 0,  90 - CharacterController.instance.listPositionDegree[CharacterController.instance.lookingAt]));
             
             SpearProjectile projectileScriptReference = javelot.GetComponent<SpearProjectile>();
-            projectileScriptReference.speed = armes.projectileSpeed;
+            projectileScriptReference.speed = armes.projectileSpeed*speedPerLevel[armes.level];
             projectileScriptReference.damage = Mathf.RoundToInt(armes.damage*damagePerLevel[armes.level]);
             projectileScriptReference.direction = Quaternion.AngleAxis(- CharacterController.instance.listPositionDegree[CharacterController.instance.lookingAt], Vector3.forward ) * Vector3.up;
         }
