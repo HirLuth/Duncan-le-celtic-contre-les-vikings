@@ -96,7 +96,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.13211226, y: 0.06360984}
@@ -125,3 +125,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+  damage: 50
+  player: {fileID: 0}
+  textDamagePlayer: {fileID: 752161814499140571, guid: 512bdec18bb4fd9419dc80d210eb49f3, type: 3}

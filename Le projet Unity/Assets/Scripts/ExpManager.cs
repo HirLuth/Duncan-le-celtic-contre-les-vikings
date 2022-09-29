@@ -30,7 +30,7 @@ public class ExpManager : MonoBehaviour
             PlayerStat.instance.currentExp = 0;
             PlayerStat.instance.requiredExp += maxExpAddPerLevel;
             UIManager.instance.LevelUpEvent();
-            //textLevel.GetComponent<TextMeshPro>().SetText("Lvl." + level);
+            textLevel.GetComponent<TextMeshProUGUI>().SetText("Lvl. " + level);
         }
     }
 
