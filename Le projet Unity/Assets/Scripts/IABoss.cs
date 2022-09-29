@@ -20,7 +20,9 @@ public class IABoss : MonoBehaviour
     public GameObject textDamagePlayer;
     public bool bossFight;
     public GameObject layerEmpty;
-    public SpriteRenderer sp;
+    public SpriteRenderer playerSp;
+    public static IABoss instance;
+    public List<bool> triggerAttackBoss;
 
     [Header("Skill1 - TP")] 
     public bool gotSword;
@@ -81,6 +83,7 @@ public class IABoss : MonoBehaviour
 
     [Header("Skill6 - Dash")]
     public bool gotSpear;
+    public bool isDashing;
     public float cooldownSkill6Timer;
     public float cooldownSkill6;
     private float truc6;
@@ -112,23 +115,31 @@ public class IABoss : MonoBehaviour
     [Header("Defence")] 
     public int health;
 
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
+
     private void Start()
     {
         player = CharacterController.instance.gameObject;
         ListeMonstres.instance.ennemyList.Add(gameObject);
         rb = gameObject.GetComponent<Rigidbody2D>();
-        sp = gameObject.GetComponent<SpriteRenderer>();
+        playerSp = CharacterController.instance.GetComponent<SpriteRenderer>();
     }
 
     private void Update()
     {
         if (layerEmpty.transform.position.y > player.transform.position.y)
         {
-            sp.sortingOrder = 0;
+            playerSp.sortingOrder = 2;
         }
         else
         {
-            sp.sortingOrder = 2;
+            playerSp.sortingOrder = 0;
         }
 
         CheckIfInBound();
@@ -136,6 +147,19 @@ public class IABoss : MonoBehaviour
         if (CharacterController.instance.transform.position.x > transform.position.x)
         {
             transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        }
+        else
+        {
+            transform.localScale = new Vector3(-0.5f, 0.5f, 0.5f);
+        }
+
+        if (isDashing)
+        {
+            colldownDmg = 0.025f;
+        }
+        else
+        {
+            colldownDmg = 0.3f;
         }
         
 
@@ -170,7 +194,7 @@ public class IABoss : MonoBehaviour
         }
 
 
-        if (gotSword) // Skill 1
+        if (triggerAttackBoss[1] || gotSword) // Skill 1
         {
             Vector2 charPos;
 
@@ -206,7 +230,7 @@ public class IABoss : MonoBehaviour
 
         }
 
-        if (gotSerpe) // Skill 2
+        if (triggerAttackBoss[2] || gotSerpe) // Skill 2
         {
             cooldownSkill2Timer += Time.deltaTime;
             if (cooldownSkill2Timer >= cooldownSkill2)
@@ -232,7 +256,7 @@ public class IABoss : MonoBehaviour
             }
         }
 
-        if (gotBaton) // Skill 3
+        if (triggerAttackBoss[5] || gotBaton) // Skill 3
         {
             cooldownSkill3Timer += Time.deltaTime;
             if (cooldownSkill3Timer >= cooldownSkill3)
@@ -260,7 +284,7 @@ public class IABoss : MonoBehaviour
             }
         }
 
-        if (gotCarnyx) // Skill 4
+        if (triggerAttackBoss[6] || gotCarnyx) // Skill 4
         {
             cooldownSkill4Timer += Time.deltaTime;
             if (cooldownSkill4Timer >= cooldownSkill4)
@@ -288,7 +312,7 @@ public class IABoss : MonoBehaviour
             }
         }
 
-        if (gotLivre) // Skill 5
+        if (triggerAttackBoss[4] || gotLivre) // Skill 5
         {
             cooldownSkill5Timer += Time.deltaTime;
             if (cooldownSkill5Timer >= cooldownSkill5)
@@ -319,7 +343,7 @@ public class IABoss : MonoBehaviour
             }
         }
 
-        if (gotSpear) // Skill 6
+        if (triggerAttackBoss[0] || gotSpear) // Skill 6
         {
             cooldownSkill6Timer += Time.deltaTime;
             if (cooldownSkill6Timer >= cooldownSkill6)
@@ -344,12 +368,14 @@ public class IABoss : MonoBehaviour
                 waitIndicationSkill6Timer += Time.deltaTime;
                 if (waitIndicationSkill6Timer >= waitIndicationSkill5)
                 {
+                    isDashing = true;
                     Destroy(indic6);
                     transform.localRotation = Quaternion.AngleAxis(truc6, Vector3.forward);
                     dureeDashTimer += Time.deltaTime;
                     transform.position = new Vector3(transform.position.x + direction6.x * speedDash, transform.position.y + direction6.y * speedDash, 0);
                     if (dureeDashTimer >= dureeDash)
                     {
+                        isDashing = false;
                         waitIndicationSkill6Timer = 0;
                         isAttackingSkill6 = false;
                         transform.localRotation = new Quaternion(0, 0, 0, 0);
@@ -360,7 +386,7 @@ public class IABoss : MonoBehaviour
             }
         }
 
-        if (gotBouclier) // Skill 7
+        if (triggerAttackBoss[3] || gotBouclier) // Skill 7
         {
             cooldownSkill7Timer += Time.deltaTime;
             if (cooldownSkill7Timer >= cooldownSkill7)

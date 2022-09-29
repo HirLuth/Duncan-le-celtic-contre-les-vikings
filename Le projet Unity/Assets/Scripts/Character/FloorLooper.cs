@@ -5,6 +5,7 @@ using UnityEngine;
 public class FloorLooper : MonoBehaviour
 {
     [SerializeField] private Transform floor;
+    [SerializeField] private SpriteRenderer self;
     private float _floorHeight;
     private float _floorWidth;
     private Vector3 _currentPos;
@@ -12,8 +13,8 @@ public class FloorLooper : MonoBehaviour
 
     void Start()
     {
-        _floorHeight = floor.lossyScale.y;
-        _floorWidth = floor.lossyScale.x;
+        _floorHeight = 40;
+        _floorWidth = 40;
         _lastPos = CharacterController.instance.transform.position;
     }
     
