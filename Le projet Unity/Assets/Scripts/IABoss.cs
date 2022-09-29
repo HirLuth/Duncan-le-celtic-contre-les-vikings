@@ -325,7 +325,6 @@ public class IABoss : MonoBehaviour
         if (currentPosition.y>cameraHalfHeight+outOfBoundOffSet||currentPosition.y<-cameraHalfHeight-outOfBoundOffSet)
         {
             var distancePlayer = currentPosition - playerPosition;
-            Debug.Log(distancePlayer);
             transform.position.Set(currentPosition.x,currentPosition.y-2*distancePlayer.y,0);
         }
     }

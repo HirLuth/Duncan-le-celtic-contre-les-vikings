@@ -5,10 +5,13 @@ using Random = UnityEngine.Random;
 
 public class SpawnManager : MonoBehaviour
 {
+    [SerializeField] private GameObject bossFight;
     [SerializeField] private float spawnOffsetFromCamera;
     [SerializeField] private int numberOfMonstersInWave;
+    [SerializeField] private int monsterWaveLimit;
     [SerializeField] private float delayBetweenWavesInMinutes;
     [SerializeField] private float delayBetweenSpawnsInSeconds;
+    [SerializeField] private float startMinuteOfBossFight;
     [Header("MonsterStatAugment")]
     [SerializeField] private GameObject monster;
     [SerializeField] private int damageAugmentationBetweenWaves;
@@ -44,11 +47,18 @@ public class SpawnManager : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (_timer > startMinuteOfBossFight * 60)
+        {
+            StartBossFight();
+        }
+        
         _timer += Time.deltaTime;
         if (_timer > (_nextWave+1) * delayBetweenWavesInMinutes * 60)
         {
             ChangeMonsterColor();
-            for (var i = 0; i < numberOfMonstersInWave*(_nextWave+1); i++)
+            var monsterToSpawn = numberOfMonstersInWave * (_nextWave + 1);
+            if (monsterToSpawn > monsterWaveLimit) monsterToSpawn = monsterWaveLimit;
+            for (var i = 0; i < monsterToSpawn; i++)
             {
                 SummonMonsterOnRandomSpot();
             }
@@ -79,6 +89,16 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
+    private void StartBossFight()
+    {
+        bossFight.SetActive(true);
+        foreach (var t in monsterList)
+        {
+            Destroy(t);
+        }
+        this.enabled = false;
+    }
+
     private void SummonMonsterOnRandomSpot()
     {
         var rand = Random.Range(0, Mathf.PI * 2);
@@ -87,7 +107,7 @@ public class SpawnManager : MonoBehaviour
         _newPos.Set(Mathf.Cos(rand) * _spawnRange + cameraPos.x,y);
         var currentMonster = Instantiate(monster, _newPos, quaternion.identity);
         var monsterStat = currentMonster.GetComponent<IAMonstre1>();
-        monsterStat.health += _nextWave * healthAugmentationBetweenWaves;
+        monsterStat.health += _nextWave * _nextWave * healthAugmentationBetweenWaves;
         monsterStat.Damages += _nextWave * damageAugmentationBetweenWaves;
         monsterStat.speed += _nextWave * speedAugmentationBetweenWaves;
         
@@ -104,7 +124,7 @@ public class SpawnManager : MonoBehaviour
         _newPos.Set(Mathf.Cos(rand) * _spawnRange + cameraPos.x,y);
         var currentMonster = Instantiate(specialMonster, _newPos, quaternion.identity);
         var monsterStat = currentMonster.GetComponent<IAMonstre1>();
-        monsterStat.health += _nextWave * specialMonsterHealthAugment;
+        monsterStat.health += _nextWave * _nextWave * specialMonsterHealthAugment;
         monsterStat.Damages += _nextWave * specialMonsterDamageAugment;
         monsterStat.speed += _nextWave * specialMonsterSpeedAugment;
         
