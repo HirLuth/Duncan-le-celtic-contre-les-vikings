@@ -21,7 +21,10 @@ public class IAMonstre1 : MonoBehaviour
     public bool specialMonster;
     public GameObject coffre;
     public GameObject textDamagePlayer;
-    
+
+    private float _cameraHalfHeight;
+    private float _cameraHalfWidth;
+    private bool _tpOnCooldown;
 
     //public static IAMonstre1 instance; 
         
@@ -33,6 +36,9 @@ public class IAMonstre1 : MonoBehaviour
         player = CharacterController.instance.gameObject;
         ListeMonstres.instance.ennemyList.Add(gameObject);
         rb = gameObject.GetComponent<Rigidbody2D>();
+        var refCamera = CameraController.instance.camera;
+        _cameraHalfHeight = refCamera.orthographicSize;
+        _cameraHalfWidth = refCamera.aspect * refCamera.orthographicSize;
     }
 
     private void Update()
@@ -141,23 +147,28 @@ public class IAMonstre1 : MonoBehaviour
 
     private void CheckIfInBound()
     {
-        var refCamera = CameraController.instance.camera;
-        var cameraHalfHeight = refCamera.orthographicSize;
-        var cameraHalfWidth = refCamera.aspect * refCamera.orthographicSize;
+        if (_tpOnCooldown) return;
         var currentPosition = transform.position;
         var playerPosition = CharacterController.instance.transform.position;
-        if (currentPosition.x>cameraHalfWidth+outOfBoundOffSet||currentPosition.x<-cameraHalfWidth-outOfBoundOffSet)
+        var distancePlayer = currentPosition - playerPosition;
+        if (distancePlayer.x>_cameraHalfWidth+outOfBoundOffSet||distancePlayer.x<-_cameraHalfWidth-outOfBoundOffSet)
         {
-            var distancePlayer = currentPosition - playerPosition;
-            Debug.Log(distancePlayer);
-            transform.position.Set(currentPosition.x-2*distancePlayer.x,currentPosition.y,0);
+            transform.position = new Vector3(currentPosition.x-(2*distancePlayer.x),currentPosition.y,0);
+            StartCoroutine(TpCooldown());
         }
-        if (currentPosition.y>cameraHalfHeight+outOfBoundOffSet||currentPosition.y<-cameraHalfHeight-outOfBoundOffSet)
+        if (distancePlayer.y>_cameraHalfHeight+outOfBoundOffSet||distancePlayer.y<-_cameraHalfHeight-outOfBoundOffSet)
         {
-            var distancePlayer = currentPosition - playerPosition;
-            Debug.Log(distancePlayer);
-            transform.position.Set(currentPosition.x,currentPosition.y-2*distancePlayer.y,0);
+            transform.position = new Vector3(currentPosition.x,currentPosition.y-(2*distancePlayer.y),0);
+            StartCoroutine(TpCooldown());
         }
+    }
+
+    private IEnumerator TpCooldown()
+    {
+        _tpOnCooldown = true;
+        yield return new WaitForSeconds(4);
+        _tpOnCooldown = false;
+        yield return null;
     }
 } 
 
