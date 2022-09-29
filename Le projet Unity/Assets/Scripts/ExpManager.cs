@@ -38,7 +38,8 @@ public class ExpManager : MonoBehaviour
     {
         for (int i = 0; i <= soulAmount; i++)
         {
-            Instantiate(expPoint, ennemyPos, Quaternion.Euler(0,0,0));
+            GameObject exp = Instantiate(expPoint, new Vector2(999,999), Quaternion.Euler(0,0,0));
+            exp.transform.position = ennemyPos;
         }
     }
 

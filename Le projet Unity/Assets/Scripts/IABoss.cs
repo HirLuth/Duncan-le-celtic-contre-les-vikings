@@ -131,7 +131,7 @@ public class IABoss : MonoBehaviour
         playerSp = CharacterController.instance.GetComponent<SpriteRenderer>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (layerEmpty.transform.position.y > player.transform.position.y)
         {

@@ -62,6 +62,68 @@ Transform:
   m_Father: {fileID: 8936841671618602812}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7174391858578364769
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 903856454134268886}
+  m_Layer: 0
+  m_Name: LayerBoss
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &903856454134268886
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7174391858578364769}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.31, y: -3.46, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8936841671618602812}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8233960252807798750
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6729051237091167155}
+  m_Layer: 0
+  m_Name: Fireball launcher
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6729051237091167155
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8233960252807798750}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6, y: 2.12, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8936841671618602812}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8936841671618602811
 GameObject:
   m_ObjectHideFlags: 0
@@ -74,6 +136,7 @@ GameObject:
   - component: {fileID: 8936841671618602813}
   - component: {fileID: 8936841671618602810}
   - component: {fileID: 601156465}
+  - component: {fileID: 347986078388372968}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Boss
@@ -95,6 +158,8 @@ Transform:
   m_Children:
   - {fileID: 1967692364}
   - {fileID: 367808458}
+  - {fileID: 6729051237091167155}
+  - {fileID: 903856454134268886}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -138,7 +203,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: ed026983bff7af947a94dd4368e508a4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -172,7 +237,8 @@ MonoBehaviour:
   textDamagePlayer: {fileID: 752161814499140571, guid: 512bdec18bb4fd9419dc80d210eb49f3, type: 3}
   bossFight: 0
   layerEmpty: {fileID: 367808457}
-  sp: {fileID: 0}
+  playerSp: {fileID: 0}
+  triggerAttackBoss: 00000000000000
   gotSword: 0
   cooldownSkill1Timer: 0
   cooldownSkill1: 35
@@ -201,22 +267,56 @@ MonoBehaviour:
   waitIndicationSkill4Timer: 0
   gotLivre: 0
   cooldownSkill5Timer: 0
-  cooldownSkill5: 5
+  cooldownSkill5: 20
   fireball: {fileID: 2660005717698243863, guid: 7b70c87764a91d844812e4b05a438a2d, type: 3}
   launcher: {fileID: 1967692363}
   waitIndicationSkill5: 2
   waitIndicationSkill5Timer: 0
   gotSpear: 0
+  isDashing: 0
   cooldownSkill6Timer: 0
-  cooldownSkill6: 10
+  cooldownSkill6: 5
   waitIndicationSkill6: 2
   waitIndicationSkill6Timer: 0
   dureeDashTimer: 0
-  dureeDash: 0.5
-  speedDash: 0.01
-  indication6: {fileID: 0}
+  dureeDash: 0.7
+  speedDash: 0.8
+  indication6: {fileID: 2307739691690069110, guid: a57ae45812d1a644781eabac379eb1b4, type: 3}
+  gotBouclier: 0
+  cooldownSkill7Timer: 0
+  cooldownSkill7: 5
+  waitIndicationSkill7: 2
+  waitIndicationSkill7Timer: 0
+  pic7: {fileID: 2786256702999947869, guid: f869cff9e755ab94f8a1718d304f68bd, type: 3}
+  radius: 10
   health: 9999999
 --- !u!61 &601156465
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8936841671618602811}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.08359909, y: -1.4894555}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.35398123, y: 0.46805835}
+    oldSize: {x: 12.8, y: 12.8}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.9538383, y: 5.1743264}
+  m_EdgeRadius: 0
+--- !u!61 &347986078388372968
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
