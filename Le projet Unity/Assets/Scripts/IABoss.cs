@@ -104,8 +104,7 @@ public class IABoss : MonoBehaviour
     public float waitIndicationSkill7;
     public float waitIndicationSkill7Timer;
     public GameObject pic7;
-    
-    
+    public float radius;
 
 
     //public static IAMonstre1 instance; 
@@ -272,19 +271,19 @@ public class IABoss : MonoBehaviour
                         CharacterController.instance.VectorDepla.x * 9.5f,
                         CharacterController.instance.VectorDepla.y * 9.5f),
                     Quaternion.identity);
-                indic3 = indication;
+                indic4 = indication;
                 isAttackingSkill3 = true;
             }
 
-            if (isAttackingSkill3)
+            if (isAttackingSkill4)
             {
-                waitIndicationSkill3Timer += Time.deltaTime;
-                if (waitIndicationSkill3Timer >= waitIndicationSkill3)
+                waitIndicationSkill4Timer += Time.deltaTime;
+                if (waitIndicationSkill4Timer >= waitIndicationSkill3)
                 {
-                    Destroy(indic3);
-                    GameObject picObj = Instantiate(pic, indic3.transform.position, Quaternion.identity);
-                    waitIndicationSkill3Timer = 0;
-                    isAttackingSkill3 = false;
+                    Destroy(indic4);
+                    GameObject picObj = Instantiate(pic, indic4.transform.position, Quaternion.identity);
+                    waitIndicationSkill4Timer = 0;
+                    isAttackingSkill4 = false;
                 }
             }
         }
@@ -361,7 +360,7 @@ public class IABoss : MonoBehaviour
             }
         }
 
-       /* if (gotBouclier) // Skill 7
+        if (gotBouclier) // Skill 7
         {
             cooldownSkill7Timer += Time.deltaTime;
             if (cooldownSkill7Timer >= cooldownSkill7)
@@ -369,22 +368,33 @@ public class IABoss : MonoBehaviour
                 isMoving = false;
                 cooldownSkill7Timer = 0;
                 isAttackingSkill7 = true;
-
-
-                for (int i = 0; i < 10; i++)
+            }
+            
+            if (isAttackingSkill7)
+            {
+                waitIndicationSkill7Timer += Time.deltaTime;
+                if (waitIndicationSkill7Timer >= waitIndicationSkill7)
                 {
-                    var radians = 2 * MathF.PI / 10 * i;
-                    var vertical = MathF.Sin(radians);
-                    var horizontal = MathF.Cos(radians);
+                    for (int i = 0; i < 10; i++)
+                    {
+                        var radians = 2 * MathF.PI / 10 * i;
+                        
+                        var vertical = MathF.Sin(radians);
+                        var horizontal = MathF.Cos(radians);
 
-                    var spawnDir = new Vector3(horizontal, 0, vertical);
-                    var spawnPos = point + spawnDir * radius;
+                        var spawnDir = new Vector3(horizontal, vertical, 0);
+                        var spawnPos = transform.position + spawnDir * radius;
 
-                    var enemy = Instantiate(pic7, spawnPos, Quaternion.identity) as GameObject;
+                        var enemy = Instantiate(pic7, spawnPos, Quaternion.identity) as GameObject;
+                    }
+
+                    isMoving = true;
+                    isAttackingSkill7 = false;
+                    waitIndicationSkill7Timer = 0;
                 }
-            }    
-
-        }*/
+            }
+            
+        }
     }
 
     public void DamageText(int damageAmount)
