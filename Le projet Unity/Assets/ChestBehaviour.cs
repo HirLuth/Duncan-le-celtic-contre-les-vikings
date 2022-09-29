@@ -66,12 +66,36 @@ public class ChestBehaviour : MonoBehaviour
 
     IEnumerator ChoseItem()
     {
-        List<int> listForTirage = UIManager.instance.listPossibleWeapontoGet.ToList();
-        int weaponSorted = Random.Range(0, listForTirage.Count+1);
+        //List<int> listForTirage = UIManager.instance.listPossibleWeapontoGet.ToList();
+        int weaponSorted;
+        if (UIManager.instance.listPossibleWeapontoGet.Count == 0)
+        {
+            weaponSorted = 7;
+        }
+        else if (CharacterController.instance.health == CharacterController.instance.maxHealth)
+        {
+            weaponSorted = Random.Range(0, UIManager.instance.listPossibleWeapontoGet.Count-1);
+        }
+        else
+        {
+            weaponSorted = Random.Range(0, UIManager.instance.listPossibleWeapontoGet.Count*2);
+        }
+        
         yield return new WaitForSecondsRealtime(timeWaited);
-        menuIcon.GetComponent<Image>().sprite = spriteList[listForTirage[weaponSorted]];
-        isRolling = false;
-        EndChestEvent(listForTirage[weaponSorted]);
+        
+        if (weaponSorted >= UIManager.instance.listPossibleWeapontoGet.Count)
+        {
+            menuIcon.GetComponent<Image>().sprite = spriteList[7];
+            isRolling = false;
+            EndChestEvent(7);
+        }
+        else
+        {
+            menuIcon.GetComponent<Image>().sprite = spriteList[UIManager.instance.listPossibleWeapontoGet[weaponSorted]];
+            isRolling = false;
+            EndChestEvent(UIManager.instance.listPossibleWeapontoGet[weaponSorted]);
+        }
+        
     }
     
     public void EndChestEvent(int weaponDataNumber)
