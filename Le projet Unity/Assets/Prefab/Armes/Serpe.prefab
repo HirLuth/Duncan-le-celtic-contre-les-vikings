@@ -133,7 +133,7 @@ MonoBehaviour:
   sickleProjectile: {fileID: 6606692940164909540, guid: cc19ae155c26a7e418968f4db722a27f, type: 3}
   sickleMaxRange: 3
   timeToGetToMaxRange: 1
-  hitBeforeDestruction: 3
+  hitBeforeDestruction: 1
   damagePerLevel:
   - 0
   - 1
@@ -169,6 +169,7 @@ MonoBehaviour:
   - 1.4
   - 1.6
   - 2
+  hitBeforeDestructionPerLevel: 01000000020000000400000006000000080000000f000000
 --- !u!1 &8451592170569186778
 GameObject:
   m_ObjectHideFlags: 0
