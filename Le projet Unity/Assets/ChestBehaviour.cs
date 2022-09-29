@@ -52,7 +52,6 @@ public class ChestBehaviour : MonoBehaviour
         if (isRolling == true)
         {
             StartCoroutine(rollSprite());
-            Debug.Log(spriteActuel);
         }
     }
 

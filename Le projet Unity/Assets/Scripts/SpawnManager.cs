@@ -10,7 +10,6 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private float spawnOffsetFromCamera;
     [SerializeField] private int numberOfMonstersInWave;
     [SerializeField] private float delayBetweenWavesInMinutes;
-    [SerializeField] private int numberOfMonstersInSpawn;
     [SerializeField] private float delayBetweenSpawnsInSeconds;
     [Header("MonsterStatAugment")]
     [SerializeField] private GameObject monster;
@@ -62,7 +61,7 @@ public class SpawnManager : MonoBehaviour
         {
             if (_timer > (_nextSpawn+1) * delayBetweenSpawnsInSeconds)
             {
-                for (var i = 0; i < numberOfMonstersInSpawn; i++)
+                for (var i = 0; i < _nextWave+1; i++)
                 {
                     SummonMonsterOnRandomSpot();
                 }
@@ -86,7 +85,8 @@ public class SpawnManager : MonoBehaviour
     {
         var rand = Random.Range(0, Mathf.PI * 2);
         var cameraPos = CameraController.instance.transform.position;
-        _newPos.Set(Mathf.Cos(rand) * _spawnRange + cameraPos.x, Mathf.Sin(rand) * _spawnRange + cameraPos.y);
+        var y = Mathf.Clamp(Mathf.Sin(rand)*_spawnRange+cameraPos.y,-_halfHeightCamera-spawnOffsetFromCamera+cameraPos.y,_halfHeightCamera+spawnOffsetFromCamera+cameraPos.y);
+        _newPos.Set(Mathf.Cos(rand) * _spawnRange + cameraPos.x,y);
         var currentMonster = Instantiate(monster, _newPos, quaternion.identity);
         var monsterStat = currentMonster.GetComponent<IAMonstre1>();
         monsterStat.health += _nextWave * healthAugmentationBetweenWaves;
@@ -101,7 +101,9 @@ public class SpawnManager : MonoBehaviour
     {
         var rand = Random.Range(0, Mathf.PI * 2);
         var cameraPos = CameraController.instance.transform.position;
-        _newPos.Set(Mathf.Cos(rand) * _spawnRange + cameraPos.x, Mathf.Sin(rand) * _spawnRange + cameraPos.y);
+        var y = Mathf.Clamp(Mathf.Sin(rand)*_spawnRange+cameraPos.y,
+            -_halfHeightCamera-spawnOffsetFromCamera+cameraPos.y,_halfHeightCamera+spawnOffsetFromCamera+cameraPos.y);
+        _newPos.Set(Mathf.Cos(rand) * _spawnRange + cameraPos.x,y);
         var currentMonster = Instantiate(specialMonster, _newPos, quaternion.identity);
         var monsterStat = currentMonster.GetComponent<IAMonstre1>();
         monsterStat.health += _nextWave * specialMonsterHealthAugment;

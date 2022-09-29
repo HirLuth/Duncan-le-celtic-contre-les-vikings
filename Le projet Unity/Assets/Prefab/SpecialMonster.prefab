@@ -124,7 +124,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9e3bf8190b058f42843fb6b09e60233, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outOfBoundOffSet: 0
+  outOfBoundOffSet: 10
+  monsterXp: 1
+  specialMonsterXp: 5
   player: {fileID: 0}
   speed: 3
   colldownDmg: 0.1

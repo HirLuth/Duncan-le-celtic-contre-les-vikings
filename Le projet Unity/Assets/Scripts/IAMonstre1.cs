@@ -8,6 +8,8 @@ using Random = UnityEngine.Random;
 public class IAMonstre1 : MonoBehaviour
 {
     [SerializeField] private float outOfBoundOffSet;
+    [SerializeField] private int monsterXp;
+    [SerializeField] private int specialMonsterXp;
     [Header("Attaque")]
     public GameObject player;
     public float speed;
@@ -113,12 +115,12 @@ public class IAMonstre1 : MonoBehaviour
         {
             if (specialMonster)
             {
-                ExpManager.instance.CreateExp(transform.position,Random.Range(1,3));
+                ExpManager.instance.CreateExp(transform.position,specialMonsterXp);
                 DropCoffre();
             }
             else
             {
-                ExpManager.instance.CreateExp(transform.position,Random.Range(5,3));
+                ExpManager.instance.CreateExp(transform.position,monsterXp);
             }
             ListeMonstres.instance.ennemyList.Remove(gameObject);
             Destroy(gameObject);
