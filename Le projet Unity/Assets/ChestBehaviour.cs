@@ -67,7 +67,7 @@ public class ChestBehaviour : MonoBehaviour
     IEnumerator ChoseItem()
     {
         List<int> listForTirage;
-        int weaponSorted = UnityEngine.Random.Range(1, 8/*listForTirage.Count*/);
+        int weaponSorted = UnityEngine.Random.Range(1, 13);
         yield return new WaitForSecondsRealtime(timeWaited);
         menuIcon.GetComponent<Image>().sprite = spriteList[weaponSorted-1];
         isRolling = false;
@@ -76,7 +76,7 @@ public class ChestBehaviour : MonoBehaviour
     
     public void EndChestEvent(int weaponDataNumber)
     {
-        if (weaponDataNumber == 7)
+        if (weaponDataNumber >= 7)
         {
             CharacterController.instance.health += healthHealed;
             HealthBar.instance.SetHealth(CharacterController.instance.health);

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ExpManager : MonoBehaviour
@@ -8,6 +9,8 @@ public class ExpManager : MonoBehaviour
     public GameObject expPoint;
     public int maxExpAddPerLevel;
     public static ExpManager instance;
+    public GameObject textLevel;
+    public int level;
     
     
     void Awake()
@@ -22,10 +25,12 @@ public class ExpManager : MonoBehaviour
     {
         if (PlayerStat.instance.currentExp >= PlayerStat.instance.requiredExp) // LEVEL UP
         {
+            level++;
             PlayerStat.instance.level++;
             PlayerStat.instance.currentExp = 0;
             PlayerStat.instance.requiredExp += maxExpAddPerLevel;
             UIManager.instance.LevelUpEvent();
+            //textLevel.GetComponent<TextMeshPro>().SetText("Lvl." + level);
         }
     }
 
