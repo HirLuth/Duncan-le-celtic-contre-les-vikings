@@ -18,6 +18,8 @@ public class IABoss : MonoBehaviour
     private Rigidbody2D rb;
     public GameObject textDamage;
     public GameObject textDamagePlayer;
+    public bool bossFight;
+    public GameObject layerEmpty;
 
     [Header("Skill1 - TP")] 
     public bool gotSword;
@@ -72,6 +74,10 @@ public class IABoss : MonoBehaviour
     private Vector2 truc5;
     private GameObject indic5;
     private bool isAttackingSkill5;
+    public GameObject launcher;
+    public SpriteRenderer sp;
+    public float waitIndicationSkill5;
+    public float waitIndicationSkill5Timer;
 
 
     //public static IAMonstre1 instance; 
@@ -84,10 +90,20 @@ public class IABoss : MonoBehaviour
         player = CharacterController.instance.gameObject;
         ListeMonstres.instance.ennemyList.Add(gameObject);
         rb = gameObject.GetComponent<Rigidbody2D>();
+        sp = gameObject.GetComponent<SpriteRenderer>();
     }
 
     private void Update()
     {
+        if (layerEmpty.transform.position.y > player.transform.position.y)
+        {
+            sp.sortingOrder = 0;
+        }
+        else
+        {
+           sp.sortingOrder = 2;
+        }
+        
         CheckIfInBound();
         
         if (CharacterController.instance.transform.position.x > transform.position.x)
@@ -137,7 +153,7 @@ public class IABoss : MonoBehaviour
             if (cooldownSkill1Timer >= cooldownSkill1)
             {
                 gameObject.GetComponent<SpriteRenderer>().enabled = false;
-                gameObject.GetComponent<PolygonCollider2D>().enabled = false;
+                gameObject.GetComponent<BoxCollider2D>().enabled = false;
                 isMoving = false;
                 cooldownSkill1Timer = 0;
                 GameObject indication = Instantiate(indicateurSkill1, CharacterController.instance.transform.position,
@@ -155,7 +171,7 @@ public class IABoss : MonoBehaviour
                 {
                     Destroy(indic);
                     gameObject.GetComponent<SpriteRenderer>().enabled = true;
-                    gameObject.GetComponent<PolygonCollider2D>().enabled = true;
+                    gameObject.GetComponent<BoxCollider2D>().enabled = true;
                     isMoving = true;
                     transform.position = truc1;
                     waitIndicationSkill1Timer = 0;
@@ -240,24 +256,28 @@ public class IABoss : MonoBehaviour
         
         if (gotLivre) // Skill 5
         {
-            
             cooldownSkill5Timer += Time.deltaTime;
             if (cooldownSkill5Timer >= cooldownSkill5)
             {
+                isMoving = false;
                 cooldownSkill5Timer = 0;
-                GameObject fireballObj = Instantiate(fireball, transform.position + new Vector3(3,2.5f), Quaternion.identity);
+                GameObject fireballObj = Instantiate(fireball, launcher.transform.position, Quaternion.identity);
                 Vector2 dir = new Vector2(CharacterController.instance.transform.position.x - fireballObj.transform.position.x,
                     CharacterController.instance.transform.position.y - fireballObj.transform.position.y);
                 float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-                //fireballObj.transform.localRotation = Quaternion.AngleAxis(angle,Vector3.right);
+                fireballObj.transform.localRotation = Quaternion.AngleAxis(angle,Vector3.forward);
+                fireballObj.GetComponent<FirballBehaviour>().direction = dir;
             }
         }
     }
     
     public void DamageText(int damageAmount)
     {
-        Instantiate(textDamage, new Vector3(transform.position.x,transform.position.y + 1,-5), Quaternion.identity);
-        textDamage.GetComponentInChildren<TextMeshPro>().SetText(damageAmount.ToString());
+        if (bossFight)
+        {
+            Instantiate(textDamage, new Vector3(transform.position.x,transform.position.y + 1,-5), Quaternion.identity);
+            textDamage.GetComponentInChildren<TextMeshPro>().SetText(damageAmount.ToString());
+        }
     }
     
 

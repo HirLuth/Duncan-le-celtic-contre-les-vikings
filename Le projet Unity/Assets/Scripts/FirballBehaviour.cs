@@ -12,17 +12,19 @@ public class FirballBehaviour : MonoBehaviour
     private Rigidbody2D rb;
     public GameObject player;
     public GameObject textDamagePlayer;
+    public Vector2 direction;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindWithTag("Player");
+        direction.Normalize();
     }
 
-    // Update is called once per frame
+   
     void Update()
     {
-        transform.position += transform.forward * Time.deltaTime * speed;
+        transform.position = new Vector3(transform.position.x + direction.x * speed, transform.position.y + direction.y * speed, 0);
     }
 
     private void OnTriggerEnter2D(Collider2D col)

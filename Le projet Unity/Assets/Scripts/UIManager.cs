@@ -35,7 +35,7 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-       LevelUpEvent();
+       StartEvent();
     }
 
     public void LevelUpEvent()
@@ -48,6 +48,26 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 0;
         List<int> listForTirage;
         listForTirage = listPossibleWeapontoGet.ToList();
+        for (int i = 0; i < propositions.Count; i++)
+        {
+            int weaponSorted = listForTirage[Random.Range(0, listForTirage.Count)];
+            listForTirage.Remove(weaponSorted);
+            propositions[i].SetUpApparition((int)globalStats.listBaseStats[weaponSorted].weaponType,
+                globalStats.listBaseStats[weaponSorted].nameInMenus,
+                globalStats.listBaseStats[weaponSorted].description,
+                globalStats.listBaseStats[weaponSorted].descritpionLevelUp,
+                globalStats.listBaseStats[weaponSorted].sprite);
+            propositions[i].weaponNumberAssociated = weaponSorted;
+        }
+    }
+
+    public void StartEvent()
+    {
+        levelUpMenu.SetActive(true);
+        Time.timeScale = 0;
+        List<int> listForTirage;
+        listForTirage = listPossibleWeapontoGet.ToList();
+        listForTirage.Remove(3);
         for (int i = 0; i < propositions.Count; i++)
         {
             int weaponSorted = listForTirage[Random.Range(0, listForTirage.Count)];
