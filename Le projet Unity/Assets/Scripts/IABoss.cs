@@ -19,6 +19,7 @@ public class IABoss : MonoBehaviour
     public GameObject textDamage;
     public GameObject textDamagePlayer;
     public bool bossFight;
+    public GameObject layerEmpty;
 
     [Header("Skill1 - TP")] 
     public bool gotSword;
@@ -74,6 +75,9 @@ public class IABoss : MonoBehaviour
     private GameObject indic5;
     private bool isAttackingSkill5;
     public GameObject launcher;
+    public SpriteRenderer sp;
+    public float waitIndicationSkill5;
+    public float waitIndicationSkill5Timer;
 
 
     //public static IAMonstre1 instance; 
@@ -86,10 +90,20 @@ public class IABoss : MonoBehaviour
         player = CharacterController.instance.gameObject;
         ListeMonstres.instance.ennemyList.Add(gameObject);
         rb = gameObject.GetComponent<Rigidbody2D>();
+        sp = gameObject.GetComponent<SpriteRenderer>();
     }
 
     private void Update()
     {
+        if (layerEmpty.transform.position.y > player.transform.position.y)
+        {
+            sp.sortingOrder = 0;
+        }
+        else
+        {
+           sp.sortingOrder = 2;
+        }
+        
         CheckIfInBound();
         
         if (CharacterController.instance.transform.position.x > transform.position.x)
@@ -242,10 +256,10 @@ public class IABoss : MonoBehaviour
         
         if (gotLivre) // Skill 5
         {
-            
             cooldownSkill5Timer += Time.deltaTime;
             if (cooldownSkill5Timer >= cooldownSkill5)
             {
+                isMoving = false;
                 cooldownSkill5Timer = 0;
                 GameObject fireballObj = Instantiate(fireball, launcher.transform.position, Quaternion.identity);
                 Vector2 dir = new Vector2(CharacterController.instance.transform.position.x - fireballObj.transform.position.x,
