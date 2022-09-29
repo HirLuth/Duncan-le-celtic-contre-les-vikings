@@ -134,20 +134,26 @@ MonoBehaviour:
   sprayAngle: 30
   numberOfQuarter: 5
   timeBetweenPaper: 0.2
-  projectilesPerLevel: 000000000100000002000000030000000400000008000000
+  projectilesPerLevel: 000000000100000002000000030000000400000004000000050000000600000008000000
   damagePerLevel:
   - 0
   - 1
   - 1.1
   - 1.2
   - 1.3
+  - 1.4
   - 1.5
+  - 1.6
+  - 2
   cooldownPerLevel:
   - 1
   - 1
   - 1
   - 1.2
+  - 1.4
   - 1.6
+  - 1.8
+  - 1.9
   - 2
   speedPerLevel:
   - 0
@@ -155,13 +161,19 @@ MonoBehaviour:
   - 1.1
   - 1.2
   - 1.3
-  - 1.5
+  - 1.3
+  - 1.4
+  - 1.4
+  - 1.6
   timeEffectPerLevel:
   - 1
   - 1
   - 1.2
   - 1.4
+  - 1.5
   - 1.6
+  - 1.7
+  - 1.8
   - 2
   timeBetweenPaperPerLevel:
   - 1
@@ -169,6 +181,9 @@ MonoBehaviour:
   - 0.9
   - 0.8
   - 0.7
+  - 0.65
+  - 0.6
+  - 0.55
   - 0.5
 --- !u!1 &9073295343838500367
 GameObject:
