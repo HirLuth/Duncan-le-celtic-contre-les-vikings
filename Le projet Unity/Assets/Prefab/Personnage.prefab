@@ -88,7 +88,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8570036161589271078}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &1296261801
 CircleCollider2D:
@@ -225,8 +225,8 @@ Transform:
   m_Children:
   - {fileID: 8570036161223788092}
   - {fileID: 1230109286}
-  - {fileID: 1296261800}
   - {fileID: 6927748219695581345}
+  - {fileID: 1296261800}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -395,7 +395,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 9204214804121207892, guid: 1723fc50c76048a4995be21172b077b1, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9204214804121207892, guid: 1723fc50c76048a4995be21172b077b1, type: 3}
       propertyPath: m_LocalPosition.x

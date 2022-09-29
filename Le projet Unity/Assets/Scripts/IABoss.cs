@@ -20,6 +20,7 @@ public class IABoss : MonoBehaviour
     public GameObject textDamagePlayer;
     public bool bossFight;
     public GameObject layerEmpty;
+    public SpriteRenderer sp;
 
     [Header("Skill1 - TP")] 
     public bool gotSword;
@@ -75,9 +76,22 @@ public class IABoss : MonoBehaviour
     private GameObject indic5;
     private bool isAttackingSkill5;
     public GameObject launcher;
-    public SpriteRenderer sp;
     public float waitIndicationSkill5;
     public float waitIndicationSkill5Timer;
+    
+    [Header("Skill6 - Dash")] 
+    public bool gotSpear;
+    public float cooldownSkill6Timer;
+    public float cooldownSkill6;
+    private Vector2 truc6;
+    private GameObject indic6;
+    private bool isAttackingSkill6;
+    public float waitIndicationSkill6;
+    public float waitIndicationSkill6Timer;
+    public float dureeDashTimer;
+    public float dureeDash;
+    public float speedDash;
+    public GameObject indication6;
 
 
     //public static IAMonstre1 instance; 
@@ -101,44 +115,45 @@ public class IABoss : MonoBehaviour
         }
         else
         {
-           sp.sortingOrder = 2;
+            sp.sortingOrder = 2;
         }
-        
+
         CheckIfInBound();
-        
+
         if (CharacterController.instance.transform.position.x > transform.position.x)
         {
-            transform.localScale = new Vector3(0.5f,0.5f,0.5f);
+            transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
         }
         else
         {
-            transform.localScale = new Vector3(-0.5f,0.5f,0.5f);
-        }         
-            
-        
+            transform.localScale = new Vector3(-0.5f, 0.5f, 0.5f);
+        }
+
+
         Vector2 target = new Vector2(player.transform.position.x - transform.position.x,
             player.transform.position.y - transform.position.y);
 
         if (isMoving)
         {
-         transform.Translate(target.normalized*speed*Time.deltaTime,Space.Self);
+            transform.Translate(target.normalized * speed * Time.deltaTime, Space.Self);
         }
 
         if (isTouching)
         {
             timerDmg += Time.deltaTime;
             CharacterController.isTakingDamage = true;
-            
+
             if (timerDmg > colldownDmg)
             {
                 CharacterController.instance.TakeDamage(Damages);
-                GameObject text = Instantiate(textDamagePlayer, new Vector3(player.transform.position.x,player.transform.position.y + 1,-5), Quaternion.identity);
+                GameObject text = Instantiate(textDamagePlayer,
+                    new Vector3(player.transform.position.x, player.transform.position.y + 1, -5), Quaternion.identity);
                 textDamagePlayer.GetComponentInChildren<TextMeshPro>().SetText(Damages.ToString());
                 timerDmg = 0;
             }
         }
-        
-        
+
+
         if (isTouching == false)
         {
             CharacterController.isTakingDamage = false;
@@ -178,7 +193,7 @@ public class IABoss : MonoBehaviour
                     isAttackingSkill1 = false;
                 }
             }
-           
+
         }
 
         if (gotSerpe) // Skill 2
@@ -188,7 +203,10 @@ public class IABoss : MonoBehaviour
             {
                 isMoving = false;
                 cooldownSkill2Timer = 0;
-                GameObject murObj = Instantiate(mur, (Vector2)CharacterController.instance.transform.position + new Vector2(CharacterController.instance.VectorDepla.x * 9,CharacterController.instance.VectorDepla.y * 9), Quaternion.identity);
+                GameObject murObj = Instantiate(mur,
+                    (Vector2)CharacterController.instance.transform.position + new Vector2(
+                        CharacterController.instance.VectorDepla.x * 9, CharacterController.instance.VectorDepla.y * 9),
+                    Quaternion.identity);
                 isAttackingSkill2 = true;
             }
 
@@ -199,18 +217,21 @@ public class IABoss : MonoBehaviour
                 {
                     isMoving = true;
                     waitToMoveSkill2Timer = 0;
-                    isAttackingSkill2 = false;  
+                    isAttackingSkill2 = false;
                 }
             }
         }
-        
+
         if (gotBaton) // Skill 3
         {
             cooldownSkill3Timer += Time.deltaTime;
             if (cooldownSkill3Timer >= cooldownSkill3)
             {
                 cooldownSkill3Timer = 0;
-                GameObject indication = Instantiate(indicateurSkill3, (Vector2)CharacterController.instance.transform.position + new Vector2(CharacterController.instance.VectorDepla.x * 9.5f,CharacterController.instance.VectorDepla.y * 9.5f),
+                GameObject indication = Instantiate(indicateurSkill3,
+                    (Vector2)CharacterController.instance.transform.position + new Vector2(
+                        CharacterController.instance.VectorDepla.x * 9.5f,
+                        CharacterController.instance.VectorDepla.y * 9.5f),
                     Quaternion.identity);
                 indic3 = indication;
                 isAttackingSkill3 = true;
@@ -228,14 +249,17 @@ public class IABoss : MonoBehaviour
                 }
             }
         }
-        
+
         if (gotCarnyx) // Skill 4
         {
             cooldownSkill4Timer += Time.deltaTime;
             if (cooldownSkill4Timer >= cooldownSkill4)
             {
                 cooldownSkill4Timer = 0;
-                GameObject indication = Instantiate(indicateurSkill4, (Vector2)CharacterController.instance.transform.position + new Vector2(CharacterController.instance.VectorDepla.x * 9.5f,CharacterController.instance.VectorDepla.y * 9.5f),
+                GameObject indication = Instantiate(indicateurSkill4,
+                    (Vector2)CharacterController.instance.transform.position + new Vector2(
+                        CharacterController.instance.VectorDepla.x * 9.5f,
+                        CharacterController.instance.VectorDepla.y * 9.5f),
                     Quaternion.identity);
                 indic3 = indication;
                 isAttackingSkill3 = true;
@@ -253,7 +277,7 @@ public class IABoss : MonoBehaviour
                 }
             }
         }
-        
+
         if (gotLivre) // Skill 5
         {
             cooldownSkill5Timer += Time.deltaTime;
@@ -261,16 +285,68 @@ public class IABoss : MonoBehaviour
             {
                 isMoving = false;
                 cooldownSkill5Timer = 0;
-                GameObject fireballObj = Instantiate(fireball, launcher.transform.position, Quaternion.identity);
-                Vector2 dir = new Vector2(CharacterController.instance.transform.position.x - fireballObj.transform.position.x,
-                    CharacterController.instance.transform.position.y - fireballObj.transform.position.y);
-                float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-                fireballObj.transform.localRotation = Quaternion.AngleAxis(angle,Vector3.forward);
-                fireballObj.GetComponent<FirballBehaviour>().direction = dir;
+                isAttackingSkill5 = true;
+
+
+                //sp.sprite = SpriteOeilRouge;
+            }
+
+            if (isAttackingSkill5)
+            {
+                waitIndicationSkill5Timer += Time.deltaTime;
+                if (waitIndicationSkill5Timer >= waitIndicationSkill5)
+                {
+                    //sp.sprite = SpriteOeilPasRouge;
+                    GameObject fireballObj = Instantiate(fireball, launcher.transform.position, Quaternion.identity);
+                    Vector2 dir = new Vector2(
+                        CharacterController.instance.transform.position.x - fireballObj.transform.position.x,
+                        CharacterController.instance.transform.position.y - fireballObj.transform.position.y);
+                    float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                    fireballObj.transform.localRotation = Quaternion.AngleAxis(angle, Vector3.forward);
+                    fireballObj.GetComponent<FirballBehaviour>().direction = dir;
+                    isMoving = true;
+                    waitIndicationSkill5Timer = 0;
+                    isAttackingSkill5 = false;
+                }
+            }
+        }
+
+        if (gotSpear) // Skill 6
+        {
+            cooldownSkill6Timer += Time.deltaTime;
+            if (cooldownSkill6Timer >= cooldownSkill6)
+            {
+                isMoving = false;
+                cooldownSkill6Timer = 0;
+                isAttackingSkill6 = true;
+                GameObject indication = Instantiate(indication6, (Vector2)transform.position + new Vector2(5,0),Quaternion.identity);
+                indic6 = indication;
+            }
+
+            if (isAttackingSkill6)
+            {
+                waitIndicationSkill6Timer += Time.deltaTime;
+                if (waitIndicationSkill6Timer >= waitIndicationSkill5)
+                {
+                    Destroy(indic6);
+                    Vector2 dir = new Vector2(CharacterController.instance.transform.position.x - transform.position.x,
+                        CharacterController.instance.transform.position.y - transform.position.y);
+                    float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                    transform.localRotation = Quaternion.AngleAxis(angle, Vector3.forward);
+                    dureeDashTimer += Time.deltaTime;
+                    transform.position = new Vector3(transform.position.x + dir.x * speedDash, transform.position.y + dir.y * speedDash, 0);
+                    if (dureeDashTimer >= dureeDash)
+                    {
+                        transform.localRotation = new Quaternion(0, 0, 0, 0);
+                        waitIndicationSkill6Timer = 0;
+                        isMoving = true;
+                        dureeDashTimer = 0;
+                    }
+                }
             }
         }
     }
-    
+
     public void DamageText(int damageAmount)
     {
         if (bossFight)
