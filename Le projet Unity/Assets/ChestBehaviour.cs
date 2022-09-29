@@ -66,12 +66,12 @@ public class ChestBehaviour : MonoBehaviour
 
     IEnumerator ChoseItem()
     {
-        List<int> listForTirage;
-        int weaponSorted = UnityEngine.Random.Range(1, 8/*listForTirage.Count*/);
+        List<int> listForTirage = UIManager.instance.listPossibleWeapontoGet.ToList();
+        int weaponSorted = Random.Range(0, listForTirage.Count+1);
         yield return new WaitForSecondsRealtime(timeWaited);
-        menuIcon.GetComponent<Image>().sprite = spriteList[weaponSorted-1];
+        menuIcon.GetComponent<Image>().sprite = spriteList[listForTirage[weaponSorted]];
         isRolling = false;
-        EndChestEvent(weaponSorted-1);
+        EndChestEvent(listForTirage[weaponSorted]);
     }
     
     public void EndChestEvent(int weaponDataNumber)
@@ -88,7 +88,7 @@ public class ChestBehaviour : MonoBehaviour
                 Armes arme = UIManager.instance.possessedWeapons[i].GetComponent<Armes>();
                 if (weaponDataNumber == (int)arme.weaponType)
                 {
-                    arme.level += 1;
+                    UIManager.instance.LevelUpWeapon(arme);
                     arme.UpdateLevelIndicator();
                     StartCoroutine(WaitBeforeClose());
                     return;
