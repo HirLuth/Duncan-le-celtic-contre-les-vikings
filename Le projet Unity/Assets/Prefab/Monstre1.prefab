@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: bf7ea9da50c4654439df1f0ab02f07b9, type: 3}
-  m_Color: {r: 0.20999467, g: 0.31132078, b: 0.2313265, a: 1}
+  m_Color: {r: 0.29761428, g: 0.55169135, b: 0.6960132, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -124,12 +124,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9e3bf8190b058f42843fb6b09e60233, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outOfBoundOffSet: 5
+  outOfBoundOffSet: 10
+  monsterXp: 1
+  specialMonsterXp: 5
   player: {fileID: 0}
   speed: 3
   colldownDmg: 0.1
   Damages: 2
-  isMoving: 0
+  isMoving: 1
   textDamage: {fileID: 230525933050374625, guid: 609d98cba1634e0499f9567b4693d788, type: 3}
   specialMonster: 0
   coffre: {fileID: 0}

@@ -14,7 +14,7 @@ public class SummonedBook : MonoBehaviour
     public float paperSpeed;
     private float timer;
     private float timerPaper;
-    [SerializeField] private float timeBetweenPaper;
+    public float timeBetweenPaper;
     public float sprayAngle;
     public int numberOfQuarter;
     
