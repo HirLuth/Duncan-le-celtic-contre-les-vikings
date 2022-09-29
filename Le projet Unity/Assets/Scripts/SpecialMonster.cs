@@ -17,6 +17,7 @@ public class SpecialMonster : MonoBehaviour
     public GameObject textDamage;
     public static SpecialMonster instance;
     public GameObject coffre;
+    public bool isInExpRange;
     
         
     [Header("Defence")] 
@@ -71,7 +72,7 @@ public class SpecialMonster : MonoBehaviour
         if (health == 0)
         {
             DropCoffre();
-            ExpManager.instance.CreateExp(transform.position,Random.Range(1,3));
+            ExpManager.instance.CreateExp(transform.position,Random.Range(1,3),isInExpRange);
             Destroy(gameObject);
             ListeMonstres.instance.ennemyList.Remove(gameObject);
         }
@@ -104,6 +105,10 @@ public class SpecialMonster : MonoBehaviour
         {
             isTouching = true;
         }
+        if (col.gameObject.CompareTag("AttractExp"))
+        {
+            isInExpRange = true;
+        }
     }
     public void OnCollisionExit2D(Collision2D col)
     {
@@ -111,6 +116,10 @@ public class SpecialMonster : MonoBehaviour
         {
             isTouching = false;
             timerDmg = 0;
+        }
+        if (col.gameObject.CompareTag("AttractExp"))
+        {
+            isInExpRange = true;
         }
     }
 }

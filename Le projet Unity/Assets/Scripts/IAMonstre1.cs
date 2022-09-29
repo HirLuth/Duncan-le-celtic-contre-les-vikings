@@ -27,6 +27,7 @@ public class IAMonstre1 : MonoBehaviour
     private float _cameraHalfHeight;
     private float _cameraHalfWidth;
     private bool _tpOnCooldown;
+    private bool isInExpRange;
 
     //public static IAMonstre1 instance; 
         
@@ -118,12 +119,12 @@ public class IAMonstre1 : MonoBehaviour
         {
             if (specialMonster)
             {
-                ExpManager.instance.CreateExp(transform.position,specialMonsterXp);
+                ExpManager.instance.CreateExp(transform.position,specialMonsterXp,isInExpRange);
                 DropCoffre();
             }
             else
             {
-                ExpManager.instance.CreateExp(transform.position,monsterXp);
+                ExpManager.instance.CreateExp(transform.position,monsterXp,isInExpRange);
             }
             ListeMonstres.instance.ennemyList.Remove(gameObject);
             Destroy(gameObject);
@@ -136,6 +137,11 @@ public class IAMonstre1 : MonoBehaviour
         {
             isTouching = true;
         }
+        if (col.gameObject.CompareTag("AttractExp"))
+        {
+            isInExpRange = true;
+        }
+        
     }
     
     private void OnTriggerExit2D(Collider2D col)
@@ -144,6 +150,10 @@ public class IAMonstre1 : MonoBehaviour
         {
             isTouching = false;
             timerDmg = 0;
+        }
+        if (col.gameObject.CompareTag("AttractExp"))
+        {
+            isInExpRange = false;
         }
     }
 

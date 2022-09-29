@@ -436,12 +436,12 @@ public class IABoss : MonoBehaviour
     public void TakeDamage(int damageAmount)
     {
         health -= damageAmount;
-        if (health <= 0)
+        /*if (health <= 0)
         {
             ExpManager.instance.CreateExp(transform.position,Random.Range(1,3));
             ListeMonstres.instance.ennemyList.Remove(gameObject);
             Destroy(gameObject);
-        }
+        }*/
     }
 
     private void OnTriggerEnter2D(Collider2D col)

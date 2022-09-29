@@ -16,7 +16,7 @@ public class Exp : MonoBehaviour
     [SerializeField] private int xpValue;
     private float timeStamp;
     public Rigidbody2D rb;
-    private bool isAtracted;
+    public bool isAtracted;
 
     void Awake()
     {
