@@ -78,12 +78,14 @@ public class IABoss : MonoBehaviour
     public GameObject launcher;
     public float waitIndicationSkill5;
     public float waitIndicationSkill5Timer;
-    
+
     [Header("Skill6 - Dash")] 
+    public bool isDashing; 
     public bool gotSpear;
     public float cooldownSkill6Timer;
     public float cooldownSkill6;
-    private Vector2 truc6;
+    private float truc6;
+    private Vector2 direction6;
     private GameObject indic6;
     private bool isAttackingSkill6;
     public float waitIndicationSkill6;
@@ -124,9 +126,11 @@ public class IABoss : MonoBehaviour
         {
             transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
         }
-        else
+
+        if (isDashing)
         {
-            transform.localScale = new Vector3(-0.5f, 0.5f, 0.5f);
+            transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            transform.localRotation = Quaternion.Euler( transform.localRotation.x, transform.localRotation.x,0);
         }
 
 
@@ -319,8 +323,16 @@ public class IABoss : MonoBehaviour
                 isMoving = false;
                 cooldownSkill6Timer = 0;
                 isAttackingSkill6 = true;
-                GameObject indication = Instantiate(indication6, (Vector2)transform.position + new Vector2(5,0),Quaternion.identity);
+                GameObject indication = Instantiate(indication6, (Vector2)transform.position,Quaternion.identity);
+                indication.transform.localRotation = new Quaternion(CharacterController.instance.transform.position.x - indication.transform.position.x,
+                    CharacterController.instance.transform.position.y - indication.transform.position.y,
+                    CharacterController.instance.transform.position.z - indication.transform.position.z,0).normalized;
                 indic6 = indication;
+                Vector2 dir = new Vector2(CharacterController.instance.transform.position.x - transform.position.x,
+                    CharacterController.instance.transform.position.y - transform.position.y);
+                float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                truc6 = angle;
+                direction6 = dir;
             }
 
             if (isAttackingSkill6)
@@ -328,19 +340,19 @@ public class IABoss : MonoBehaviour
                 waitIndicationSkill6Timer += Time.deltaTime;
                 if (waitIndicationSkill6Timer >= waitIndicationSkill5)
                 {
+                    isDashing = true;
                     Destroy(indic6);
-                    Vector2 dir = new Vector2(CharacterController.instance.transform.position.x - transform.position.x,
-                        CharacterController.instance.transform.position.y - transform.position.y);
-                    float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-                    transform.localRotation = Quaternion.AngleAxis(angle, Vector3.forward);
+                    transform.localRotation = Quaternion.AngleAxis(truc6, Vector3.forward);
                     dureeDashTimer += Time.deltaTime;
-                    transform.position = new Vector3(transform.position.x + dir.x * speedDash, transform.position.y + dir.y * speedDash, 0);
+                    transform.position = new Vector3(transform.position.x + direction6.x * speedDash, transform.position.y + direction6.y * speedDash, 0);
                     if (dureeDashTimer >= dureeDash)
                     {
-                        transform.localRotation = new Quaternion(0, 0, 0, 0);
                         waitIndicationSkill6Timer = 0;
+                        isAttackingSkill6 = false;
+                        transform.localRotation = new Quaternion(0, 0, 0, 0);
                         isMoving = true;
                         dureeDashTimer = 0;
+                        isDashing = false;
                     }
                 }
             }
