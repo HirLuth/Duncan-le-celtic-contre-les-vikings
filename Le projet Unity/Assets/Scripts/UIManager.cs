@@ -19,6 +19,7 @@ public class UIManager : MonoBehaviour
     private bool proposeGigot;
     public GameObject chestMenu;
     public GameObject iconeMenu;
+    public int maxLevel;
 
 
     private void Awake()
@@ -115,7 +116,7 @@ public class UIManager : MonoBehaviour
     public void LevelUpWeapon(Armes weaponToLevelUp)
     {
         weaponToLevelUp.level += 1;
-        if (weaponToLevelUp.level == 5)
+        if (weaponToLevelUp.level == maxLevel)
         {
             for (int i = 0; i < listPossibleWeapontoGet.Count; i++)
             {
