@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Weapons.SpecificWeapon
@@ -6,12 +7,17 @@ namespace Weapons.SpecificWeapon
     {
         [SerializeField] private Armes armes;
         [SerializeField] private GameObject projectile;
+        [SerializeField] private List<int> projectilesPerLevel;
+        [SerializeField] private List<float> damagePerLevel;
+        [SerializeField] private List<float> coolDownPerLevel;
+        [SerializeField] private List<float> sizePerLevel;
+        [SerializeField] private List<float> timeEffectPerLevel;
         private float timer;
         
         void Update()
         {
             timer += Time.deltaTime;
-            if (timer >= armes.coolDown)
+            if (timer >= armes.coolDown*coolDownPerLevel[armes.level])
             {
                 SpawnRoots();
                 timer = 0;
@@ -20,12 +26,14 @@ namespace Weapons.SpecificWeapon
 
         private void SpawnRoots()
         {
-            for (int i = 0; i < armes.numberOfProjectile; i++)
+            for (int i = 0; i < armes.numberOfProjectile*projectilesPerLevel[armes.level]; i++)
             {
                 GameObject currentRoot = Instantiate(projectile);
                 currentRoot.transform.position = GetPosition();
-                currentRoot.GetComponent<Root>().size = armes.projectileSize;
-                currentRoot.GetComponent<Root>().damage = armes.damage;
+                Root currentRootScript = currentRoot.GetComponent<Root>();
+                currentRootScript.size = armes.projectileSize*sizePerLevel[armes.level];
+                currentRootScript.damage = Mathf.RoundToInt(armes.damage*damagePerLevel[armes.level]);
+                currentRootScript.timeToDisapear = armes.timeOfTheEffect * timeEffectPerLevel[armes.level];
             }
         }
 

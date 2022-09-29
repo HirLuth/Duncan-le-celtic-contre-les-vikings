@@ -9,7 +9,7 @@ public class Root : MonoBehaviour
     public int damage;
     public float size;
     private float timer;
-    [SerializeField] float timeToDisapear;
+    public float timeToDisapear;
     // Start is called before the first frame update
     void Start()
     {
