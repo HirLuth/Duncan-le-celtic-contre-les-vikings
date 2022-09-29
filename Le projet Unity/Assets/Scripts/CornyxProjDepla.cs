@@ -21,7 +21,7 @@ public class CornyxProjDepla : MonoBehaviour
     private bool stopAttack;
     private bool startAttack;
     public int nbDOT;
-     public float damage;
+     public int damage;
     public float timeToDestroy;
     
     void Start()
@@ -57,15 +57,15 @@ public class CornyxProjDepla : MonoBehaviour
 
                 if (tempsReloadHitTimer > tempsReloadHit && col.gameObject.tag == "Monstre")
                 {
-                    col.GetComponent<IAMonstre1>().TakeDamage(Armes.instance.damage);
-                    col.GetComponent<IAMonstre1>().DamageText(Armes.instance.damage);
+                    col.GetComponent<IAMonstre1>().TakeDamage(damage);
+                    col.GetComponent<IAMonstre1>().DamageText(damage);
                     tempsReloadHitTimer = 0;
                 }
                 
                 if (tempsReloadHitTimer > tempsReloadHit && col.gameObject.CompareTag("Boss"))
                 {
-                    col.gameObject.GetComponent<IABoss>().TakeDamage(Armes.instance.damage);
-                    col.gameObject.GetComponent<IABoss>().DamageText(Armes.instance.damage);
+                    col.gameObject.GetComponent<IABoss>().TakeDamage(damage);
+                    col.gameObject.GetComponent<IABoss>().DamageText(damage);
                 }
             }
         }
