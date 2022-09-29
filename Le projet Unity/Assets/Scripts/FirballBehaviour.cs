@@ -22,7 +22,7 @@ public class FirballBehaviour : MonoBehaviour
     }
 
    
-    void Update()
+    void FixedUpdate()
     {
         transform.position = new Vector3(transform.position.x + direction.x * speed, transform.position.y + direction.y * speed, 0);
     }

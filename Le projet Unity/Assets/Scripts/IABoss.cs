@@ -79,8 +79,7 @@ public class IABoss : MonoBehaviour
     public float waitIndicationSkill5;
     public float waitIndicationSkill5Timer;
 
-    [Header("Skill6 - Dash")] 
-    public bool isDashing; 
+    [Header("Skill6 - Dash")]
     public bool gotSpear;
     public float cooldownSkill6Timer;
     public float cooldownSkill6;
@@ -94,6 +93,19 @@ public class IABoss : MonoBehaviour
     public float dureeDash;
     public float speedDash;
     public GameObject indication6;
+    
+    [Header("Skill7 - AOE")] 
+    public bool gotBouclier;
+    public float cooldownSkill7Timer;
+    public float cooldownSkill7;
+    private Vector2 truc7;
+    private GameObject indic7;
+    private bool isAttackingSkill7;
+    public float waitIndicationSkill7;
+    public float waitIndicationSkill7Timer;
+    public GameObject pic7;
+    
+    
 
 
     //public static IAMonstre1 instance; 
@@ -126,12 +138,7 @@ public class IABoss : MonoBehaviour
         {
             transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
         }
-
-        if (isDashing)
-        {
-            transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-            transform.localRotation = Quaternion.Euler( transform.localRotation.x, transform.localRotation.x,0);
-        }
+        
 
 
         Vector2 target = new Vector2(player.transform.position.x - transform.position.x,
@@ -290,8 +297,6 @@ public class IABoss : MonoBehaviour
                 isMoving = false;
                 cooldownSkill5Timer = 0;
                 isAttackingSkill5 = true;
-
-
                 //sp.sprite = SpriteOeilRouge;
             }
 
@@ -323,14 +328,14 @@ public class IABoss : MonoBehaviour
                 isMoving = false;
                 cooldownSkill6Timer = 0;
                 isAttackingSkill6 = true;
-                GameObject indication = Instantiate(indication6, (Vector2)transform.position,Quaternion.identity);
-                indication.transform.localRotation = new Quaternion(CharacterController.instance.transform.position.x - indication.transform.position.x,
-                    CharacterController.instance.transform.position.y - indication.transform.position.y,
-                    CharacterController.instance.transform.position.z - indication.transform.position.z,0).normalized;
-                indic6 = indication;
                 Vector2 dir = new Vector2(CharacterController.instance.transform.position.x - transform.position.x,
-                    CharacterController.instance.transform.position.y - transform.position.y);
+                    CharacterController.instance.transform.position.y - transform.position.y).normalized;
                 float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                
+                GameObject indication = Instantiate(indication6, (Vector2)transform.position,Quaternion.identity);
+                indication.transform.localRotation = Quaternion.Euler(0, 0, angle);
+                    
+                indic6 = indication;
                 truc6 = angle;
                 direction6 = dir;
             }
@@ -340,7 +345,6 @@ public class IABoss : MonoBehaviour
                 waitIndicationSkill6Timer += Time.deltaTime;
                 if (waitIndicationSkill6Timer >= waitIndicationSkill5)
                 {
-                    isDashing = true;
                     Destroy(indic6);
                     transform.localRotation = Quaternion.AngleAxis(truc6, Vector3.forward);
                     dureeDashTimer += Time.deltaTime;
@@ -352,11 +356,35 @@ public class IABoss : MonoBehaviour
                         transform.localRotation = new Quaternion(0, 0, 0, 0);
                         isMoving = true;
                         dureeDashTimer = 0;
-                        isDashing = false;
                     }
                 }
             }
         }
+
+       /* if (gotBouclier) // Skill 7
+        {
+            cooldownSkill7Timer += Time.deltaTime;
+            if (cooldownSkill7Timer >= cooldownSkill7)
+            {
+                isMoving = false;
+                cooldownSkill7Timer = 0;
+                isAttackingSkill7 = true;
+
+
+                for (int i = 0; i < 10; i++)
+                {
+                    var radians = 2 * MathF.PI / 10 * i;
+                    var vertical = MathF.Sin(radians);
+                    var horizontal = MathF.Cos(radians);
+
+                    var spawnDir = new Vector3(horizontal, 0, vertical);
+                    var spawnPos = point + spawnDir * radius;
+
+                    var enemy = Instantiate(pic7, spawnPos, Quaternion.identity) as GameObject;
+                }
+            }    
+
+        }*/
     }
 
     public void DamageText(int damageAmount)
