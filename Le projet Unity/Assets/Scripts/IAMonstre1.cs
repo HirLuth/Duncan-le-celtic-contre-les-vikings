@@ -160,12 +160,12 @@ public class IAMonstre1 : MonoBehaviour
         var distancePlayer = currentPosition - playerPosition;
         if (distancePlayer.x>_cameraHalfWidth+outOfBoundOffSet||distancePlayer.x<-_cameraHalfWidth-outOfBoundOffSet)
         {
-            transform.position = new Vector3(currentPosition.x-(2*distancePlayer.x),currentPosition.y,0);
+            transform.position = new Vector3(currentPosition.x-(2*distancePlayer.x),currentPosition.y-(2*distancePlayer.y),0);
             StartCoroutine(TpCooldown());
         }
         if (distancePlayer.y>_cameraHalfHeight+outOfBoundOffSet||distancePlayer.y<-_cameraHalfHeight-outOfBoundOffSet)
         {
-            transform.position = new Vector3(currentPosition.x,currentPosition.y-(2*distancePlayer.y),0);
+            transform.position = new Vector3(currentPosition.x-(2*distancePlayer.x),currentPosition.y-(2*distancePlayer.y),0);
             StartCoroutine(TpCooldown());
         }
     }
