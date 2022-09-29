@@ -57,10 +57,10 @@ MonoBehaviour:
     isTransformed: 0
     damage: 1
     numberOfProjectile: 1
-    coolDown: 1
+    coolDown: 10
     projectileSize: 1
     projectileSpeed: 1
-    timeOfTheEffect: 1
+    timeOfTheEffect: 2
     sprite: {fileID: 21300000, guid: 6b9c20ff159473343ac81aa60c15e6ca, type: 3}
     nameInMenus: Shield
     description: 
@@ -94,12 +94,12 @@ MonoBehaviour:
   - weaponType: 6
     level: 1
     isTransformed: 0
-    damage: 5
+    damage: 4
     numberOfProjectile: 1
     coolDown: 4
     projectileSize: 1
     projectileSpeed: 1
-    timeOfTheEffect: 2
+    timeOfTheEffect: 1
     sprite: {fileID: 21300000, guid: 4e6597708d7d65c44aa3fb3b94088e7f, type: 3}
     nameInMenus: Carnyx
     description: Shoots a cloud of smoke in a random direction dealing continuous

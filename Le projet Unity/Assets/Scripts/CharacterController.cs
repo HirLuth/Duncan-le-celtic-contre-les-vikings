@@ -19,6 +19,9 @@ public class CharacterController : MonoBehaviour
  public static bool isTakingDamage;
  public List<float> listPositionDegree;
  public Vector2 VectorDepla;
+ public GameObject shield;
+ public bool shieldAvailable;
+ public bool shieldActivated;
 
     private void Awake()
     {
@@ -116,6 +119,17 @@ public class CharacterController : MonoBehaviour
 
     public void TakeDamage(int damageTaken)
     {
+        if (shieldAvailable)
+        {
+            shieldActivated = true;
+            shieldAvailable = false;
+            return;
+        }
+
+        if (shieldActivated)
+        {
+            return;
+        }
         health -= damageTaken;
         HealthBar.instance.SetHealth(health);
     }
@@ -135,5 +149,6 @@ public class CharacterController : MonoBehaviour
             Exp.instance.CollectExp(col.gameObject, 1);
         }
     }*/
+   
     
 }
