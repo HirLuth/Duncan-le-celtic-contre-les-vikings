@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Weapons.SpecificWeapon
 {
@@ -12,12 +14,23 @@ namespace Weapons.SpecificWeapon
         [SerializeField] private List<float> coolDownPerLevel;
         [SerializeField] private List<float> sizePerLevel;
         [SerializeField] private List<float> timeEffectPerLevel;
+        [SerializeField] public float coolDown;
         private float timer;
-        
+
+        private void Start()
+        {
+            coolDown = armes.coolDown;
+        }
+
         void Update()
         {
+            /*if (IABoss.instance.bossFight)
+            {
+                coolDown = coolDownBoss;
+            }*/
+            
             timer += Time.deltaTime;
-            if (timer >= armes.coolDown*coolDownPerLevel[armes.level])
+            if (timer >= coolDown*coolDownPerLevel[armes.level])
             {
                 SpawnRoots();
                 timer = 0;
@@ -26,7 +39,16 @@ namespace Weapons.SpecificWeapon
 
         private void SpawnRoots()
         {
-            for (int i = 0; i < armes.numberOfProjectile*projectilesPerLevel[armes.level]; i++)
+            int nombreprojectiles = 0;
+            if (IABoss.instance.bossFight)
+            {
+                nombreprojectiles = 1;
+            }
+            else
+            {
+                nombreprojectiles = armes.numberOfProjectile * projectilesPerLevel[armes.level];
+            }
+            for (int i = 0; i < nombreprojectiles; i++)
             {
                 GameObject currentRoot = Instantiate(projectile);
                 currentRoot.transform.position = GetPosition();

@@ -11,10 +11,15 @@ public class RockBehaviour : MonoBehaviour
     public GameObject textDamagePlayer;
     public GameObject player;
 
+    private void Awake()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
+
     private void Start()
     {
         Destroy(gameObject,timeToDestroy);
-        player = GameObject.FindGameObjectWithTag("Player");
+        
     }
 
     private void OnCollisionEnter2D(Collision2D col)
