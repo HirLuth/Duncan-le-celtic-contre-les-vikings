@@ -36,7 +36,7 @@ public class ExpManager : MonoBehaviour
 
     public void CreateExp(Vector3 ennemyPos, int soulAmount, bool isInExpRange)
     {
-        for (int i = 0; i <= soulAmount; i++)
+        for (int i = 0; i < soulAmount; i++)
         {
             GameObject exp = Instantiate(expPoint, new Vector2(999,999), Quaternion.Euler(0,0,0));
             exp.transform.position = ennemyPos;
