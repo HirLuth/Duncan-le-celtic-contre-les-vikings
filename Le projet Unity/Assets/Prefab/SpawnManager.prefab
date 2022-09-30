@@ -48,7 +48,7 @@ MonoBehaviour:
   spawnOffsetFromCamera: 3
   numberOfMonstersInWave: 20
   monsterWaveLimit: 120
-  wavesUntilSpecialMonster: 3
+  wavesUntilSpecialMonster: 1
   delayBetweenWavesInMinutes: 1
   delayBetweenSpawnsInSeconds: 2
   startMinuteOfBossFight: 20

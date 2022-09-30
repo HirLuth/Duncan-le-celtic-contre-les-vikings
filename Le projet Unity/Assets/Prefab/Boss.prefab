@@ -226,7 +226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd2807611ed64e84091115e2a18c2e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outOfBoundOffSet: 10
+  outOfBoundOffSet: 30
   player: {fileID: 0}
   speed: 3
   colldownDmg: 0.3
