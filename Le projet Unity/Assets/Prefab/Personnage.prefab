@@ -294,7 +294,7 @@ MonoBehaviour:
   MaxHealth: 0
   currentHealth: 0
   defense: 0
-  requiredExp: 10
+  requiredExp: 6
   currentExp: 0
   expModifier: 0
   moveSpeed: 0

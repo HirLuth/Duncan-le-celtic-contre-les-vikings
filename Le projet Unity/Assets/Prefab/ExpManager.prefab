@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expPoint: {fileID: 6172547269558392678, guid: 66541cabd4385bf478db7123585cd36d, type: 3}
-  maxExpAddPerLevel: 10
   textLevel: {fileID: 0}
   level: 1
+  startExp: 6
+  powerOfX: 1.4

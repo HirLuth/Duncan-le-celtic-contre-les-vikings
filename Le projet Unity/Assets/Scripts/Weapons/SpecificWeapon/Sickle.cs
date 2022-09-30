@@ -20,13 +20,14 @@ namespace Weapons.SpecificWeapon
         [SerializeField] private List<int> hitBeforeDestructionPerLevel;
 
         private float _timer;
-        private float _currentThrow;
+        private int _currentThrow;
         private Vector3 _newPos;
         
         private void Update()
         {
             _timer += Time.deltaTime;
-            if (_timer < _currentThrow * sickleStat.coolDown*coolDownPerLevel[sickleStat.level]) return;
+            if (_timer < sickleStat.coolDown*coolDownPerLevel[sickleStat.level]) return;
+            _timer = 0;
             var playerTransform = CharacterController.instance.transform;
             var sickle = Instantiate(sickleProjectile, playerTransform.position, quaternion.identity);
             sickle.transform.localScale *= sizePerLevel[sickleStat.level];
@@ -38,7 +39,6 @@ namespace Weapons.SpecificWeapon
             projectileScriptReference.sickleMaxRange = sickleMaxRange;
             projectileScriptReference.timeToGetToMaxRange = timeToGetToMaxRange;
             projectileScriptReference.hitBeforeDestruction = hitBeforeDestruction*hitBeforeDestructionPerLevel[sickleStat.level];
-            _currentThrow++;
         }
     }
 }

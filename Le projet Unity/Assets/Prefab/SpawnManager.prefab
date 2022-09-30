@@ -48,7 +48,7 @@ MonoBehaviour:
   spawnOffsetFromCamera: 3
   numberOfMonstersInWave: 20
   monsterWaveLimit: 120
-  wavesUntilSpecialMonster: 1
+  wavesUntilSpecialMonster: 2
   delayBetweenWavesInMinutes: 1
   delayBetweenSpawnsInSeconds: 2
   startMinuteOfBossFight: 20
@@ -58,7 +58,7 @@ MonoBehaviour:
   speedAugmentationBetweenWaves: 0
   specialMonster: {fileID: 153827186150623486, guid: 04cd9ff0c8bf1994abdcc3fd29fceee8, type: 3}
   specialMonsterDamageAugment: 3
-  specialMonsterHealthAugment: 50
+  specialMonsterHealthAugment: 75
   specialMonsterSpeedAugment: 0
   monsterList: []
   monsterClearOn: 1

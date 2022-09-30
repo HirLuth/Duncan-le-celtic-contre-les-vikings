@@ -7,10 +7,12 @@ using UnityEngine;
 public class ExpManager : MonoBehaviour
 {
     public GameObject expPoint;
-    public int maxExpAddPerLevel;
     public static ExpManager instance;
     public GameObject textLevel;
     public int level;
+    private float _currentBonus;
+    [SerializeField] private int startExp;
+    [SerializeField] private float powerOfX;
     
     
     void Awake()
@@ -21,6 +23,12 @@ public class ExpManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        _currentBonus = Mathf.Pow(startExp, (float)1 / level);
+        PlayerStat.instance.requiredExp = Mathf.RoundToInt(Mathf.Pow(level,1.2f)+_currentBonus);
+    }
+
     private void Update()
     {
         if (PlayerStat.instance.currentExp >= PlayerStat.instance.requiredExp) // LEVEL UP
@@ -28,7 +36,8 @@ public class ExpManager : MonoBehaviour
             level++;
             PlayerStat.instance.level++;
             PlayerStat.instance.currentExp = 0;
-            PlayerStat.instance.requiredExp += maxExpAddPerLevel;
+            _currentBonus += Mathf.Pow(startExp, (float)1 / level);
+            PlayerStat.instance.requiredExp = Mathf.RoundToInt(Mathf.Pow(level,powerOfX)+_currentBonus);
             UIManager.instance.LevelUpEvent();
             textLevel.GetComponent<TextMeshProUGUI>().SetText("Lvl. " + level);
         }
