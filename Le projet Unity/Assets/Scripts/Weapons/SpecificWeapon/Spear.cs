@@ -31,8 +31,8 @@ public class Spear : MonoBehaviour
                 , Quaternion.Euler(0, 0,  90 - CharacterController.instance.listPositionDegree[CharacterController.instance.lookingAt]));
             
             SpearProjectile projectileScriptReference = javelot.GetComponent<SpearProjectile>();
-            projectileScriptReference.speed = armes.projectileSpeed*speedPerLevel[armes.level]+Mathf.RoundToInt(ExpManager.instance.level/10);
-            projectileScriptReference.damage = Mathf.RoundToInt(armes.damage*damagePerLevel[armes.level]);
+            projectileScriptReference.speed = armes.projectileSpeed*speedPerLevel[armes.level];
+            projectileScriptReference.damage = Mathf.RoundToInt(armes.damage*damagePerLevel[armes.level]+Mathf.RoundToInt(ExpManager.instance.level/10f));
             projectileScriptReference.direction = Quaternion.AngleAxis(- CharacterController.instance.listPositionDegree[CharacterController.instance.lookingAt], Vector3.forward ) * Vector3.up;
         }
         
