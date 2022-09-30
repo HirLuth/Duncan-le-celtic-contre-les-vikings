@@ -25,9 +25,9 @@ public class Exp : MonoBehaviour
             instance = this;
         }
         
-        Vector2 explode = new Vector2(Random.Range(-forceProjection, forceProjection), Random.Range(-forceProjection, forceProjection));
+        /*Vector2 explode = new Vector2(Random.Range(-forceProjection, forceProjection), Random.Range(-forceProjection, forceProjection));
         rb.AddForce(explode, ForceMode2D.Impulse);
-        rb.drag = deceleration;
+        rb.drag = deceleration;*/
     }
     
     void Update()

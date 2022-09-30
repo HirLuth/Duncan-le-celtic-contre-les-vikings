@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 230525933050374624, guid: 609d98cba1634e0499f9567b4693d788, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 230525933050374624, guid: 609d98cba1634e0499f9567b4693d788, type: 3}
       propertyPath: m_LocalRotation.w
@@ -94,6 +94,10 @@ PrefabInstance:
     - target: {fileID: 230525933050374625, guid: 609d98cba1634e0499f9567b4693d788, type: 3}
       propertyPath: m_Name
       value: PoPUpDamageParentPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 3119902669384801353, guid: 609d98cba1634e0499f9567b4693d788, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4912880756194908380, guid: 609d98cba1634e0499f9567b4693d788, type: 3}
       propertyPath: m_fontColor.b

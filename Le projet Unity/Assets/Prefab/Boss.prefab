@@ -226,7 +226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd2807611ed64e84091115e2a18c2e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outOfBoundOffSet: 0
+  outOfBoundOffSet: 10
   player: {fileID: 0}
   speed: 3
   colldownDmg: 0.3
@@ -235,9 +235,14 @@ MonoBehaviour:
   textDamage: {fileID: 230525933050374625, guid: 609d98cba1634e0499f9567b4693d788, type: 3}
   textDamagePlayer: {fileID: 752161814499140571, guid: 512bdec18bb4fd9419dc80d210eb49f3, type: 3}
   bossFight: 0
+  changeHealth: 0
   layerEmpty: {fileID: 367808457}
   playerSp: {fileID: 0}
   triggerAttackBoss: 00000000000000
+  healthBossFight: 0
+  healthBarBoss: {fileID: 0}
+  isDead: 0
+  anim: {fileID: 0}
   gotSword: 0
   cooldownSkill1Timer: 0
   cooldownSkill1: 35
@@ -288,6 +293,7 @@ MonoBehaviour:
   waitIndicationSkill7Timer: 0
   pic7: {fileID: 2786256702999947869, guid: f869cff9e755ab94f8a1718d304f68bd, type: 3}
   radius: 10
+  indicateurSkill7: {fileID: 0}
   health: 9999999
 --- !u!61 &347986078388372968
 BoxCollider2D:
