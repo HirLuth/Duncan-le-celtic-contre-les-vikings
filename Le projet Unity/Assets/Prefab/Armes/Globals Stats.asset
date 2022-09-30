@@ -26,7 +26,7 @@ MonoBehaviour:
     nameInMenus: Spear
     description: Throws spears in the direction Duncan is facing BUT Crom Cruach
       dash towards Duncan.
-    descritpionLevelUp: Spears are faster, deal more damage and are thrown more regularly.
+    descritpionLevelUp: Spears are faste and are thrown more regularly.
   - weaponType: 1
     level: 1
     isTransformed: 0
