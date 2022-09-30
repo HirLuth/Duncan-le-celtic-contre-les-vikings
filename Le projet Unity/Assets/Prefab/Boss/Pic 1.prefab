@@ -126,3 +126,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   timeToDestroy: 0.5
+  textDamagePlayer: {fileID: 752161814499140571, guid: 512bdec18bb4fd9419dc80d210eb49f3, type: 3}
+  player: {fileID: 0}

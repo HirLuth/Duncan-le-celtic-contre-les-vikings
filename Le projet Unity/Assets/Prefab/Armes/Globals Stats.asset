@@ -24,8 +24,9 @@ MonoBehaviour:
     timeOfTheEffect: 1
     sprite: {fileID: 21300000, guid: bbf9c35405c35c24c9855f4033e9c0bf, type: 3}
     nameInMenus: Spear
-    description: 
-    descritpionLevelUp: HEHEHEHA
+    description: Throws spears in the direction Duncan is facing BUT Crom Cruach
+      dash towards Duncan.
+    descritpionLevelUp: Spears are faster, deal more damage and are thrown more regularly.
   - weaponType: 1
     level: 1
     isTransformed: 0
@@ -37,8 +38,9 @@ MonoBehaviour:
     timeOfTheEffect: 0.5
     sprite: {fileID: 21300000, guid: a279e868dc74cf14abaec51b89483b08, type: 3}
     nameInMenus: Sword
-    description: 
-    descritpionLevelUp: HEHEHEHA
+    description: Attack the nearest enemy in close combat BUT Crom Cruach teleports
+      to Duncan's position.
+    descritpionLevelUp: The sword is faster, bigger and deals more damage
   - weaponType: 2
     level: 1
     isTransformed: 0
@@ -50,8 +52,10 @@ MonoBehaviour:
     timeOfTheEffect: 5
     sprite: {fileID: 21300000, guid: 5d8a2738e0fc9d94a86a99cf2a0bf883, type: 3}
     nameInMenus: BillHook
-    description: 
-    descritpionLevelUp: HEHEHEHA
+    description: Follows a circular trajectory inflicting damage on touch BUT Crom
+      Cruach makes intraversible walls appear near Duncan
+    descritpionLevelUp: The billhooks are faster, bigger, pierce more enemies and
+      do more damage
   - weaponType: 3
     level: 1
     isTransformed: 0
@@ -63,8 +67,9 @@ MonoBehaviour:
     timeOfTheEffect: 0.5
     sprite: {fileID: 21300000, guid: 6b9c20ff159473343ac81aa60c15e6ca, type: 3}
     nameInMenus: Shield
-    description: 
-    descritpionLevelUp: HEHEHEHA
+    description: Protects from damage before reloading BUT Crom Cruach creates a
+      damage zone around him.
+    descritpionLevelUp: The shield protects longer and recharges faster
   - weaponType: 4
     level: 1
     isTransformed: 0
@@ -76,8 +81,10 @@ MonoBehaviour:
     timeOfTheEffect: 4
     sprite: {fileID: 21300000, guid: f1836adb511e7bd4d90d5365ac2e0aab, type: 3}
     nameInMenus: Book of Kells
-    description: 
-    descritpionLevelUp: HEHEHEHA
+    description: Throws a cloud of pages in a random direction before reloading BUT
+      Crom Cruach spits fireballs at Duncan
+    descritpionLevelUp: More books open at once, throwing more pages and doing more
+      damage.
   - weaponType: 5
     level: 1
     isTransformed: 0
@@ -89,8 +96,9 @@ MonoBehaviour:
     timeOfTheEffect: 1
     sprite: {fileID: 21300000, guid: b9b05ea1d595c7244ba1f1f5cfd07e16, type: 3}
     nameInMenus: Nature Staff
-    description: 
-    descritpionLevelUp: HEHEHEHA
+    description: 'Creates thorns dealing damage to a random enemy on the screen BUT
+      Crom Cruach creates rocks under Duncan. '
+    descritpionLevelUp: Thorns are larger and more numerous, inflicting more damage.
   - weaponType: 6
     level: 1
     isTransformed: 0
@@ -103,5 +111,6 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 4e6597708d7d65c44aa3fb3b94088e7f, type: 3}
     nameInMenus: Carnyx
     description: Shoots a cloud of smoke in a random direction dealing continuous
-      damage.
-    descritpionLevelUp: HEHEHEHA
+      damage BUT Crom Cruach does ????????????.
+    descritpionLevelUp: Shoot more clouds that do more damage, last longer and are
+      bigger

@@ -45,7 +45,7 @@ public class CornyxProjDepla : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D col)
     {
-        if (col.gameObject.tag == "Monstre")
+        if (col.gameObject.tag == "Monstre" || col.gameObject.tag == "Boss")
         {
             stopAttack = false;
             for (int i = 0; i < nbDOT; i++)
@@ -66,6 +66,7 @@ public class CornyxProjDepla : MonoBehaviour
                 {
                     col.gameObject.GetComponent<IABoss>().TakeDamage(damage);
                     col.gameObject.GetComponent<IABoss>().DamageText(damage);
+                    tempsReloadHitTimer = 0;
                 }
             }
         }
@@ -78,11 +79,22 @@ public class CornyxProjDepla : MonoBehaviour
         {
             stopAttack = false;
         }
+        
+        if (col.gameObject.tag == "Boss")
+        {
+            stopAttack = false;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D col)
     {
         if (col.gameObject.tag == "Monstre")
+        {
+            StartCoroutine(stopAttackTimer());
+            tempsReloadHitTimer = 0;
+        }
+        
+        if (col.gameObject.tag == "Boss")
         {
             StartCoroutine(stopAttackTimer());
             tempsReloadHitTimer = 0;
