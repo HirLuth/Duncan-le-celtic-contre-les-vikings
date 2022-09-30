@@ -65,18 +65,20 @@ public class IABoss : MonoBehaviour
     public GameObject indicateurSkill3;
     public float bossCooldown3;
     
-    [Header("Skill4 - Pièges")] 
+    [Header("Skill4 - Halo")] 
     public bool gotCarnyx;
     public float cooldownSkill4Timer;
     public float cooldownSkill4;
-    public GameObject piege;
     public GameObject indicateurSkill4;
     private Vector2 truc4;
     private GameObject indic4;
     private bool isAttackingSkill4;
     public float waitIndicationSkill4;
     public float waitIndicationSkill4Timer;
+    public float waitChargeSkill4;
+    public float waitChargeSkill4Timer;
     public float bossCooldown4;
+    public GameObject halo;
     
     [Header("Skill5 - Fireball")] 
     public bool gotLivre;
@@ -336,13 +338,13 @@ public class IABoss : MonoBehaviour
                 anim.SetBool("IsPreparing", true);
                 anim.SetBool("IsIdle", false);
                 cooldownSkill4Timer = 0;
-                GameObject indication = Instantiate(indicateurSkill4,
-                    (Vector2)CharacterController.instance.transform.position + new Vector2(
-                        CharacterController.instance.VectorDepla.x * 9.5f,
-                        CharacterController.instance.VectorDepla.y * 9.5f),
-                    Quaternion.identity);
+                GameObject indication = Instantiate(indicateurSkill4, launcher.transform.position, Quaternion.identity);
+                Vector2 dir = new Vector2(CharacterController.instance.transform.position.x - indication.transform.position.x,
+                    CharacterController.instance.transform.position.y - indication.transform.position.y);
+                float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                indication.transform.localRotation = Quaternion.AngleAxis(angle, Vector3.forward);
                 indic4 = indication;
-                isAttackingSkill3 = true;
+                isAttackingSkill4 = true;
             }
 
             if (isAttackingSkill4)
@@ -350,13 +352,25 @@ public class IABoss : MonoBehaviour
                 waitIndicationSkill4Timer += Time.deltaTime;
                 if (waitIndicationSkill4Timer >= waitIndicationSkill3)
                 {
+                    isMoving = false;
+                }
+
+                if (waitChargeSkill4Timer >= waitChargeSkill4)
+                {
+                    isMoving = true;
                     anim.SetBool("IsPreparing", false);
                     anim.SetBool("IsIdle", true);
+                    GameObject picObj = Instantiate(halo, launcher.transform.position, Quaternion.identity);
+                    Vector2 dir = new Vector2(CharacterController.instance.transform.position.x - picObj.transform.position.x,
+                        CharacterController.instance.transform.position.y - picObj.transform.position.y);
+                    float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                    picObj.transform.localRotation = Quaternion.AngleAxis(angle, Vector3.forward);
+                    Destroy(picObj,2);
                     Destroy(indic4);
-                    GameObject picObj = Instantiate(pic, indic4.transform.position, Quaternion.identity);
                     waitIndicationSkill4Timer = 0;
                     isAttackingSkill4 = false;
                 }
+                    
             }
         }*/
 

@@ -308,6 +308,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1217871720}
     - target: {fileID: 8936841671618602810, guid: 6c9c08838f9acb344b631e1b988addb2, type: 3}
+      propertyPath: halo
+      value: 
+      objectReference: {fileID: 33613361950056520, guid: b5b47c8fb150fce4abc3caab2829c84b, type: 3}
+    - target: {fileID: 8936841671618602810, guid: 6c9c08838f9acb344b631e1b988addb2, type: 3}
       propertyPath: health
       value: 50000
       objectReference: {fileID: 0}
@@ -356,6 +360,10 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8936841671618602810, guid: 6c9c08838f9acb344b631e1b988addb2, type: 3}
+      propertyPath: cooldownSkill4
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8936841671618602810, guid: 6c9c08838f9acb344b631e1b988addb2, type: 3}
       propertyPath: cooldownSkill5
       value: 15
       objectReference: {fileID: 0}
@@ -372,9 +380,21 @@ PrefabInstance:
       value: 30000
       objectReference: {fileID: 0}
     - target: {fileID: 8936841671618602810, guid: 6c9c08838f9acb344b631e1b988addb2, type: 3}
+      propertyPath: indicateurSkill4
+      value: 
+      objectReference: {fileID: 5278170987708576196, guid: 48db86eadff9df548939884c3ca142ea, type: 3}
+    - target: {fileID: 8936841671618602810, guid: 6c9c08838f9acb344b631e1b988addb2, type: 3}
       propertyPath: indicateurSkill7
       value: 
       objectReference: {fileID: 3105204892600485583, guid: ab21229b4aa09764d9460abb6654c36c, type: 3}
+    - target: {fileID: 8936841671618602810, guid: 6c9c08838f9acb344b631e1b988addb2, type: 3}
+      propertyPath: waitChargeSkill4
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8936841671618602810, guid: 6c9c08838f9acb344b631e1b988addb2, type: 3}
+      propertyPath: waitIndicationSkill4
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8936841671618602810, guid: 6c9c08838f9acb344b631e1b988addb2, type: 3}
       propertyPath: waitIndicationSkill5
       value: 2.5

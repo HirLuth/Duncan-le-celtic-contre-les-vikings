@@ -91,8 +91,9 @@ public class IAMonstre1 : MonoBehaviour
                 if (!CharacterController.instance.shieldActivated)
                 {
                     GameObject text = Instantiate(textDamagePlayer, new Vector3(player.transform.position.x,player.transform.position.y + 1,-5), Quaternion.identity);
+                    text.GetComponentInChildren<TextMeshPro>().SetText(Damages.ToString());
                 }
-                textDamagePlayer.GetComponentInChildren<TextMeshPro>().SetText(Damages.ToString());
+             
                 timerDmg = 0;
             }
         }
