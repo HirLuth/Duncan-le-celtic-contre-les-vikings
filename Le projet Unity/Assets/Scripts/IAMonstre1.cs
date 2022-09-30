@@ -119,11 +119,13 @@ public class IAMonstre1 : MonoBehaviour
         {
             if (specialMonster)
             {
+                ListeMonstres.instance.AddScore(50);
                 ExpManager.instance.CreateExp(transform.position,specialMonsterXp,isInExpRange);
                 DropCoffre();
             }
             else
             {
+                ListeMonstres.instance.AddScore(10);
                 ExpManager.instance.CreateExp(transform.position,monsterXp,isInExpRange);
             }
             ListeMonstres.instance.ennemyList.Remove(gameObject);

@@ -49,7 +49,7 @@ public class SpawnManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_timer > startMinuteOfBossFight * 60)
+        if (TimerController.instance.timer >= 1200)
         {
             StartBossFight();
         }
@@ -100,11 +100,11 @@ public class SpawnManager : MonoBehaviour
     private void StartBossFight()
     {
         bossFight.SetActive(true);
-        foreach (var t in monsterList)
+        foreach (GameObject t in monsterList)
         {
             Destroy(t);
         }
-        this.enabled = false;
+       Destroy(this);
     }
 
     private void SummonMonsterOnRandomSpot()

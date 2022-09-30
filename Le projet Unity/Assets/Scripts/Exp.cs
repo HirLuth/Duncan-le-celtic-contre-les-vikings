@@ -24,13 +24,12 @@ public class Exp : MonoBehaviour
         {
             instance = this;
         }
-       
+        
         Vector2 explode = new Vector2(Random.Range(-forceProjection, forceProjection), Random.Range(-forceProjection, forceProjection));
         rb.AddForce(explode, ForceMode2D.Impulse);
         rb.drag = deceleration;
-        
     }
-
+    
     void Update()
     {
         playerPos = CharacterController.instance.transform.position;
@@ -39,17 +38,14 @@ public class Exp : MonoBehaviour
 
         if (timer >= 0)
         {
-            rb.velocity -= rb.velocity * 0.01f;
+            rb.velocity -= rb.velocity * 0.02f;
             timer -= Time.deltaTime;
         }
 
         if (isAtracted)
         {
-            //rb.AddForce(dir * (force),ForceMode2D.Impulse);
-            rb.velocity = new Vector2(dirNormalised.x, dirNormalised.y) * forceAttract * (Time.time / timeStamp);
+            rb.velocity = new Vector2(dirNormalised.x, dirNormalised.y) * forceAttract;
         }
-        
-       
     }
     
     private void OnTriggerEnter2D(Collider2D col)
@@ -59,11 +55,9 @@ public class Exp : MonoBehaviour
         
         if (col.gameObject.CompareTag("AttractExp"))
         {
-            if (timer <= 0)
-            {
+            rb.velocity = new Vector2(0,0);
                 timeStamp = Time.time;
                 isAtracted = true;
-            }
         }
         
         if (col.gameObject.CompareTag("GetExp"))

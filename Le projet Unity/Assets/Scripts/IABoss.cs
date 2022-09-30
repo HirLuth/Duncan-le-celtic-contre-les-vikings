@@ -1,4 +1,4 @@
-using System;
+ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -19,10 +19,15 @@ public class IABoss : MonoBehaviour
     public GameObject textDamage;
     public GameObject textDamagePlayer;
     public bool bossFight;
+    public bool changeHealth;
     public GameObject layerEmpty;
     public SpriteRenderer playerSp;
     public static IABoss instance;
     public List<bool> triggerAttackBoss;
+    public int healthBossFight;
+    public GameObject healthBarBoss;
+    public bool isDead;
+    public Animator anim;
 
     [Header("Skill1 - TP")] 
     public bool gotSword;
@@ -108,6 +113,7 @@ public class IABoss : MonoBehaviour
     public float waitIndicationSkill7Timer;
     public GameObject pic7;
     public float radius;
+    public GameObject indicateurSkill7;
 
 
     //public static IAMonstre1 instance; 
@@ -201,8 +207,8 @@ public class IABoss : MonoBehaviour
             cooldownSkill1Timer += Time.deltaTime;
             if (cooldownSkill1Timer >= cooldownSkill1)
             {
-                gameObject.GetComponent<SpriteRenderer>().enabled = false;
-                gameObject.GetComponent<BoxCollider2D>().enabled = false;
+                anim.SetBool("IsPreparing", true);
+                anim.SetBool("IsIdle", false);
                 isMoving = false;
                 cooldownSkill1Timer = 0;
                 GameObject indication = Instantiate(indicateurSkill1, CharacterController.instance.transform.position,
@@ -218,6 +224,8 @@ public class IABoss : MonoBehaviour
                 waitIndicationSkill1Timer += Time.deltaTime;
                 if (waitIndicationSkill1Timer >= waitIndicationSkill1)
                 {
+                    anim.SetBool("IsPreparing", false);
+                    anim.SetBool("IsIdle", true);
                     Destroy(indic);
                     gameObject.GetComponent<SpriteRenderer>().enabled = true;
                     gameObject.GetComponent<BoxCollider2D>().enabled = true;
@@ -235,6 +243,8 @@ public class IABoss : MonoBehaviour
             cooldownSkill2Timer += Time.deltaTime;
             if (cooldownSkill2Timer >= cooldownSkill2)
             {
+                anim.SetBool("IsPreparing", true);
+                anim.SetBool("IsIdle", false);
                 isMoving = false;
                 cooldownSkill2Timer = 0;
                 GameObject murObj = Instantiate(mur,
@@ -249,6 +259,8 @@ public class IABoss : MonoBehaviour
                 waitToMoveSkill2Timer += Time.deltaTime;
                 if (waitToMoveSkill2Timer >= waitToMoveSkill2)
                 {
+                    anim.SetBool("IsPreparing", false);
+                    anim.SetBool("IsIdle", true);
                     isMoving = true;
                     waitToMoveSkill2Timer = 0;
                     isAttackingSkill2 = false;
@@ -261,6 +273,8 @@ public class IABoss : MonoBehaviour
             cooldownSkill3Timer += Time.deltaTime;
             if (cooldownSkill3Timer >= cooldownSkill3)
             {
+                anim.SetBool("IsPreparing", true);
+                anim.SetBool("IsIdle", false);
                 cooldownSkill3Timer = 0;
                 GameObject indication = Instantiate(indicateurSkill3,
                     (Vector2)CharacterController.instance.transform.position + new Vector2(
@@ -276,6 +290,8 @@ public class IABoss : MonoBehaviour
                 waitIndicationSkill3Timer += Time.deltaTime;
                 if (waitIndicationSkill3Timer >= waitIndicationSkill3)
                 {
+                    anim.SetBool("IsPreparing", false);
+                    anim.SetBool("IsIdle", true);
                     Destroy(indic3);
                     GameObject picObj = Instantiate(pic, indic3.transform.position, Quaternion.identity);
                     waitIndicationSkill3Timer = 0;
@@ -289,6 +305,8 @@ public class IABoss : MonoBehaviour
             cooldownSkill4Timer += Time.deltaTime;
             if (cooldownSkill4Timer >= cooldownSkill4)
             {
+                anim.SetBool("IsPreparing", true);
+                anim.SetBool("IsIdle", false);
                 cooldownSkill4Timer = 0;
                 GameObject indication = Instantiate(indicateurSkill4,
                     (Vector2)CharacterController.instance.transform.position + new Vector2(
@@ -304,6 +322,8 @@ public class IABoss : MonoBehaviour
                 waitIndicationSkill4Timer += Time.deltaTime;
                 if (waitIndicationSkill4Timer >= waitIndicationSkill3)
                 {
+                    anim.SetBool("IsPreparing", false);
+                    anim.SetBool("IsIdle", true);
                     Destroy(indic4);
                     GameObject picObj = Instantiate(pic, indic4.transform.position, Quaternion.identity);
                     waitIndicationSkill4Timer = 0;
@@ -317,6 +337,8 @@ public class IABoss : MonoBehaviour
             cooldownSkill5Timer += Time.deltaTime;
             if (cooldownSkill5Timer >= cooldownSkill5)
             {
+                anim.SetBool("IsPreparing", true);
+                anim.SetBool("IsIdle", false);
                 isMoving = false;
                 cooldownSkill5Timer = 0;
                 isAttackingSkill5 = true;
@@ -328,6 +350,8 @@ public class IABoss : MonoBehaviour
                 waitIndicationSkill5Timer += Time.deltaTime;
                 if (waitIndicationSkill5Timer >= waitIndicationSkill5)
                 {
+                    anim.SetBool("IsPreparing", false);
+                    anim.SetBool("IsIdle", true);
                     //sp.sprite = SpriteOeilPasRouge;
                     GameObject fireballObj = Instantiate(fireball, launcher.transform.position, Quaternion.identity);
                     Vector2 dir = new Vector2(
@@ -348,6 +372,8 @@ public class IABoss : MonoBehaviour
             cooldownSkill6Timer += Time.deltaTime;
             if (cooldownSkill6Timer >= cooldownSkill6)
             {
+                anim.SetBool("IsPreparing", true);
+                anim.SetBool("IsIdle", false);
                 isMoving = false;
                 cooldownSkill6Timer = 0;
                 isAttackingSkill6 = true;
@@ -368,6 +394,8 @@ public class IABoss : MonoBehaviour
                 waitIndicationSkill6Timer += Time.deltaTime;
                 if (waitIndicationSkill6Timer >= waitIndicationSkill5)
                 {
+                    anim.SetBool("IsPreparing", false);
+                    anim.SetBool("IsDashing", true);
                     isDashing = true;
                     Destroy(indic6);
                     transform.localRotation = Quaternion.AngleAxis(truc6, Vector3.forward);
@@ -375,6 +403,8 @@ public class IABoss : MonoBehaviour
                     transform.position = new Vector3(transform.position.x + direction6.x * speedDash, transform.position.y + direction6.y * speedDash, 0);
                     if (dureeDashTimer >= dureeDash)
                     {
+                        anim.SetBool("IsDashing", false);
+                        anim.SetBool("IsIdle", true);
                         isDashing = false;
                         waitIndicationSkill6Timer = 0;
                         isAttackingSkill6 = false;
@@ -391,6 +421,10 @@ public class IABoss : MonoBehaviour
             cooldownSkill7Timer += Time.deltaTime;
             if (cooldownSkill7Timer >= cooldownSkill7)
             {
+                GameObject indication = Instantiate(indicateurSkill7, transform.position, Quaternion.identity);
+                indic7 = indication;
+                anim.SetBool("IsPreparing", true);
+                anim.SetBool("IsIdle", false);
                 isMoving = false;
                 cooldownSkill7Timer = 0;
                 isAttackingSkill7 = true;
@@ -401,6 +435,9 @@ public class IABoss : MonoBehaviour
                 waitIndicationSkill7Timer += Time.deltaTime;
                 if (waitIndicationSkill7Timer >= waitIndicationSkill7)
                 {
+                    Destroy(indic7);
+                    anim.SetBool("IsPreparing", false);
+                    anim.SetBool("IsIdle", true);
                     for (int i = 0; i < 10; i++)
                     {
                         var radians = 2 * MathF.PI / 10 * i;
@@ -421,8 +458,29 @@ public class IABoss : MonoBehaviour
             }
             
         }
+
+        if (bossFight)
+        {
+            if (changeHealth)
+            {
+                ChangeHealth();
+            }
+            healthBarBoss.SetActive(true);
+        }
+
+        if (changeHealth)
+        {
+            ChangeHealth();
+        }
     }
 
+    void ChangeHealth()
+    {
+        Debug.Log("change vie");
+        health = healthBossFight;
+        changeHealth = false;
+    }
+    
     public void DamageText(int damageAmount)
     {
         if (bossFight)
@@ -433,15 +491,20 @@ public class IABoss : MonoBehaviour
     }
     
 
-    public void TakeDamage(int damageAmount)
+    public void TakeDamage(int damageAmount) //Prendre domages et mourir
     {
         health -= damageAmount;
-        /*if (health <= 0)
+        if (bossFight)
         {
-            ExpManager.instance.CreateExp(transform.position,Random.Range(1,3));
+            BossHealthBar.instance.SetHealth(health);
+        }
+        if (health <= 0)
+        {
+            ListeMonstres.instance.AddScore(1000);
+            isDead = true;
             ListeMonstres.instance.ennemyList.Remove(gameObject);
             Destroy(gameObject);
-        }*/
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D col)

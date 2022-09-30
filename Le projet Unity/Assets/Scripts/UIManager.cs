@@ -43,6 +43,7 @@ public class UIManager : MonoBehaviour
     {
         if (proposeGigot)
         {
+            ListeMonstres.instance.AddScore(30);
            return; 
         }
         levelUpMenu.SetActive(true);

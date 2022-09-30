@@ -43,6 +43,7 @@ public class TimerController : MonoBehaviour
 
         if (timer >= 1200)
         {
+            IABoss.instance.bossFight = true;
             Debug.Log("Combat de Boss");
         }
     }

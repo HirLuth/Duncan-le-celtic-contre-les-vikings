@@ -6,6 +6,7 @@ public class ListeMonstres : MonoBehaviour
 {
     public List<GameObject> ennemyList;
     public static ListeMonstres instance;
+    public int score;
     void Awake()
     {
         if (instance == null)
@@ -13,5 +14,9 @@ public class ListeMonstres : MonoBehaviour
             instance = this;
         }
     }
-    
+
+    public void AddScore(int scoreAmound)
+    {
+        score += scoreAmound;
+    }
 }

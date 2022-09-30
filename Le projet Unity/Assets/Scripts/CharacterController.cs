@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 
@@ -22,6 +23,9 @@ public class CharacterController : MonoBehaviour
  public GameObject shield;
  public bool shieldAvailable;
  public bool shieldActivated;
+ public GameObject gameOverScreen;
+ public GameObject bossFightManager;
+ public TextMeshProUGUI scoreText;
 
     private void Awake()
     {
@@ -50,12 +54,12 @@ public class CharacterController : MonoBehaviour
         if (movementX > 0) // Le personnage s'oriente vers la direction où il marche. 
         {
             lookingAt = 2;
-            transform.localScale = new Vector3(1, 2, 0);
+            transform.localScale = new Vector3(0.55f, 0.55f, 0);
         }
         else if (movementX < 0)
         {
             lookingAt = 0;
-            transform.localScale = new Vector3(-1, 2, 0);
+            transform.localScale = new Vector3(-0.55f, 0.55f, 0);
         }
         
         if (movementY > 0) // utile pour lancer des armes dans la bonne direction
@@ -108,7 +112,10 @@ public class CharacterController : MonoBehaviour
 
         if (health <= 0) // mort du personnage
         {
-            Destroy(gameObject);
+            bossFightManager.SetActive(true);
+            gameOverScreen.SetActive(true);
+            scoreText.SetText("Score : " + ListeMonstres.instance.score);
+            Time.timeScale = 0;
         }
 
         if (health > maxHealth)

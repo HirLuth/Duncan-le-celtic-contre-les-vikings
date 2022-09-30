@@ -45,11 +45,14 @@ public class Sword : MonoBehaviour
 
         foreach (GameObject monstre in ListeMonstres.instance.ennemyList)
         {
-            float distance = (Vector2.Distance(monstre.transform.position,currentPos));
-            if (distance < minDist)
+            if (monstre != null)
             {
-                minDist = distance;
-                closestEnnemy = monstre.transform;
+                float distance = (Vector2.Distance(monstre.transform.position,currentPos));
+                if (distance < minDist)
+                {
+                    minDist = distance;
+                    closestEnnemy = monstre.transform;
+                }
             }
         }
 

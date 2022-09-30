@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBar : MonoBehaviour
+public class BossHealthBar : MonoBehaviour
 {
     public Slider slider;
     public Gradient gradient;
     public Image fill;
-    public static HealthBar instance;
+    public static BossHealthBar instance;
 
     private void Awake()
     {
@@ -19,11 +19,15 @@ public class HealthBar : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void Start()
     {
-        transform.position = new Vector2(CharacterController.instance.transform.position.x, CharacterController.instance.transform.position.y - 2.5f);
+        if (IABoss.instance.bossFight)
+        {
+            SetMaxHealth(IABoss.instance.healthBossFight);
+        }
     }
-
+    
+    
     public void SetMaxHealth(int health)
     {
         slider.maxValue = health;
@@ -38,5 +42,4 @@ public class HealthBar : MonoBehaviour
 
         fill.color = gradient.Evaluate((slider.normalizedValue));
     }
-    
 }
