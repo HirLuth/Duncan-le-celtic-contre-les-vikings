@@ -100,16 +100,19 @@ public class SpawnManager : MonoBehaviour
     private void StartBossFight()
     {
         bossFight.SetActive(true);
+        
+        for (int i = 1; i < ListeMonstres.instance.ennemyList.Count; i++)
+        {
+            ListeMonstres.instance.ennemyList.RemoveAt(i);
+        }
+        
         foreach (GameObject t in monsterList)
         {
             Destroy(t);
         }
 
-        for (int i = 1; i < ListeMonstres.instance.ennemyList.Count; i++)
-        {
-            ListeMonstres.instance.ennemyList.RemoveAt(i);
-        }
-       Destroy(this);
+       
+        Destroy(this);
     }
 
     private void SummonMonsterOnRandomSpot()

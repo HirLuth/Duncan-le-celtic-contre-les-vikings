@@ -234,13 +234,6 @@ public class IABoss : MonoBehaviour
             cooldownSkill1Timer += Time.deltaTime;
             if (cooldownSkill1Timer >= cooldownSkill1)
             {
-                gotBaton = false;
-                gotBouclier = false;
-                gotLivre = false;
-                gotSword = false;
-                gotCarnyx = false;
-                gotSerpe = false;
-                
                 anim.SetBool("IsPreparing", true);
                 anim.SetBool("IsIdle", false);
                 isMoving = false;
@@ -258,13 +251,6 @@ public class IABoss : MonoBehaviour
                 waitIndicationSkill1Timer += Time.deltaTime;
                 if (waitIndicationSkill1Timer >= waitIndicationSkill1)
                 {
-                    gotBaton = true;
-                    gotBouclier = true;
-                    gotLivre = true;
-                    gotSword = true;
-                    gotCarnyx = true;
-                    gotSerpe = true;
-                    
                     gotSpear = true;
                     anim.SetBool("IsPreparing", false);
                     anim.SetBool("IsIdle", true);
@@ -414,13 +400,6 @@ public class IABoss : MonoBehaviour
             cooldownSkill6Timer += Time.deltaTime;
             if (cooldownSkill6Timer >= cooldownSkill6)
             {
-                gotBaton = false;
-                gotBouclier = false;
-                gotLivre = false;
-                gotSword = false;
-                gotCarnyx = false;
-                gotSerpe = false;
-                
                 anim.SetBool("IsPreparing", true);
                 anim.SetBool("IsIdle", false);
                 isMoving = false;
@@ -452,12 +431,6 @@ public class IABoss : MonoBehaviour
                     transform.position = new Vector3(transform.position.x + direction6.x * speedDash, transform.position.y + direction6.y * speedDash, 0);
                     if (dureeDashTimer >= dureeDash)
                     {
-                        gotBaton = true;
-                        gotBouclier = true;
-                        gotLivre = true;
-                        gotSword = true;
-                        gotCarnyx = true;
-                        gotSerpe = true;
                         anim.SetBool("IsDashing", false);
                         anim.SetBool("IsIdle", true);
                         isDashing = false;
@@ -478,6 +451,7 @@ public class IABoss : MonoBehaviour
             {
                 GameObject indication = Instantiate(indicateurSkill7, transform.position, Quaternion.identity);
                 indic7 = indication;
+                truc7 = transform.position;
                 anim.SetBool("IsPreparing", true);
                 anim.SetBool("IsIdle", false);
                 isMoving = false;
@@ -500,8 +474,8 @@ public class IABoss : MonoBehaviour
                         var vertical = MathF.Sin(radians);
                         var horizontal = MathF.Cos(radians);
 
-                        var spawnDir = new Vector3(horizontal, vertical, 0);
-                        var spawnPos = transform.position + spawnDir * radius;
+                        var spawnDir = new Vector2(horizontal, vertical);
+                        var spawnPos = (Vector2)truc7 + spawnDir * radius;
 
                         var enemy = Instantiate(pic7, spawnPos, Quaternion.identity) as GameObject;
                     }
