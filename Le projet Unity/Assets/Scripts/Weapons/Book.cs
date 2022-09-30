@@ -47,7 +47,7 @@ namespace Weapons
                 GameObject currentBook = Instantiate(projectile);
                 currentBook.transform.rotation = Quaternion.Euler(0,0,listDegrée[sortedDegreeIndexInList]);
                 SummonedBook currentBookScriptReference = currentBook.GetComponent<SummonedBook>();
-                currentBookScriptReference.damage = Mathf.RoundToInt(armes.damage*damagePerLevel[armes.level]);
+                currentBookScriptReference.damage = Mathf.RoundToInt(armes.damage*damagePerLevel[armes.level]*(1+ExpManager.instance.level/ExpManager.instance.scalingWithLevel));
                 currentBookScriptReference.effectDuration = armes.timeOfTheEffect*timeEffectPerLevel[armes.level];
                 currentBookScriptReference.paperSpeed = armes.projectileSpeed*speedPerLevel[armes.level];
                 currentBookScriptReference.timeBetweenPaper = timeBetweenPaper * timeBetweenPaperPerLevel[armes.level];

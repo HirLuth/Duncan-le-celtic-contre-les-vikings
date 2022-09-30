@@ -72,7 +72,7 @@ public class Sword : MonoBehaviour
                 GameObject swordObj = Instantiate(sword, new Vector3(999,99,0),Quaternion.identity);
                 swordObj.transform.position = CharacterController.instance.transform.position;
                 swordObj.transform.localScale *= projectileSize*sizePerLevel[armes.level];
-                swordObj.GetComponent<SwordBehaviour>().damage = Mathf.RoundToInt(damage*damagePerLevel[armes.level]);
+                swordObj.GetComponent<SwordBehaviour>().damage = Mathf.RoundToInt(damage*damagePerLevel[armes.level]*(1+(float)ExpManager.instance.level/ExpManager.instance.scalingWithLevel));
                 swordObj.GetComponent<SwordBehaviour>().timeToDestroy = timeToDestroy*lastingTimePerLevel[armes.level];
                 
 

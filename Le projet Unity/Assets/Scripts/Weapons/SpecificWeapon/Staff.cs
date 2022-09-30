@@ -39,7 +39,7 @@ namespace Weapons.SpecificWeapon
 
         private void SpawnRoots()
         {
-            int nombreprojectiles = 0;
+            int nombreprojectiles;
             if (IABoss.instance.bossFight)
             {
                 nombreprojectiles = 1;
@@ -50,11 +50,12 @@ namespace Weapons.SpecificWeapon
             }
             for (int i = 0; i < nombreprojectiles; i++)
             {
+                Vector2 position = GetPosition();
                 GameObject currentRoot = Instantiate(projectile);
-                currentRoot.transform.position = GetPosition();
+                currentRoot.transform.position = position;
                 Root currentRootScript = currentRoot.GetComponent<Root>();
                 currentRootScript.size = armes.projectileSize*sizePerLevel[armes.level];
-                currentRootScript.damage = Mathf.RoundToInt(armes.damage*damagePerLevel[armes.level]);
+                currentRootScript.damage = Mathf.RoundToInt(armes.damage*damagePerLevel[armes.level]*(1+ExpManager.instance.level/ExpManager.instance.scalingWithLevel));
                 currentRootScript.timeToDisapear = armes.timeOfTheEffect * timeEffectPerLevel[armes.level];
             }
         }

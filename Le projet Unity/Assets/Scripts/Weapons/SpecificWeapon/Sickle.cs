@@ -34,7 +34,7 @@ namespace Weapons.SpecificWeapon
             var centerScriptReference = sickle.GetComponent<SickleRotationCenter>();
             centerScriptReference.projectileSpeed = sickleStat.projectileSpeed*speedPerLevel[sickleStat.level];
             var projectileScriptReference = centerScriptReference.GetComponentInChildren<SickleProjectile>();
-            projectileScriptReference.damage = Mathf.RoundToInt(sickleStat.damage*damagePerLevel[sickleStat.level]);
+            projectileScriptReference.damage = Mathf.RoundToInt(sickleStat.damage*damagePerLevel[sickleStat.level]*(1+ExpManager.instance.level/ExpManager.instance.scalingWithLevel));
             projectileScriptReference.timeOfTheEffect = sickleStat.timeOfTheEffect*timeEffectPerLevel[sickleStat.level];
             projectileScriptReference.sickleMaxRange = sickleMaxRange;
             projectileScriptReference.timeToGetToMaxRange = timeToGetToMaxRange;

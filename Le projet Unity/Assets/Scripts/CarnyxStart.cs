@@ -39,7 +39,7 @@ public class CarnyxStart : MonoBehaviour
             GameObject nuage = Instantiate(nuageCornyx, CharacterController.instance.transform.position ,Quaternion.Euler(0,0,0));
             //GameObject nuage = Instantiate(nuageCornyx,new Vector2(0,0) ,Quaternion.Euler(0,0,0));
             nuage.transform.localScale *= sizePerLevel[armes.level];
-            nuage.GetComponent<CornyxProjDepla>().damage = Mathf.RoundToInt(armes.damage*damagePerLevel[armes.level]);
+            nuage.GetComponent<CornyxProjDepla>().damage = Mathf.RoundToInt(armes.damage*damagePerLevel[armes.level]*(1+ExpManager.instance.level/(ExpManager.instance.scalingWithLevel*3)));
             nuage.GetComponent<CornyxProjDepla>().timeToDestroy = armes.timeOfTheEffect*timeEffectPerLevel[armes.level];
         }
     }

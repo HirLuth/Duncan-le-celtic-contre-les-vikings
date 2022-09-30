@@ -30,7 +30,7 @@ MonoBehaviour:
   - weaponType: 1
     level: 1
     isTransformed: 0
-    damage: 15
+    damage: 10
     numberOfProjectile: 1
     coolDown: 3
     projectileSize: 1
@@ -44,7 +44,7 @@ MonoBehaviour:
   - weaponType: 2
     level: 1
     isTransformed: 0
-    damage: 10
+    damage: 15
     numberOfProjectile: 1
     coolDown: 5
     projectileSize: 1

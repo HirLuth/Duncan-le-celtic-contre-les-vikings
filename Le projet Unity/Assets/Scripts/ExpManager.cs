@@ -10,6 +10,7 @@ public class ExpManager : MonoBehaviour
     public static ExpManager instance;
     public GameObject textLevel;
     public int level;
+    public float scalingWithLevel;
     private float _currentBonus;
     [SerializeField] private int startExp;
     [SerializeField] private float powerOfX;
