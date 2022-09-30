@@ -104,6 +104,11 @@ public class SpawnManager : MonoBehaviour
         {
             Destroy(t);
         }
+
+        for (int i = 1; i < ListeMonstres.instance.ennemyList.Count; i++)
+        {
+            ListeMonstres.instance.ennemyList.RemoveAt(i);
+        }
        Destroy(this);
     }
 
