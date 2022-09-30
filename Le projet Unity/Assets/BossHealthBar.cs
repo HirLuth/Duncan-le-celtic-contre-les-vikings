@@ -10,6 +10,7 @@ public class BossHealthBar : MonoBehaviour
     public Gradient gradient;
     public Image fill;
     public static BossHealthBar instance;
+    public GameObject expBar;
 
     private void Awake()
     {
@@ -23,6 +24,7 @@ public class BossHealthBar : MonoBehaviour
     {
         if (IABoss.instance.bossFight)
         {
+            expBar.SetActive(false);
             SetMaxHealth(IABoss.instance.healthBossFight);
         }
     }

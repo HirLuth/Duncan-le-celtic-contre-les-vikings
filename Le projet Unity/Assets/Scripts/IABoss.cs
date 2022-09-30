@@ -308,7 +308,7 @@ public class IABoss : MonoBehaviour
             }
         }
 
-        if (triggerAttackBoss[6] || gotCarnyx) // Skill 4
+       /* if (triggerAttackBoss[6] || gotCarnyx) // Skill 4
         {
             cooldownSkill4Timer += Time.deltaTime;
             if (cooldownSkill4Timer >= cooldownSkill4)
@@ -338,7 +338,7 @@ public class IABoss : MonoBehaviour
                     isAttackingSkill4 = false;
                 }
             }
-        }
+        }*/
 
         if (triggerAttackBoss[4] || gotLivre) // Skill 5
         {
@@ -501,9 +501,9 @@ public class IABoss : MonoBehaviour
 
     public void TakeDamage(int damageAmount) //Prendre domages et mourir
     {
-        health -= damageAmount;
         if (bossFight)
         {
+            health -= damageAmount;
             BossHealthBar.instance.SetHealth(health);
         }
         if (health <= 0)
