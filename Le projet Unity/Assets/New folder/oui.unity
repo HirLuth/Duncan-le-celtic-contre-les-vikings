@@ -793,6 +793,10 @@ PrefabInstance:
       propertyPath: textLevel
       value: 
       objectReference: {fileID: 1878759965}
+    - target: {fileID: 5128174901460202856, guid: 8a8d665e3abb33b4c8524d2926b9c8a7, type: 3}
+      propertyPath: maxExpAddPerLevel
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5128174901460202857, guid: 8a8d665e3abb33b4c8524d2926b9c8a7, type: 3}
       propertyPath: m_Name
       value: ExpManager
