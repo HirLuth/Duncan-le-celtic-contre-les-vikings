@@ -53,9 +53,9 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 5d8a2738e0fc9d94a86a99cf2a0bf883, type: 3}
     nameInMenus: BillHook
     description: Follows a circular trajectory inflicting damage on touch BUT Crom
-      Cruach makes intraversible walls appear near Duncan
-    descritpionLevelUp: The billhooks are faster, bigger, pierce more enemies and
-      do more damage
+      Cruach makes impassable walls appear near Duncan
+    descritpionLevelUp: The billhooks are faster, bigger, pierce through more enemies
+      and do more damage
   - weaponType: 3
     level: 1
     isTransformed: 0
@@ -81,8 +81,8 @@ MonoBehaviour:
     timeOfTheEffect: 4
     sprite: {fileID: 21300000, guid: f1836adb511e7bd4d90d5365ac2e0aab, type: 3}
     nameInMenus: Book of Kells
-    description: Throws a cloud of pages in a random direction before reloading BUT
-      Crom Cruach spits fireballs at Duncan
+    description: Spawns a book that throws a cloud of pages in a random direction
+      before reloading BUT Crom Cruach spits fireballs at Duncan
     descritpionLevelUp: More books open at once, throwing more pages and doing more
       damage.
   - weaponType: 5
@@ -96,8 +96,8 @@ MonoBehaviour:
     timeOfTheEffect: 1
     sprite: {fileID: 21300000, guid: b9b05ea1d595c7244ba1f1f5cfd07e16, type: 3}
     nameInMenus: Nature Staff
-    description: 'Creates thorns dealing damage to a random enemy on the screen BUT
-      Crom Cruach creates rocks under Duncan. '
+    description: 'Creates thorns that deal damage on a random enemy on the screen
+      BUT Crom Cruach creates rocks under Duncan. '
     descritpionLevelUp: Thorns are larger and more numerous, inflicting more damage.
   - weaponType: 6
     level: 1
@@ -111,6 +111,6 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 4e6597708d7d65c44aa3fb3b94088e7f, type: 3}
     nameInMenus: Carnyx
     description: Shoots a cloud of smoke in a random direction dealing continuous
-      damage BUT Crom Cruach does ????????????.
+      damage.
     descritpionLevelUp: Shoot more clouds that do more damage, last longer and are
       bigger
