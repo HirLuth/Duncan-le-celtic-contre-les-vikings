@@ -576,3 +576,7 @@ MonoBehaviour:
   weaponNameText: {fileID: 5212765323809587756}
   weaponDescritpionText: {fileID: 3023775947378769789}
   weaponImage: {fileID: 303042592134232618}
+  gigotImage: {fileID: 0}
+  nameGigot: Leg of Lamb
+  descritptionGigot: Heals half your health points.
+  healthHealed: 50
