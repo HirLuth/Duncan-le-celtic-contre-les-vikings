@@ -39,6 +39,7 @@ public class IABoss : MonoBehaviour
     private GameObject indic;
     private bool isAttackingSkill1;
     private Vector2 truc1;
+    public float bossCooldown1;
     
     [Header("Skill2 - Mur")] 
     public bool gotSerpe;
@@ -49,6 +50,7 @@ public class IABoss : MonoBehaviour
     private bool isAttackingSkill2;
     public float waitToMoveSkill2;
     public float waitToMoveSkill2Timer;
+    public float bossCooldown2;
     
     [Header("Skill3 - Pic")] 
     public bool gotBaton;
@@ -61,6 +63,7 @@ public class IABoss : MonoBehaviour
     public float waitIndicationSkill3;
     public float waitIndicationSkill3Timer;
     public GameObject indicateurSkill3;
+    public float bossCooldown3;
     
     [Header("Skill4 - Pièges")] 
     public bool gotCarnyx;
@@ -72,7 +75,8 @@ public class IABoss : MonoBehaviour
     private GameObject indic4;
     private bool isAttackingSkill4;
     public float waitIndicationSkill4;
-    public float waitIndicationSkill4Timer; 
+    public float waitIndicationSkill4Timer;
+    public float bossCooldown4;
     
     [Header("Skill5 - Fireball")] 
     public bool gotLivre;
@@ -85,6 +89,7 @@ public class IABoss : MonoBehaviour
     public GameObject launcher;
     public float waitIndicationSkill5;
     public float waitIndicationSkill5Timer;
+    public float bossCooldown5;
 
     [Header("Skill6 - Dash")]
     public bool gotSpear;
@@ -101,6 +106,7 @@ public class IABoss : MonoBehaviour
     public float dureeDash;
     public float speedDash;
     public GameObject indication6;
+    public float bossCooldown6;
     
     [Header("Skill7 - AOE")] 
     public bool gotBouclier;
@@ -114,6 +120,7 @@ public class IABoss : MonoBehaviour
     public GameObject pic7;
     public float radius;
     public GameObject indicateurSkill7;
+    public float bossCooldown7;
 
 
     //public static IAMonstre1 instance; 
@@ -157,15 +164,27 @@ public class IABoss : MonoBehaviour
         {
             playerSp.sortingOrder = 0;
         }
+
+        if (bossFight)
+        {
+            cooldownSkill1 = bossCooldown1;
+            cooldownSkill2 = bossCooldown2;
+            cooldownSkill3 = bossCooldown3;
+            cooldownSkill4 = bossCooldown4;
+            cooldownSkill5 = bossCooldown5;
+            cooldownSkill6 = bossCooldown6;
+            cooldownSkill7 = bossCooldown7;
+        }
         
-        if (CharacterController.instance.transform.position.x > transform.position.x)
-        {
-            transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-        }
-        else
-        {
-            transform.localScale = new Vector3(-0.5f, 0.5f, 0.5f);
-        }
+            if (CharacterController.instance.transform.position.x > transform.position.x)
+            {
+                transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            }
+            else
+            {
+                transform.localScale = new Vector3(-0.5f, 0.5f, 0.5f);
+            }  
+        
 
         if (isDashing)
         {
@@ -215,6 +234,13 @@ public class IABoss : MonoBehaviour
             cooldownSkill1Timer += Time.deltaTime;
             if (cooldownSkill1Timer >= cooldownSkill1)
             {
+                gotBaton = false;
+                gotBouclier = false;
+                gotLivre = false;
+                gotSword = false;
+                gotCarnyx = false;
+                gotSerpe = false;
+                
                 anim.SetBool("IsPreparing", true);
                 anim.SetBool("IsIdle", false);
                 isMoving = false;
@@ -232,6 +258,14 @@ public class IABoss : MonoBehaviour
                 waitIndicationSkill1Timer += Time.deltaTime;
                 if (waitIndicationSkill1Timer >= waitIndicationSkill1)
                 {
+                    gotBaton = true;
+                    gotBouclier = true;
+                    gotLivre = true;
+                    gotSword = true;
+                    gotCarnyx = true;
+                    gotSerpe = true;
+                    
+                    gotSpear = true;
                     anim.SetBool("IsPreparing", false);
                     anim.SetBool("IsIdle", true);
                     Destroy(indic);
@@ -380,6 +414,13 @@ public class IABoss : MonoBehaviour
             cooldownSkill6Timer += Time.deltaTime;
             if (cooldownSkill6Timer >= cooldownSkill6)
             {
+                gotBaton = false;
+                gotBouclier = false;
+                gotLivre = false;
+                gotSword = false;
+                gotCarnyx = false;
+                gotSerpe = false;
+                
                 anim.SetBool("IsPreparing", true);
                 anim.SetBool("IsIdle", false);
                 isMoving = false;
@@ -411,6 +452,12 @@ public class IABoss : MonoBehaviour
                     transform.position = new Vector3(transform.position.x + direction6.x * speedDash, transform.position.y + direction6.y * speedDash, 0);
                     if (dureeDashTimer >= dureeDash)
                     {
+                        gotBaton = true;
+                        gotBouclier = true;
+                        gotLivre = true;
+                        gotSword = true;
+                        gotCarnyx = true;
+                        gotSerpe = true;
                         anim.SetBool("IsDashing", false);
                         anim.SetBool("IsIdle", true);
                         isDashing = false;
@@ -484,7 +531,6 @@ public class IABoss : MonoBehaviour
 
     void ChangeHealth()
     {
-        Debug.Log("change vie");
         health = healthBossFight;
         changeHealth = false;
     }

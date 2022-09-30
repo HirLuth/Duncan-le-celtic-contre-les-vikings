@@ -19,6 +19,7 @@ public class FirballBehaviour : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindWithTag("Player");
         direction.Normalize();
+        Destroy(gameObject,5f);
     }
 
    

@@ -106,8 +106,8 @@ public class IAMonstre1 : MonoBehaviour
     
     public void DamageText(int damageAmount)
     {
-        Instantiate(textDamage, new Vector3(transform.position.x,transform.position.y + 1,-5), Quaternion.identity);
         textDamage.GetComponentInChildren<TextMeshPro>().SetText(damageAmount.ToString());
+        Instantiate(textDamage, new Vector3(transform.position.x,transform.position.y + 1,-5), Quaternion.identity);
     }
     
     
