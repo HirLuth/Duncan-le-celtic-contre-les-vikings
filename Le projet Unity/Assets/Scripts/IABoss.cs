@@ -261,7 +261,6 @@ public class IABoss : MonoBehaviour
                 waitIndicationSkill1Timer += Time.deltaTime;
                 if (waitIndicationSkill1Timer >= waitIndicationSkill1)
                 {
-                    gotSpear = true;
                     anim.SetBool("IsPreparing", false);
                     anim.SetBool("IsIdle", true);
                     Destroy(indic);
