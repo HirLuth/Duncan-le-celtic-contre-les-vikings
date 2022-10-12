@@ -15,11 +15,13 @@ public class UIManager : MonoBehaviour
     public List<GameObject> possessedWeapons;
     public List<Proposition> propositions;
     public List<int> listPossibleWeapontoGet;
+    public List<bool> listRetest;
     [SerializeField] private GameObject levelUpMenu;
     private bool proposeGigot;
     public GameObject chestMenu;
     public GameObject iconeMenu;
     public int maxLevel;
+    private bool canRetest;
 
 
     private void Awake()
@@ -36,6 +38,7 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
+        canRetest = true;
        StartEvent();
     }
 
@@ -54,6 +57,12 @@ public class UIManager : MonoBehaviour
         for (int i = 0; i < propositions.Count; i++)
         {
             int weaponSorted = listForTirage[Random.Range(0, listForTirage.Count)];
+            if (listRetest[weaponSorted] && canRetest)
+            {
+                canRetest = false;
+                LevelUpEvent();
+                return;
+            }
             listForTirage.Remove(weaponSorted);
             propositions[i].SetUpApparition((int)globalStats.listBaseStats[weaponSorted].weaponType,
                 globalStats.listBaseStats[weaponSorted].nameInMenus,
@@ -62,6 +71,8 @@ public class UIManager : MonoBehaviour
                 globalStats.listBaseStats[weaponSorted].sprite);
             propositions[i].weaponNumberAssociated = weaponSorted;
         }
+
+        canRetest = true;
     }
 
     public void StartEvent()
@@ -143,6 +154,11 @@ public class UIManager : MonoBehaviour
                     }
                 }
             }
+        }
+
+        if (weaponToLevelUp.level == maxLevel-1)
+        {
+            listRetest[(int)weaponToLevelUp.weaponType] = true;
         }
     }
 }

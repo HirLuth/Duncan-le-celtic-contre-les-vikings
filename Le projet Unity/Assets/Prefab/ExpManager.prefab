@@ -47,6 +47,6 @@ MonoBehaviour:
   expPoint: {fileID: 6172547269558392678, guid: 66541cabd4385bf478db7123585cd36d, type: 3}
   textLevel: {fileID: 0}
   level: 1
-  scalingWithLevel: 30
+  scalingWithLevel: 45
   startExp: 6
   powerOfX: 1.4

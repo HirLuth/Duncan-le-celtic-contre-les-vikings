@@ -26,8 +26,6 @@ public class Shield : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(CharacterController.instance.shieldActivated);
-        Debug.Log(CharacterController.instance.shieldAvailable);
         if (!CharacterController.instance.shieldActivated && !CharacterController.instance.shieldAvailable)
         {
             timerCoolDown += Time.deltaTime;
