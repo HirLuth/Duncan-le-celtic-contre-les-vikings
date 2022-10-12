@@ -136,6 +136,8 @@ GameObject:
   - component: {fileID: 8936841671618602813}
   - component: {fileID: 8936841671618602810}
   - component: {fileID: 347986078388372968}
+  - component: {fileID: 1217871719}
+  - component: {fileID: 1217871720}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Boss
@@ -235,66 +237,76 @@ MonoBehaviour:
   textDamage: {fileID: 230525933050374625, guid: 609d98cba1634e0499f9567b4693d788, type: 3}
   textDamagePlayer: {fileID: 752161814499140571, guid: 512bdec18bb4fd9419dc80d210eb49f3, type: 3}
   bossFight: 0
-  changeHealth: 0
+  changeHealth: 1
   layerEmpty: {fileID: 367808457}
   playerSp: {fileID: 0}
   triggerAttackBoss: 00000000000000
-  healthBossFight: 0
+  healthBossFight: 30000
   healthBarBoss: {fileID: 0}
   isDead: 0
-  anim: {fileID: 0}
+  anim: {fileID: 1217871720}
+  textDamagePlayerBlue: {fileID: 752161814499140571, guid: 04dbbfdba612a044d86b2aac71553b03, type: 3}
   gotSword: 0
   cooldownSkill1Timer: 0
-  cooldownSkill1: 35
+  cooldownSkill1: 20
   indicateurSkill1: {fileID: 3105204892600485583, guid: d8f8354400e15624a81cb1bce7ad6439, type: 3}
   waitIndicationSkill1: 3
   waitIndicationSkill1Timer: 0
+  bossCooldown1: 12
   gotSerpe: 0
   cooldownSkill2Timer: 0
-  cooldownSkill2: 25
+  cooldownSkill2: 10
   mur: {fileID: 2729640041544733728, guid: d76bad0367a5c5948b56597db42a560a, type: 3}
   waitToMoveSkill2: 2
   waitToMoveSkill2Timer: 0
+  bossCooldown2: 2.5
   gotBaton: 0
   cooldownSkill3Timer: 0
-  cooldownSkill3: 20
+  cooldownSkill3: 7
   pic: {fileID: 2786256702999947869, guid: adcff6c497b16cc479398d40484e4371, type: 3}
   waitIndicationSkill3: 2
   waitIndicationSkill3Timer: 0
   indicateurSkill3: {fileID: 2823908610264553492, guid: 5e4c8c95bcb788142bddf846410031f2, type: 3}
+  bossCooldown3: 2.1
   gotCarnyx: 0
   cooldownSkill4Timer: 0
-  cooldownSkill4: 0
-  piege: {fileID: 0}
-  indicateurSkill4: {fileID: 0}
-  waitIndicationSkill4: 0
+  cooldownSkill4: 5
+  indicateurSkill4: {fileID: 5278170987708576196, guid: 48db86eadff9df548939884c3ca142ea, type: 3}
+  waitIndicationSkill4: 5
   waitIndicationSkill4Timer: 0
+  waitChargeSkill4: 2
+  waitChargeSkill4Timer: 0
+  bossCooldown4: 0
+  halo: {fileID: 33613361950056520, guid: b5b47c8fb150fce4abc3caab2829c84b, type: 3}
   gotLivre: 0
   cooldownSkill5Timer: 0
-  cooldownSkill5: 20
+  cooldownSkill5: 15
   fireball: {fileID: 2660005717698243863, guid: 7b70c87764a91d844812e4b05a438a2d, type: 3}
   launcher: {fileID: 1967692363}
-  waitIndicationSkill5: 2
+  waitIndicationSkill5: 2.5
   waitIndicationSkill5Timer: 0
+  bossCooldown5: 4.5
   gotSpear: 0
   isDashing: 0
   cooldownSkill6Timer: 0
-  cooldownSkill6: 5
+  cooldownSkill6: 18
   waitIndicationSkill6: 2
   waitIndicationSkill6Timer: 0
   dureeDashTimer: 0
   dureeDash: 0.7
   speedDash: 0.8
   indication6: {fileID: 2307739691690069110, guid: a57ae45812d1a644781eabac379eb1b4, type: 3}
+  bossCooldown6: 6.5
   gotBouclier: 0
   cooldownSkill7Timer: 0
-  cooldownSkill7: 5
+  cooldownSkill7: 16
   waitIndicationSkill7: 2
   waitIndicationSkill7Timer: 0
   pic7: {fileID: 2786256702999947869, guid: f869cff9e755ab94f8a1718d304f68bd, type: 3}
   radius: 10
-  indicateurSkill7: {fileID: 0}
-  health: 9999999
+  indicateurSkill7: {fileID: 3105204892600485583, guid: ab21229b4aa09764d9460abb6654c36c, type: 3}
+  bossCooldown7: 9
+  health: 50000
 --- !u!61 &347986078388372968
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -321,3 +333,44 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.9538383, y: 5.1743264}
   m_EdgeRadius: 0
+--- !u!50 &1217871719
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8936841671618602811}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
+--- !u!95 &1217871720
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8936841671618602811}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f05f2b07ab9ca6744bfc7fb2f072cac9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
