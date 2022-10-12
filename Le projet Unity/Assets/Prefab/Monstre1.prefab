@@ -136,4 +136,5 @@ MonoBehaviour:
   specialMonster: 0
   coffre: {fileID: 0}
   textDamagePlayer: {fileID: 752161814499140571, guid: 512bdec18bb4fd9419dc80d210eb49f3, type: 3}
+  textDamagePlayerBlue: {fileID: 752161814499140571, guid: 04dbbfdba612a044d86b2aac71553b03, type: 3}
   health: 10
