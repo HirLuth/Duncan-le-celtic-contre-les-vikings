@@ -18,7 +18,7 @@ MonoBehaviour:
     isTransformed: 0
     damage: 10
     numberOfProjectile: 1
-    coolDown: 1.5
+    coolDown: 1
     projectileSize: 1
     projectileSpeed: 15
     timeOfTheEffect: 1

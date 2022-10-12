@@ -304,6 +304,30 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 8936841671618602810, guid: 6c9c08838f9acb344b631e1b988addb2, type: 3}
+      propertyPath: bossCooldown1
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 8936841671618602810, guid: 6c9c08838f9acb344b631e1b988addb2, type: 3}
+      propertyPath: bossCooldown2
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8936841671618602810, guid: 6c9c08838f9acb344b631e1b988addb2, type: 3}
+      propertyPath: bossCooldown3
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8936841671618602810, guid: 6c9c08838f9acb344b631e1b988addb2, type: 3}
+      propertyPath: bossCooldown5
+      value: 7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8936841671618602810, guid: 6c9c08838f9acb344b631e1b988addb2, type: 3}
+      propertyPath: bossCooldown6
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8936841671618602810, guid: 6c9c08838f9acb344b631e1b988addb2, type: 3}
+      propertyPath: bossCooldown7
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8936841671618602810, guid: 6c9c08838f9acb344b631e1b988addb2, type: 3}
       propertyPath: healthBarBoss
       value: 
       objectReference: {fileID: 1251840340}
@@ -373,6 +397,10 @@ PrefabInstance:
       propertyPath: textLevel
       value: 
       objectReference: {fileID: 1878759965}
+    - target: {fileID: 5128174901460202856, guid: 8a8d665e3abb33b4c8524d2926b9c8a7, type: 3}
+      propertyPath: scalingWithLevel
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 5128174901460202857, guid: 8a8d665e3abb33b4c8524d2926b9c8a7, type: 3}
       propertyPath: m_Name
       value: ExpManager
