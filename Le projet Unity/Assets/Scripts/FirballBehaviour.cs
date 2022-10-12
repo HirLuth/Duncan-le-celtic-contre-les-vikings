@@ -12,6 +12,7 @@ public class FirballBehaviour : MonoBehaviour
     private Rigidbody2D rb;
     public GameObject player;
     public GameObject textDamagePlayer;
+    public GameObject textDamagePlayerBlue;
     public Vector2 direction;
 
     private void Start()
@@ -33,8 +34,17 @@ public class FirballBehaviour : MonoBehaviour
         if (col.gameObject == player)
         {
             CharacterController.instance.TakeDamage(damage);
-            GameObject text = Instantiate(textDamagePlayer, new Vector3(player.transform.position.x,player.transform.position.y + 1,-5), Quaternion.identity);
-            textDamagePlayer.GetComponentInChildren<TextMeshPro>().SetText(damage.ToString());
+            if (CharacterController.instance.shieldActivated)
+            {
+                textDamagePlayerBlue.GetComponentInChildren<TextMeshPro>().SetText(damage.ToString());
+                GameObject textBlue = Instantiate(textDamagePlayerBlue, new Vector3(player.transform.position.x,player.transform.position.y + 1,-5), Quaternion.identity);
+            }
+            else
+            {
+                textDamagePlayer.GetComponentInChildren<TextMeshPro>().SetText(damage.ToString());
+                GameObject text = Instantiate(textDamagePlayer, new Vector3(player.transform.position.x,player.transform.position.y + 1,-5), Quaternion.identity);
+            }
+           
         }
     }
 }

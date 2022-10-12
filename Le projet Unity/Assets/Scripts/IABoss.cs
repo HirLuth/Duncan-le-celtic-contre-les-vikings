@@ -28,6 +28,7 @@ public class IABoss : MonoBehaviour
     public GameObject healthBarBoss;
     public bool isDead;
     public Animator anim;
+    public GameObject textDamagePlayerBlue;
 
     [Header("Skill1 - TP")] 
     public bool gotSword;
@@ -215,9 +216,16 @@ public class IABoss : MonoBehaviour
             if (timerDmg > colldownDmg)
             {
                 CharacterController.instance.TakeDamage(Damages);
-                GameObject text = Instantiate(textDamagePlayer,
-                    new Vector3(player.transform.position.x, player.transform.position.y + 1, -5), Quaternion.identity);
-                textDamagePlayer.GetComponentInChildren<TextMeshPro>().SetText(Damages.ToString());
+                if (CharacterController.instance.shieldActivated)
+                {
+                    textDamagePlayerBlue.GetComponentInChildren<TextMeshPro>().SetText(Damages.ToString());
+                    GameObject textBlue = Instantiate(textDamagePlayerBlue, new Vector3(player.transform.position.x,player.transform.position.y + 1,-5), Quaternion.identity);
+                }
+                else
+                {
+                    textDamagePlayer.GetComponentInChildren<TextMeshPro>().SetText(Damages.ToString());
+                    GameObject text = Instantiate(textDamagePlayer, new Vector3(player.transform.position.x,player.transform.position.y + 1,-5), Quaternion.identity);
+                }
                 timerDmg = 0;
             }
         }

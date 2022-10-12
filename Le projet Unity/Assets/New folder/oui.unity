@@ -392,6 +392,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8936841671618602810, guid: 6c9c08838f9acb344b631e1b988addb2, type: 3}
+      propertyPath: textDamagePlayerBlue
+      value: 
+      objectReference: {fileID: 752161814499140571, guid: 04dbbfdba612a044d86b2aac71553b03, type: 3}
+    - target: {fileID: 8936841671618602810, guid: 6c9c08838f9acb344b631e1b988addb2, type: 3}
       propertyPath: waitIndicationSkill4
       value: 5
       objectReference: {fileID: 0}
