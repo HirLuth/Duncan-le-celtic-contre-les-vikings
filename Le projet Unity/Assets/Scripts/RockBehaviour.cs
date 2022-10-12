@@ -10,6 +10,7 @@ public class RockBehaviour : MonoBehaviour
     public float timeToDestroy;
     public GameObject textDamagePlayer;
     public GameObject player;
+    public GameObject textDamagePlayerBlue;
 
     private void Awake()
     {
@@ -28,9 +29,16 @@ public class RockBehaviour : MonoBehaviour
         {
             CharacterController.instance.TakeDamage(damage);
             
-            GameObject text = Instantiate(textDamagePlayer,
-                new Vector3(player.transform.position.x, player.transform.position.y + 1, -5), Quaternion.identity);
-            textDamagePlayer.GetComponentInChildren<TextMeshPro>().SetText(damage.ToString());
+            if (CharacterController.instance.shieldActivated)
+            {
+                textDamagePlayerBlue.GetComponentInChildren<TextMeshPro>().SetText(damage.ToString());
+                GameObject textBlue = Instantiate(textDamagePlayerBlue, new Vector3(player.transform.position.x,player.transform.position.y + 1,-5), Quaternion.identity);
+            }
+            else
+            {
+                textDamagePlayer.GetComponentInChildren<TextMeshPro>().SetText(damage.ToString());
+                GameObject text = Instantiate(textDamagePlayer, new Vector3(player.transform.position.x,player.transform.position.y + 1,-5), Quaternion.identity);
+            }
         }
     }
 }

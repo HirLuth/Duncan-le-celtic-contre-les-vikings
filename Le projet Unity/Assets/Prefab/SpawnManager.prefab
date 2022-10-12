@@ -52,7 +52,7 @@ MonoBehaviour:
   delayBetweenWavesInMinutes: 1
   delayBetweenSpawnsInSeconds: 2
   startMinuteOfBossFight: 20
-  scaleBreakMinute: 7
+  scaleBreakMinute: 6
   monster: {fileID: 4405515977446293381, guid: 8a050ede1e6e28f4f88f31ef520fdf4d, type: 3}
   damageAugmentationBetweenWaves: 0
   healthAugmentationBetweenWaves: 10

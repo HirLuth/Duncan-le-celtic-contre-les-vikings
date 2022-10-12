@@ -23,6 +23,7 @@ public class IAMonstre1 : MonoBehaviour
     public bool specialMonster;
     public GameObject coffre;
     public GameObject textDamagePlayer;
+    public GameObject textDamagePlayerBlue;
 
     private float _cameraHalfHeight;
     private float _cameraHalfWidth;
@@ -88,10 +89,15 @@ public class IAMonstre1 : MonoBehaviour
             if (timerDmg > colldownDmg)
             {
                 CharacterController.instance.TakeDamage(Damages);
-                if (!CharacterController.instance.shieldActivated)
+                if (CharacterController.instance.shieldActivated)
                 {
+                    textDamagePlayerBlue.GetComponentInChildren<TextMeshPro>().SetText(Damages.ToString());
+                    GameObject textBlue = Instantiate(textDamagePlayerBlue, new Vector3(player.transform.position.x,player.transform.position.y + 1,-5), Quaternion.identity);
+                }
+                else
+                {
+                    textDamagePlayer.GetComponentInChildren<TextMeshPro>().SetText(Damages.ToString());
                     GameObject text = Instantiate(textDamagePlayer, new Vector3(player.transform.position.x,player.transform.position.y + 1,-5), Quaternion.identity);
-                    text.GetComponentInChildren<TextMeshPro>().SetText(Damages.ToString());
                 }
              
                 timerDmg = 0;
