@@ -29,6 +29,7 @@ public class IAMonstre1 : MonoBehaviour
     private float _cameraHalfWidth;
     private bool _tpOnCooldown;
     private bool isInExpRange;
+    private int _damage;
 
     //public static IAMonstre1 instance; 
         
@@ -45,7 +46,7 @@ public class IAMonstre1 : MonoBehaviour
         _cameraHalfWidth = refCamera.aspect * refCamera.orthographicSize;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         CheckIfInBound();
 
@@ -80,30 +81,6 @@ public class IAMonstre1 : MonoBehaviour
         {
          transform.Translate(target.normalized*speed*Time.deltaTime,Space.Self);
         }
-
-        if (isTouching)
-        {
-            timerDmg += Time.deltaTime;
-            CharacterController.isTakingDamage = true;
-            
-            if (timerDmg > colldownDmg)
-            {
-                CharacterController.instance.TakeDamage(Damages);
-                if (CharacterController.instance.shieldActivated)
-                {
-                    textDamagePlayerBlue.GetComponentInChildren<TextMeshPro>().SetText(Damages.ToString());
-                    GameObject textBlue = Instantiate(textDamagePlayerBlue, new Vector3(player.transform.position.x,player.transform.position.y + 1,-5), Quaternion.identity);
-                }
-                else
-                {
-                    textDamagePlayer.GetComponentInChildren<TextMeshPro>().SetText(Damages.ToString());
-                    GameObject text = Instantiate(textDamagePlayer, new Vector3(player.transform.position.x,player.transform.position.y + 1,-5), Quaternion.identity);
-                }
-             
-                timerDmg = 0;
-            }
-        }
-        
         
         if (isTouching == false)
         {
@@ -140,11 +117,30 @@ public class IAMonstre1 : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D col)
+    private void OnTriggerStay2D(Collider2D col)
     {
         if (col.gameObject.CompareTag("Player"))
         {
             isTouching = true;
+            CharacterController.isTakingDamage = true;
+            timerDmg += Time.deltaTime;
+            
+            if (timerDmg > colldownDmg*_damage)
+            {
+                CharacterController.instance.TakeDamage(Damages);
+                if (CharacterController.instance.shieldActivated)
+                {
+                    textDamagePlayerBlue.GetComponentInChildren<TextMeshPro>().SetText(Damages.ToString());
+                    GameObject textBlue = Instantiate(textDamagePlayerBlue, new Vector3(player.transform.position.x,player.transform.position.y + 1,-5), Quaternion.identity);
+                }
+                else
+                {
+                    textDamagePlayer.GetComponentInChildren<TextMeshPro>().SetText(Damages.ToString());
+                    GameObject text = Instantiate(textDamagePlayer, new Vector3(player.transform.position.x,player.transform.position.y + 1,-5), Quaternion.identity);
+                }
+             
+                _damage += 1;
+            }
         }
         if (col.gameObject.CompareTag("AttractExp"))
         {
@@ -159,6 +155,7 @@ public class IAMonstre1 : MonoBehaviour
         {
             isTouching = false;
             timerDmg = 0;
+            _damage = 0;
         }
         if (col.gameObject.CompareTag("AttractExp"))
         {
