@@ -130,7 +130,7 @@ public class SpawnManager : MonoBehaviour
         }
         else
         {
-            monsterStat.health += Mathf.RoundToInt(4.5f*Mathf.Pow(_nextWave,1.43f));
+            monsterStat.health += Mathf.RoundToInt(4.5f*Mathf.Pow(_nextWave,1.42f));
         }
         monsterStat.Damages += _nextWave * damageAugmentationBetweenWaves;
         monsterStat.speed += _nextWave * speedAugmentationBetweenWaves;
@@ -154,7 +154,7 @@ public class SpawnManager : MonoBehaviour
         }
         else
         {
-            monsterStat.health += Mathf.RoundToInt(4.5f*Mathf.Pow(_nextWave,1.43f));
+            monsterStat.health += Mathf.RoundToInt(4.5f*Mathf.Pow(_nextWave,1.4f));
         }
         monsterStat.Damages += _nextWave * specialMonsterDamageAugment;
         monsterStat.speed += _nextWave * specialMonsterSpeedAugment;
